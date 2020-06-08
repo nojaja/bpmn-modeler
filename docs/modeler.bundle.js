@@ -68725,19 +68725,32 @@ const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 class GDrivestorage {
     constructor() {
         this.ev = new events__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]()
+        this.apiLoaded = false;
+        this.auth2ApiLoaded = false;
+        this.pickerApiLoaded = false;
+        this.picker = null
+    }
 
-        let script = document.createElement('script')
-        script.async = true
-        script.defer = true
-        script.src = 'https://apis.google.com/js/api.js'
-        script.onload = () => {
-            script.onload = function () { }
-            this.handleClientLoad()
+    init (callback) {
+        let ev = this.ev
+        if(!this.apiLoaded){
+            let script = document.createElement('script')
+            script.async = true
+            script.defer = true
+            script.src = 'https://apis.google.com/js/api.js'
+            script.onload = () => {
+                script.onload = function () { }
+                this.apiLoaded = true
+                ev.emit('init')
+                if(callback)callback()
+            }
+            script.onreadystatechange = () => {
+                if (this.readyState === 'complete') this.onload()
+            }
+            document.body.appendChild(script)
+        } else {
+            if(callback)callback()
         }
-        script.onreadystatechange = () => {
-            if (this.readyState === 'complete') this.onload()
-        }
-        document.body.appendChild(script)
     }
 
     onInit(callback) {
@@ -68755,14 +68768,18 @@ class GDrivestorage {
      *  Sign in the user upon button click.
      */
     signIn() {
-        gapi.auth2.getAuthInstance().signIn()
+        this.loadAuth2(() =>{
+            gapi.auth2.getAuthInstance().signIn()
+        })
     }
 
     /**
      *  Sign out the user upon button click.
      */
     signOut() {
-        gapi.auth2.getAuthInstance().signOut()
+        this.loadAuth2(() =>{
+            gapi.auth2.getAuthInstance().signOut()
+        })
     }
 
     /**
@@ -68770,59 +68787,98 @@ class GDrivestorage {
      *  Initializes the API client library and sets up sign-in state
      *  listeners.
      */
-    handleClientLoad() {
-        gapi.load('client:auth2', () =>{
+    loadAuth2(callback) {
+        if(!this.auth2ApiLoaded){
             let ev = this.ev
-            gapi.client.init({
-                apiKey: API_KEY,
-                clientId: CLIENT_ID,
-                discoveryDocs: DISCOVERY_DOCS,
-                scope: SCOPES
-            }).then(() => {
-                // Listen for sign-in state changes.
-                gapi.auth2.getAuthInstance().isSignedIn.listen((isSignedIn) => {
-                    ev.emit('updateSigninStatus', isSignedIn)
+            this.init ( () =>{
+                gapi.load('client:auth2', () =>{
+                    gapi.client.init({
+                        apiKey: API_KEY,
+                        clientId: CLIENT_ID,
+                        discoveryDocs: DISCOVERY_DOCS,
+                        scope: SCOPES
+                    }).then(() => {
+                        // Listen for sign-in state changes.
+                        gapi.auth2.getAuthInstance().isSignedIn.listen((isSignedIn) => {
+                            ev.emit('updateSigninStatus', isSignedIn)
+                        })
+            
+                        // Handle the initial sign-in state.
+                        ev.emit('updateSigninStatus', gapi.auth2.getAuthInstance().isSignedIn.get())
+                        this.auth2ApiLoaded = true
+                        if(callback)callback()
+                    }, (error) => {
+                        console.log(JSON.stringify(error, null, 2))
+                    })
                 })
-    
-                // Handle the initial sign-in state.
-                ev.emit('updateSigninStatus', gapi.auth2.getAuthInstance().isSignedIn.get())
-                ev.emit('init')
-            }, (error) => {
-                console.log(JSON.stringify(error, null, 2))
-            })
-        })
+            } )
+        } else {
+            if(callback)callback()
+        }
     }
+
+    loadPicker(pickerCallback) {
+        if(!this.pickerApiLoaded){
+            let ev = this.ev
+            this.loadAuth2 ( () =>{
+                gapi.load('picker', () =>{
+                    let user = gapi.auth2.getAuthInstance().currentUser.get();
+                    let oauthToken = user.getAuthResponse().access_token;
+
+                    let view = new google.picker.View(google.picker.ViewId.DOCS);
+                    view.setMimeTypes("application/vnd.bpmn");
+                    this.picker = new google.picker.PickerBuilder()
+                        .enableFeature(google.picker.Feature.NAV_HIDDEN)
+                        .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+                        .setLocale('ja')
+                        .addView(view)
+                        .setOAuthToken(oauthToken)
+                        .addView(new google.picker.DocsUploadView())
+                        .setCallback(pickerCallback)
+                        .build();
+                        this.picker.setVisible(true);
+                     this.pickerApiLoaded = true
+                })
+            } )
+        } else {
+            this.picker.setCallback(pickerCallback)
+            this.picker.setVisible(true)
+        }
+    }
+
 
     //プロジェクト一覧取得
     async loadList(callback) {
-        gapi.client.drive.files.list({
-            'pageSize': 100,
-            orderBy: "modifiedTime desc",
-            //'q': "mimeType='image/jpeg'",
-            q: "trashed=false and mimeType='application/vnd.bpmn'",
-            'fields': "nextPageToken, files(id, name, mimeType, fileExtension)"
-        }).then((response) => {
-            let files = response.result.files
-            if (files && files.length > 0) {
-                //{"description" : "simple demo01", "id" : "sample01.json", "public" : true },
-                //OUT {rows:[{description, id, public},,]}
-                const list = {
-                    rows: files.map((file, index, array) => {
-                        return {
-                            description: file.name,
-                            id: file.id,
-                            public: true
-                        }
-                    })
+        this.loadAuth2(() =>{
+            gapi.client.drive.files.list({
+                'pageSize': 100,
+                orderBy: "modifiedTime desc",
+                //'q': "mimeType='image/jpeg'",
+                q: "trashed=false and mimeType='application/vnd.bpmn'",
+                'fields': "nextPageToken, files(id, name, mimeType, fileExtension)"
+            }).then((response) => {
+                let files = response.result.files
+                if (files && files.length > 0) {
+                    //{"description" : "simple demo01", "id" : "sample01.json", "public" : true },
+                    //OUT {rows:[{description, id, public},,]}
+                    const list = {
+                        rows: files.map((file, index, array) => {
+                            return {
+                                description: file.name,
+                                id: file.id,
+                                public: true
+                            }
+                        })
+                    }
+                    return (callback) ? callback(list, "gdrive") : list
+                } else {
+                    console.log('No files found.')
+                    const list = {
+                        rows: []
+                    }
+                    return (callback) ? callback(list, "gdrive") : list
                 }
-                return (callback) ? callback(list, "gdrive") : list
-            } else {
-                console.log('No files found.')
-                const list = {
-                    rows: []
-                }
-                return (callback) ? callback(list, "gdrive") : list
-            }
+            })
         })
 
     }
@@ -68955,6 +69011,43 @@ __webpack_require__.r(__webpack_exports__);
 let gDrivestorage = new _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_4__["default"]();
 
 
+const noAuthorize = document.querySelectorAll('.no_authorize');
+const reqAuthorize = document.querySelectorAll('.req_authorize');
+gDrivestorage.onUpdateSigninStatus((isSignedIn)=>{
+  if (isSignedIn) {
+    noAuthorize.forEach(el => el.style.display = 'none');
+    reqAuthorize.forEach(el => el.style.display = 'block');
+  } else {
+    noAuthorize.forEach(el => el.style.display = 'block');
+    reqAuthorize.forEach(el => el.style.display = 'none');
+  }
+})
+/**
+ *  Sign in the user upon button click.
+ */
+function handleAuthClick(event) {
+  gDrivestorage.signIn();
+}
+
+/**
+ *  Sign out the user upon button click.
+ */
+function handleSignoutClick(event) {
+  gDrivestorage.signOut();
+}
+
+/**
+ *  Sign out the user upon button click.
+ */
+function handlePickerClick(event) {
+  gDrivestorage.loadPicker((data) => {
+    if (data.action == google.picker.Action.PICKED) {
+      var fileId = data.docs[0].id;
+      loadProject(fileId, "gdrive", () => {})
+    }
+  });
+}
+
 var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
 const xmlStr =
   '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -68994,17 +69087,11 @@ var bpmnModeler = new bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MO
  * Save diagram contents and print them to the console.
  */
 async function exportDiagram() {
-
   try {
-
     var result = await bpmnModeler.saveXML({ format: true });
-
-    alert('Diagram exported. Check the developer tools!');
-
     console.log('DIAGRAM', result.xml);
     gDrivestorage.saveDraft(bpmnModeler)
   } catch (err) {
-
     console.error('could not save BPMN 2.0 diagram', err);
   }
 }
@@ -69044,31 +69131,10 @@ async function openDiagram(bpmnXML) {
     canvas.addMarker('SCAN_OK', 'needs-discussion');
     */
   } catch (err) {
-
     console.error('could not import BPMN 2.0 diagram', err);
   }
 }
 
-
-//プロジェクト一覧表示
-function projectjsonCallback(json, type) {
-  $("#prjlist").empty();
-
-  const prj = $('<li ><a  class="project" data-url=""><i class="uk-icon-folder"></i></a></li>');
-  prj.on("click", (event) => {
-    loadProject($(event.target).attr("data-url"), type, () => {
-      //fileContainer.refreshCache(EditorFileData, monaco);
-    })
-  });
-
-  json.rows.forEach((val, i) => {
-    // [{description, id, public},,]
-    let _prj = prj.clone(true);
-    _prj.children('.project').attr('data-url', val.id);
-    _prj.children('.project').append(' ' + val.description);
-    $("#prjlist").append(_prj);
-  });
-}
 
 //プロジェクトファイルの読み込み
 function loadProject(url, type, cb) {
@@ -69085,20 +69151,17 @@ function loadProject(url, type, cb) {
 $(document).ready(() => {
   // load external diagram file via AJAX and open it
   $.get(diagramUrl, openDiagram, 'text');
-
+  gDrivestorage.loadAuth2()
   // wire save button
   $('#save').click(exportDiagram);
 
-  $('#list').click(() => {
-    //プロジェクト一覧取得
-    gDrivestorage.loadList((json, type) => {
-      projectjsonCallback(json, type)
-    })
-  })
+  $('#authorize_button').click(handleAuthClick);
+  $('#signout_button').click(handleSignoutClick);
+  $('#picker_button').click(handlePickerClick);
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js")))
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=map/modeler.902fbde6600bb8851592.js.map
+//# sourceMappingURL=map/modeler.63c06d66af8d9a7648b2.js.map

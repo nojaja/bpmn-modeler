@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Hello World</title>
+  <title>bpmn-modeler</title>
 
 </head>
 
@@ -19,19 +19,16 @@
       <div class="navbar-flip">
         <ul class="navbar-nav">
 
-          <li class="uk-active uk-button-primary"><a id="list" > List</a></li>
-          <li class="uk-active uk-button-primary"><a id="save"> Save (Ctrl+s)</a></li>
+          <li class="no_authorize" id="authorize_li" style="display: none;"><a id="authorize_button" > Authorize</a></li>
+          <li class="req_authorize" id="signout_li" style="display: none;"><a id="signout_button" > Sign Out</a></li>
+          <li class="req_authorize"><a id="picker_button" > Picker</a></li>
+          <li class="req_authorize"><a id="save"> Save (Ctrl+s)</a></li>
         
         </ul>
       </div>
     </div>
   </nav>
   <div class="panel-parent">
-    <div class="left-panel">
-      <ul id="prjlist" class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="">
-        <li><i class="uk-icon-spinner uk-icon-spin"></i></li>
-      </ul>
-    </div>
     <div class="main-panel">
       <div id="canvas"></div>
     </div>
