@@ -56847,6 +56847,24 @@ module.exports = exports;
 
 /***/ }),
 
+/***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/toastr/build/toastr.css":
+/*!**************************************************************************************!*\
+  !*** ../node_modules/css-loader/dist/cjs.js!../node_modules/toastr/build/toastr.css ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, ".toast-title {\n  font-weight: bold;\n}\n.toast-message {\n  -ms-word-wrap: break-word;\n  word-wrap: break-word;\n}\n.toast-message a,\n.toast-message label {\n  color: #FFFFFF;\n}\n.toast-message a:hover {\n  color: #CCCCCC;\n  text-decoration: none;\n}\n.toast-close-button {\n  position: relative;\n  right: -0.3em;\n  top: -0.3em;\n  float: right;\n  font-size: 20px;\n  font-weight: bold;\n  color: #FFFFFF;\n  -webkit-text-shadow: 0 1px 0 #ffffff;\n  text-shadow: 0 1px 0 #ffffff;\n  opacity: 0.8;\n  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);\n  filter: alpha(opacity=80);\n  line-height: 1;\n}\n.toast-close-button:hover,\n.toast-close-button:focus {\n  color: #000000;\n  text-decoration: none;\n  cursor: pointer;\n  opacity: 0.4;\n  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);\n  filter: alpha(opacity=40);\n}\n.rtl .toast-close-button {\n  left: -0.3em;\n  float: left;\n  right: 0.3em;\n}\n/*Additional properties for button version\n iOS requires the button element instead of an anchor tag.\n If you want the anchor version, it requires `href=\"#\"`.*/\nbutton.toast-close-button {\n  padding: 0;\n  cursor: pointer;\n  background: transparent;\n  border: 0;\n  -webkit-appearance: none;\n}\n.toast-top-center {\n  top: 0;\n  right: 0;\n  width: 100%;\n}\n.toast-bottom-center {\n  bottom: 0;\n  right: 0;\n  width: 100%;\n}\n.toast-top-full-width {\n  top: 0;\n  right: 0;\n  width: 100%;\n}\n.toast-bottom-full-width {\n  bottom: 0;\n  right: 0;\n  width: 100%;\n}\n.toast-top-left {\n  top: 12px;\n  left: 12px;\n}\n.toast-top-right {\n  top: 12px;\n  right: 12px;\n}\n.toast-bottom-right {\n  right: 12px;\n  bottom: 12px;\n}\n.toast-bottom-left {\n  bottom: 12px;\n  left: 12px;\n}\n#toast-container {\n  position: fixed;\n  z-index: 999999;\n  pointer-events: none;\n  /*overrides*/\n}\n#toast-container * {\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  box-sizing: border-box;\n}\n#toast-container > div {\n  position: relative;\n  pointer-events: auto;\n  overflow: hidden;\n  margin: 0 0 6px;\n  padding: 15px 15px 15px 50px;\n  width: 300px;\n  -moz-border-radius: 3px 3px 3px 3px;\n  -webkit-border-radius: 3px 3px 3px 3px;\n  border-radius: 3px 3px 3px 3px;\n  background-position: 15px center;\n  background-repeat: no-repeat;\n  -moz-box-shadow: 0 0 12px #999999;\n  -webkit-box-shadow: 0 0 12px #999999;\n  box-shadow: 0 0 12px #999999;\n  color: #FFFFFF;\n  opacity: 0.8;\n  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);\n  filter: alpha(opacity=80);\n}\n#toast-container > div.rtl {\n  direction: rtl;\n  padding: 15px 50px 15px 15px;\n  background-position: right 15px center;\n}\n#toast-container > div:hover {\n  -moz-box-shadow: 0 0 12px #000000;\n  -webkit-box-shadow: 0 0 12px #000000;\n  box-shadow: 0 0 12px #000000;\n  opacity: 1;\n  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);\n  filter: alpha(opacity=100);\n  cursor: pointer;\n}\n#toast-container > .toast-info {\n  background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=\") !important;\n}\n#toast-container > .toast-error {\n  background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=\") !important;\n}\n#toast-container > .toast-success {\n  background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==\") !important;\n}\n#toast-container > .toast-warning {\n  background-image: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=\") !important;\n}\n#toast-container.toast-top-center > div,\n#toast-container.toast-bottom-center > div {\n  width: 300px;\n  margin-left: auto;\n  margin-right: auto;\n}\n#toast-container.toast-top-full-width > div,\n#toast-container.toast-bottom-full-width > div {\n  width: 96%;\n  margin-left: auto;\n  margin-right: auto;\n}\n.toast {\n  background-color: #030303;\n}\n.toast-success {\n  background-color: #51A351;\n}\n.toast-error {\n  background-color: #BD362F;\n}\n.toast-info {\n  background-color: #2F96B4;\n}\n.toast-warning {\n  background-color: #F89406;\n}\n.toast-progress {\n  position: absolute;\n  left: 0;\n  bottom: 0;\n  height: 4px;\n  background-color: #000000;\n  opacity: 0.4;\n  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);\n  filter: alpha(opacity=40);\n}\n/*Responsive Design*/\n@media all and (max-width: 240px) {\n  #toast-container > div {\n    padding: 8px 8px 8px 50px;\n    width: 11em;\n  }\n  #toast-container > div.rtl {\n    padding: 8px 50px 8px 8px;\n  }\n  #toast-container .toast-close-button {\n    right: -0.2em;\n    top: -0.2em;\n  }\n  #toast-container .rtl .toast-close-button {\n    left: -0.2em;\n    right: 0.2em;\n  }\n}\n@media all and (min-width: 241px) and (max-width: 480px) {\n  #toast-container > div {\n    padding: 8px 8px 8px 50px;\n    width: 18em;\n  }\n  #toast-container > div.rtl {\n    padding: 8px 50px 8px 8px;\n  }\n  #toast-container .toast-close-button {\n    right: -0.2em;\n    top: -0.2em;\n  }\n  #toast-container .rtl .toast-close-button {\n    left: -0.2em;\n    right: 0.2em;\n  }\n}\n@media all and (min-width: 481px) and (max-width: 768px) {\n  #toast-container > div {\n    padding: 15px 15px 15px 50px;\n    width: 25em;\n  }\n  #toast-container > div.rtl {\n    padding: 15px 50px 15px 15px;\n  }\n}\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+
 /***/ "../node_modules/css-loader/dist/cjs.js!./css/style.css":
 /*!**************************************************************!*\
   !*** ../node_modules/css-loader/dist/cjs.js!./css/style.css ***!
@@ -56858,7 +56876,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\r\nhtml, body, #canvas {\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\nbody {\r\n  height: 100vh;\r\n}\r\nh2 {\r\n  font-size: 24px;\r\n  line-height: 30px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n  text-transform: none;\r\n}\r\n.navbar {\r\n  position: relative;\r\n  padding: 0px 0;\r\n  border: none;\r\n  background: #444;\r\n  color: #999;\r\n  display: block;\r\n}\r\n.container {\r\n  display: table;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  padding: 0 25px;\r\n}\r\n.left-navbar {\r\n  float: left;\r\n}\r\n.navbar-flip {\r\n  float: right;\r\n}\r\n.navbar-nav > li {\r\n  float: left;\r\n  position: relative;\r\n  list-style: none;\r\n}\r\n.navbar-nav > li > a {\r\n  cursor: pointer;\r\n  background-color: #f5f5f5;\r\n  color: #444;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-decoration: none;\r\n  height: 40px;\r\n  padding: 0 15px;\r\n  line-height: 40px;\r\n  font-size: 14px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n}\r\n.panel-parent {\r\n  height: 90%;\r\n  overflow: auto;\r\n  /*margin-left: -35px;*/\r\n}\r\n.left-panel {\r\n  height: 100%;\r\n  overflow: auto;\r\n  width: 16.666%;\r\n  background: #333;\r\n  color: #fff;\r\n  float: left;\r\n}\r\n.main-panel {\r\n  height: 100%;\r\n  overflow: hidden;\r\n  width: 50%;\r\n  box-sizing: border-box;\r\n  float: left;\r\n}\r\n\r\n.diagram-note {\r\n  background-color: rgba(66, 180, 21, 0.7);\r\n  color: White;\r\n  border-radius: 5px;\r\n  font-family: Arial;\r\n  font-size: 12px;\r\n  padding: 5px;\r\n  min-height: 16px;\r\n  width: 50px;\r\n  text-align: center;\r\n}\r\n\r\n.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {\r\n  stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */\r\n}\r\n", ""]);
+exports.push([module.i, "\r\nhtml, body, #canvas {\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\nbody {\r\n  height: 100vh;\r\n}\r\nh2 {\r\n  font-size: 24px;\r\n  line-height: 30px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n  text-transform: none;\r\n  float: left;\r\n}\r\n.branding-icon {\r\n  height: 40px;\r\n  width: 40px;\r\n  text-align: left;\r\n  height: 60px;\r\n  overflow: hidden;\r\n  vertical-align: middle;\r\n  content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);\r\n}\r\n.title-input {\r\n  border: 1px solid transparent;\r\n  border-radius: 2px!important;\r\n  color: #999;\r\n  background: #444;\r\n  font-size: 24px;\r\n  font-variant-ligatures: no-contextual;\r\n  height: 20px;\r\n  line-height: 22px;\r\n  margin: 0;\r\n  min-width: 1px;\r\n  padding: 2px 7px;\r\n  /*visibility: hidden;*/\r\n}\r\n.title-input:focus {\r\n  border: 2px solid #1a73e8!important;\r\n  margin: -1px;\r\n  box-shadow: none;\r\n  border-radius: 4px!important;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  border: 1px solid #4d90fe!important;\r\n  color: #fff;\r\n  outline: none;\r\n}\r\n.title-input:hover {\r\n  border-color: #e5e5e5;\r\n}\r\n.navbar {\r\n  position: relative;\r\n  padding: 0px 0;\r\n  border: none;\r\n  background: #444;\r\n  color: #999;\r\n  display: block;\r\n}\r\n.container {\r\n  display: table;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  padding: 0 25px;\r\n}\r\n.left-navbar {\r\n  float: left;\r\n}\r\n.navbar-flip {\r\n  float: right;\r\n}\r\n.navbar-nav > li {\r\n  float: left;\r\n  position: relative;\r\n  list-style: none;\r\n}\r\n.navbar-nav > li > a {\r\n  cursor: pointer;\r\n  background-color: #f5f5f5;\r\n  color: #444;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-decoration: none;\r\n  height: 40px;\r\n  padding: 0 15px;\r\n  line-height: 40px;\r\n  font-size: 14px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n}\r\n.panel-parent {\r\n  height: 90%;\r\n  overflow: auto;\r\n  /*margin-left: -35px;*/\r\n}\r\n.left-panel {\r\n  height: 100%;\r\n  overflow: auto;\r\n  width: 16.666%;\r\n  background: #333;\r\n  color: #fff;\r\n  float: left;\r\n}\r\n.main-panel {\r\n  height: 100%;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  float: left;\r\n}\r\n\r\n.diagram-note {\r\n  background-color: rgba(66, 180, 21, 0.7);\r\n  color: White;\r\n  border-radius: 5px;\r\n  font-family: Arial;\r\n  font-size: 12px;\r\n  padding: 5px;\r\n  min-height: 16px;\r\n  width: 50px;\r\n  text-align: center;\r\n}\r\n\r\n.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {\r\n  stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -68637,6 +68655,531 @@ module.exports = function (list, options) {
 
 /***/ }),
 
+/***/ "../node_modules/toastr/build/toastr.css":
+/*!***********************************************!*\
+  !*** ../node_modules/toastr/build/toastr.css ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var api = __webpack_require__(/*! ../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+            var content = __webpack_require__(/*! !../../css-loader/dist/cjs.js!./toastr.css */ "../node_modules/css-loader/dist/cjs.js!../node_modules/toastr/build/toastr.css");
+
+            content = content.__esModule ? content.default : content;
+
+            if (typeof content === 'string') {
+              content = [[module.i, content, '']];
+            }
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = api(content, options);
+
+
+
+module.exports = content.locals || {};
+
+/***/ }),
+
+/***/ "../node_modules/toastr/toastr.js":
+/*!****************************************!*\
+  !*** ../node_modules/toastr/toastr.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*
+ * Toastr
+ * Copyright 2012-2015
+ * Authors: John Papa, Hans Fjällemark, and Tim Ferrell.
+ * All Rights Reserved.
+ * Use, reproduction, distribution, and modification of this code is subject to the terms and
+ * conditions of the MIT license, available at http://www.opensource.org/licenses/mit-license.php
+ *
+ * ARIA Support: Greta Krafsig
+ *
+ * Project: https://github.com/CodeSeven/toastr
+ */
+/* global define */
+(function (define) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js")], __WEBPACK_AMD_DEFINE_RESULT__ = (function ($) {
+        return (function () {
+            var $container;
+            var listener;
+            var toastId = 0;
+            var toastType = {
+                error: 'error',
+                info: 'info',
+                success: 'success',
+                warning: 'warning'
+            };
+
+            var toastr = {
+                clear: clear,
+                remove: remove,
+                error: error,
+                getContainer: getContainer,
+                info: info,
+                options: {},
+                subscribe: subscribe,
+                success: success,
+                version: '2.1.4',
+                warning: warning
+            };
+
+            var previousToast;
+
+            return toastr;
+
+            ////////////////
+
+            function error(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.error,
+                    iconClass: getOptions().iconClasses.error,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function getContainer(options, create) {
+                if (!options) { options = getOptions(); }
+                $container = $('#' + options.containerId);
+                if ($container.length) {
+                    return $container;
+                }
+                if (create) {
+                    $container = createContainer(options);
+                }
+                return $container;
+            }
+
+            function info(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.info,
+                    iconClass: getOptions().iconClasses.info,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function subscribe(callback) {
+                listener = callback;
+            }
+
+            function success(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.success,
+                    iconClass: getOptions().iconClasses.success,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function warning(message, title, optionsOverride) {
+                return notify({
+                    type: toastType.warning,
+                    iconClass: getOptions().iconClasses.warning,
+                    message: message,
+                    optionsOverride: optionsOverride,
+                    title: title
+                });
+            }
+
+            function clear($toastElement, clearOptions) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if (!clearToast($toastElement, options, clearOptions)) {
+                    clearContainer(options);
+                }
+            }
+
+            function remove($toastElement) {
+                var options = getOptions();
+                if (!$container) { getContainer(options); }
+                if ($toastElement && $(':focus', $toastElement).length === 0) {
+                    removeToast($toastElement);
+                    return;
+                }
+                if ($container.children().length) {
+                    $container.remove();
+                }
+            }
+
+            // internal functions
+
+            function clearContainer (options) {
+                var toastsToClear = $container.children();
+                for (var i = toastsToClear.length - 1; i >= 0; i--) {
+                    clearToast($(toastsToClear[i]), options);
+                }
+            }
+
+            function clearToast ($toastElement, options, clearOptions) {
+                var force = clearOptions && clearOptions.force ? clearOptions.force : false;
+                if ($toastElement && (force || $(':focus', $toastElement).length === 0)) {
+                    $toastElement[options.hideMethod]({
+                        duration: options.hideDuration,
+                        easing: options.hideEasing,
+                        complete: function () { removeToast($toastElement); }
+                    });
+                    return true;
+                }
+                return false;
+            }
+
+            function createContainer(options) {
+                $container = $('<div/>')
+                    .attr('id', options.containerId)
+                    .addClass(options.positionClass);
+
+                $container.appendTo($(options.target));
+                return $container;
+            }
+
+            function getDefaults() {
+                return {
+                    tapToDismiss: true,
+                    toastClass: 'toast',
+                    containerId: 'toast-container',
+                    debug: false,
+
+                    showMethod: 'fadeIn', //fadeIn, slideDown, and show are built into jQuery
+                    showDuration: 300,
+                    showEasing: 'swing', //swing and linear are built into jQuery
+                    onShown: undefined,
+                    hideMethod: 'fadeOut',
+                    hideDuration: 1000,
+                    hideEasing: 'swing',
+                    onHidden: undefined,
+                    closeMethod: false,
+                    closeDuration: false,
+                    closeEasing: false,
+                    closeOnHover: true,
+
+                    extendedTimeOut: 1000,
+                    iconClasses: {
+                        error: 'toast-error',
+                        info: 'toast-info',
+                        success: 'toast-success',
+                        warning: 'toast-warning'
+                    },
+                    iconClass: 'toast-info',
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000, // Set timeOut and extendedTimeOut to 0 to make it sticky
+                    titleClass: 'toast-title',
+                    messageClass: 'toast-message',
+                    escapeHtml: false,
+                    target: 'body',
+                    closeHtml: '<button type="button">&times;</button>',
+                    closeClass: 'toast-close-button',
+                    newestOnTop: true,
+                    preventDuplicates: false,
+                    progressBar: false,
+                    progressClass: 'toast-progress',
+                    rtl: false
+                };
+            }
+
+            function publish(args) {
+                if (!listener) { return; }
+                listener(args);
+            }
+
+            function notify(map) {
+                var options = getOptions();
+                var iconClass = map.iconClass || options.iconClass;
+
+                if (typeof (map.optionsOverride) !== 'undefined') {
+                    options = $.extend(options, map.optionsOverride);
+                    iconClass = map.optionsOverride.iconClass || iconClass;
+                }
+
+                if (shouldExit(options, map)) { return; }
+
+                toastId++;
+
+                $container = getContainer(options, true);
+
+                var intervalId = null;
+                var $toastElement = $('<div/>');
+                var $titleElement = $('<div/>');
+                var $messageElement = $('<div/>');
+                var $progressElement = $('<div/>');
+                var $closeElement = $(options.closeHtml);
+                var progressBar = {
+                    intervalId: null,
+                    hideEta: null,
+                    maxHideTime: null
+                };
+                var response = {
+                    toastId: toastId,
+                    state: 'visible',
+                    startTime: new Date(),
+                    options: options,
+                    map: map
+                };
+
+                personalizeToast();
+
+                displayToast();
+
+                handleEvents();
+
+                publish(response);
+
+                if (options.debug && console) {
+                    console.log(response);
+                }
+
+                return $toastElement;
+
+                function escapeHtml(source) {
+                    if (source == null) {
+                        source = '';
+                    }
+
+                    return source
+                        .replace(/&/g, '&amp;')
+                        .replace(/"/g, '&quot;')
+                        .replace(/'/g, '&#39;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;');
+                }
+
+                function personalizeToast() {
+                    setIcon();
+                    setTitle();
+                    setMessage();
+                    setCloseButton();
+                    setProgressBar();
+                    setRTL();
+                    setSequence();
+                    setAria();
+                }
+
+                function setAria() {
+                    var ariaValue = '';
+                    switch (map.iconClass) {
+                        case 'toast-success':
+                        case 'toast-info':
+                            ariaValue =  'polite';
+                            break;
+                        default:
+                            ariaValue = 'assertive';
+                    }
+                    $toastElement.attr('aria-live', ariaValue);
+                }
+
+                function handleEvents() {
+                    if (options.closeOnHover) {
+                        $toastElement.hover(stickAround, delayedHideToast);
+                    }
+
+                    if (!options.onclick && options.tapToDismiss) {
+                        $toastElement.click(hideToast);
+                    }
+
+                    if (options.closeButton && $closeElement) {
+                        $closeElement.click(function (event) {
+                            if (event.stopPropagation) {
+                                event.stopPropagation();
+                            } else if (event.cancelBubble !== undefined && event.cancelBubble !== true) {
+                                event.cancelBubble = true;
+                            }
+
+                            if (options.onCloseClick) {
+                                options.onCloseClick(event);
+                            }
+
+                            hideToast(true);
+                        });
+                    }
+
+                    if (options.onclick) {
+                        $toastElement.click(function (event) {
+                            options.onclick(event);
+                            hideToast();
+                        });
+                    }
+                }
+
+                function displayToast() {
+                    $toastElement.hide();
+
+                    $toastElement[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing, complete: options.onShown}
+                    );
+
+                    if (options.timeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.timeOut);
+                        progressBar.maxHideTime = parseFloat(options.timeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                        if (options.progressBar) {
+                            progressBar.intervalId = setInterval(updateProgress, 10);
+                        }
+                    }
+                }
+
+                function setIcon() {
+                    if (map.iconClass) {
+                        $toastElement.addClass(options.toastClass).addClass(iconClass);
+                    }
+                }
+
+                function setSequence() {
+                    if (options.newestOnTop) {
+                        $container.prepend($toastElement);
+                    } else {
+                        $container.append($toastElement);
+                    }
+                }
+
+                function setTitle() {
+                    if (map.title) {
+                        var suffix = map.title;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.title);
+                        }
+                        $titleElement.append(suffix).addClass(options.titleClass);
+                        $toastElement.append($titleElement);
+                    }
+                }
+
+                function setMessage() {
+                    if (map.message) {
+                        var suffix = map.message;
+                        if (options.escapeHtml) {
+                            suffix = escapeHtml(map.message);
+                        }
+                        $messageElement.append(suffix).addClass(options.messageClass);
+                        $toastElement.append($messageElement);
+                    }
+                }
+
+                function setCloseButton() {
+                    if (options.closeButton) {
+                        $closeElement.addClass(options.closeClass).attr('role', 'button');
+                        $toastElement.prepend($closeElement);
+                    }
+                }
+
+                function setProgressBar() {
+                    if (options.progressBar) {
+                        $progressElement.addClass(options.progressClass);
+                        $toastElement.prepend($progressElement);
+                    }
+                }
+
+                function setRTL() {
+                    if (options.rtl) {
+                        $toastElement.addClass('rtl');
+                    }
+                }
+
+                function shouldExit(options, map) {
+                    if (options.preventDuplicates) {
+                        if (map.message === previousToast) {
+                            return true;
+                        } else {
+                            previousToast = map.message;
+                        }
+                    }
+                    return false;
+                }
+
+                function hideToast(override) {
+                    var method = override && options.closeMethod !== false ? options.closeMethod : options.hideMethod;
+                    var duration = override && options.closeDuration !== false ?
+                        options.closeDuration : options.hideDuration;
+                    var easing = override && options.closeEasing !== false ? options.closeEasing : options.hideEasing;
+                    if ($(':focus', $toastElement).length && !override) {
+                        return;
+                    }
+                    clearTimeout(progressBar.intervalId);
+                    return $toastElement[method]({
+                        duration: duration,
+                        easing: easing,
+                        complete: function () {
+                            removeToast($toastElement);
+                            clearTimeout(intervalId);
+                            if (options.onHidden && response.state !== 'hidden') {
+                                options.onHidden();
+                            }
+                            response.state = 'hidden';
+                            response.endTime = new Date();
+                            publish(response);
+                        }
+                    });
+                }
+
+                function delayedHideToast() {
+                    if (options.timeOut > 0 || options.extendedTimeOut > 0) {
+                        intervalId = setTimeout(hideToast, options.extendedTimeOut);
+                        progressBar.maxHideTime = parseFloat(options.extendedTimeOut);
+                        progressBar.hideEta = new Date().getTime() + progressBar.maxHideTime;
+                    }
+                }
+
+                function stickAround() {
+                    clearTimeout(intervalId);
+                    progressBar.hideEta = 0;
+                    $toastElement.stop(true, true)[options.showMethod](
+                        {duration: options.showDuration, easing: options.showEasing}
+                    );
+                }
+
+                function updateProgress() {
+                    var percentage = ((progressBar.hideEta - (new Date().getTime())) / progressBar.maxHideTime) * 100;
+                    $progressElement.width(percentage + '%');
+                }
+            }
+
+            function getOptions() {
+                return $.extend({}, getDefaults(), toastr.options);
+            }
+
+            function removeToast($toastElement) {
+                if (!$container) { $container = getContainer(); }
+                if ($toastElement.is(':visible')) {
+                    return;
+                }
+                $toastElement.remove();
+                $toastElement = null;
+                if ($container.children().length === 0) {
+                    $container.remove();
+                    previousToast = undefined;
+                }
+            }
+
+        })();
+    }).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+}(__webpack_require__(/*! !webpack amd define */ "../node_modules/webpack/buildin/amd-define.js")));
+
+
+/***/ }),
+
+/***/ "../node_modules/webpack/buildin/amd-define.js":
+/*!*****************************************************!*\
+  !*** ../node_modules/webpack/buildin/amd-define.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = function() {
+	throw new Error("define cannot be used indirect");
+};
+
+
+/***/ }),
+
 /***/ "../node_modules/webpack/buildin/global.js":
 /*!*************************************************!*\
   !*** ../node_modules/webpack/buildin/global.js ***!
@@ -68886,10 +69429,10 @@ class GDrivestorage {
     deleteDraft(fileContainer, url) {
     }
 
-    async saveDraft(bpmnModeler) {
+    async saveDraft(currentFile,callback) {
         // ローカルストレージに最新の状態を保存
-        var result = await bpmnModeler.saveXML({ format: true });
-        const prjName = 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
+        var result = await currentFile.bpmnModeler.saveXML({ format: true });
+        currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
 
         const boundary = '-------314159265358979323846'
         const delimiter = "\r\n--" + boundary + "\r\n"
@@ -68897,7 +69440,7 @@ class GDrivestorage {
         let fileType = 'application/vnd.bpmn'
         let contentType = fileType || 'text/plain'
         let metadata = {
-            'name': prjName,
+            'name': currentFile.filename,
             'mimeType': contentType
         };
 
@@ -68912,21 +69455,25 @@ class GDrivestorage {
             '\r\n' +
             base64Data +
             close_delim;
-
-        let request = gapi.client.request({
-            'path': '/upload/drive/v3/files',
-            'method': 'POST',
-            'params': {
+        let param = {
+            'path': (currentFile.fileid)? '/upload/drive/v3/files/'+currentFile.fileid : '/upload/drive/v3/files',
+            'method': (currentFile.fileid)? 'PATCH' : 'POST',
+            'params': (currentFile.fileid)? {
+                'fileId': currentFile.fileid,
+                'uploadType': 'multipart'
+            } : {
                 'uploadType': 'multipart'
             },
             'headers': {
                 'Content-Type': 'multipart/related; boundary="' + boundary + '"'
             },
             'body': multipartRequestBody
-        })
+        }
+        let request = gapi.client.request(param)
         try {
             request.execute( (file) => {
                 console.log(file)
+                if(callback)callback()
             });
         } catch (e) {
             console.error(e);
@@ -68942,15 +69489,24 @@ class GDrivestorage {
         return decodeURIComponent( escape(window.atob( str )) );
     }
 
-    loadDraft(bpmnModeler, url, callback) {
+    loadDraft(currentFile, url, callback) {
         gapi.client.drive.files.get({
             fileId: url,
-            alt: "media"
+            //alt: "media",
+            fields: 'name, fileExtension, trashed'
         }).then(res => {
-            console.log(res.body)
-            let data = res.body
-            bpmnModeler.importXML(data);
-            return (callback) ? callback(bpmnModeler) : data
+
+            console.log('loadDraft',res)
+            currentFile.filename = res.result.name
+            currentFile.fileid = url
+            gapi.client.drive.files.get({
+                fileId: url,
+                alt: "media"
+            }).then(res => {
+                let data = res.body
+                currentFile.bpmnModeler.importXML(data);
+                return (callback) ? callback(currentFile) : data
+            })
         })
     }
 
@@ -68990,13 +69546,18 @@ To run it, please go [here](https://nojaja.github.io/SiteEditor/editor.html?q=${
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../css/style.css */ "./css/style.css");
 /* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var bpmn_js_dist_assets_diagram_js_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bpmn-js/dist/assets/diagram-js.css */ "../node_modules/bpmn-js/dist/assets/diagram-js.css");
-/* harmony import */ var bpmn_js_dist_assets_diagram_js_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_assets_diagram_js_css__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var bpmn_js_dist_assets_bpmn_font_css_bpmn_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bpmn-js/dist/assets/bpmn-font/css/bpmn.css */ "../node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn.css");
-/* harmony import */ var bpmn_js_dist_assets_bpmn_font_css_bpmn_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_assets_bpmn_font_css_bpmn_css__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bpmn-js/dist/bpmn-modeler.development */ "../node_modules/bpmn-js/dist/bpmn-modeler.development.js");
-/* harmony import */ var bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../fs/gDrivestorage.js */ "./js/fs/gDrivestorage.js");
+/* harmony import */ var _node_modules_toastr_build_toastr_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/toastr/build/toastr.css */ "../node_modules/toastr/build/toastr.css");
+/* harmony import */ var _node_modules_toastr_build_toastr_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_toastr_build_toastr_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var bpmn_js_dist_assets_diagram_js_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bpmn-js/dist/assets/diagram-js.css */ "../node_modules/bpmn-js/dist/assets/diagram-js.css");
+/* harmony import */ var bpmn_js_dist_assets_diagram_js_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_assets_diagram_js_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var bpmn_js_dist_assets_bpmn_font_css_bpmn_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bpmn-js/dist/assets/bpmn-font/css/bpmn.css */ "../node_modules/bpmn-js/dist/assets/bpmn-font/css/bpmn.css");
+/* harmony import */ var bpmn_js_dist_assets_bpmn_font_css_bpmn_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_assets_bpmn_font_css_bpmn_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bpmn-js/dist/bpmn-modeler.development */ "../node_modules/bpmn-js/dist/bpmn-modeler.development.js");
+/* harmony import */ var bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../fs/gDrivestorage.js */ "./js/fs/gDrivestorage.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! toastr */ "../node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 
@@ -69007,10 +69568,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+window.toastr = toastr__WEBPACK_IMPORTED_MODULE_6___default.a
+toastr__WEBPACK_IMPORTED_MODULE_6___default.a.options = {
+  timeOut: 1000,
+  positionClass: 'toast-top-center'
+}
 
-let gDrivestorage = new _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_4__["default"]();
+let gDrivestorage = new _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_5__["default"]();
 
-
+let currentFile = {
+  filename : 'new bpmn',
+  fileid : '',
+  bpmnModeler :null
+}
 const noAuthorize = document.querySelectorAll('.no_authorize');
 const reqAuthorize = document.querySelectorAll('.req_authorize');
 gDrivestorage.onUpdateSigninStatus((isSignedIn)=>{
@@ -69043,9 +69613,17 @@ function handlePickerClick(event) {
   gDrivestorage.loadPicker((data) => {
     if (data.action == google.picker.Action.PICKED) {
       var fileId = data.docs[0].id;
-      loadProject(fileId, "gdrive", () => {})
+      loadProject(fileId, "gdrive", () => {
+        toastr__WEBPACK_IMPORTED_MODULE_6___default.a.success('Open BPMN')
+      })
     }
   });
+}
+
+
+function handleTitleChange(event) {
+  let val = $(event.currentTarget).val();
+  currentFile.filename = val
 }
 
 var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
@@ -69076,7 +69654,7 @@ const xmlStr =
   '</bpmn:definitions>';
 
 // modeler instance
-var bpmnModeler = new bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_3___default.a({
+currentFile.bpmnModeler = new bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_4___default.a({
   container: '#canvas',
   keyboard: {
     bindTo: window
@@ -69088,11 +69666,14 @@ var bpmnModeler = new bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MO
  */
 async function exportDiagram() {
   try {
-    var result = await bpmnModeler.saveXML({ format: true });
+    var result = await currentFile.bpmnModeler.saveXML({ format: true });
     console.log('DIAGRAM', result.xml);
-    gDrivestorage.saveDraft(bpmnModeler)
+    gDrivestorage.saveDraft(currentFile,() =>{
+      toastr__WEBPACK_IMPORTED_MODULE_6___default.a.success('Save BPMN')
+    })
   } catch (err) {
     console.error('could not save BPMN 2.0 diagram', err);
+    toastr__WEBPACK_IMPORTED_MODULE_6___default.a.error('could not save BPMN 2.0 diagram')
   }
 }
 
@@ -69105,14 +69686,15 @@ async function openDiagram(bpmnXML) {
 
   // import diagram
   try {
+    toastr__WEBPACK_IMPORTED_MODULE_6___default.a.success('Open BPMN')
 
     //await bpmnModeler.importXML(bpmnXML);
-    await bpmnModeler.importXML(initialDiagram);
+    await currentFile.bpmnModeler.importXML(initialDiagram);
     //await bpmnModeler.fromXML(xmlStr);
 
     // access modeler components
-    var canvas = bpmnModeler.get('canvas');
-    var overlays = bpmnModeler.get('overlays');
+    var canvas = currentFile.bpmnModeler.get('canvas');
+    var overlays = currentFile.bpmnModeler.get('overlays');
 
 
     // zoom to fit full viewport
@@ -69132,6 +69714,7 @@ async function openDiagram(bpmnXML) {
     */
   } catch (err) {
     console.error('could not import BPMN 2.0 diagram', err);
+    toastr__WEBPACK_IMPORTED_MODULE_6___default.a.error('could not import BPMN 2.0 diagram')
   }
 }
 
@@ -69140,17 +69723,26 @@ async function openDiagram(bpmnXML) {
 function loadProject(url, type, cb) {
   // URL指定がない場合はlocalから取得
   if (type == "gdrive") {
-    gDrivestorage.loadDraft(bpmnModeler, url, (bpmnModeler) => {
-      console.log(bpmnModeler)
+    gDrivestorage.loadDraft(currentFile, url, (currentFile) => {
+      console.log('loadDraft',currentFile)
+      $('#title-input').val(currentFile.filename);
+      console.log(currentFile.bpmnModeler)
       return (cb) ? cb() : true;
     })
   }
 }
 
+function newfile() {
+  // load external diagram file via AJAX and open it
+  currentFile.filename = 'new bpmn'
+  currentFile.fileid = ''
+  $.get(diagramUrl, openDiagram, 'text');
+  $('#title-input').val(currentFile.filename);
+}
+
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
-  // load external diagram file via AJAX and open it
-  $.get(diagramUrl, openDiagram, 'text');
+  newfile()
   gDrivestorage.loadAuth2()
   // wire save button
   $('#save').click(exportDiagram);
@@ -69158,10 +69750,22 @@ $(document).ready(() => {
   $('#authorize_button').click(handleAuthClick);
   $('#signout_button').click(handleSignoutClick);
   $('#picker_button').click(handlePickerClick);
+  $('#new_button').click(newfile);
+  
+  $('#title-input').change(handleTitleChange);
+});
+
+$(window).keydown((e) => {
+  if (e.ctrlKey) {
+    if (e.keyCode === 83) {
+      exportDiagram()
+      return false;
+    }
+  }
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "../node_modules/jquery/dist/jquery.js")))
 
 /***/ })
 
 /******/ });
-//# sourceMappingURL=map/modeler.63c06d66af8d9a7648b2.js.map
+//# sourceMappingURL=map/modeler.dde7f4d455ff63e32d1b.js.map
