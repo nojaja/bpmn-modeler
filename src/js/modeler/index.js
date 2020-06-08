@@ -12,6 +12,43 @@ import GDrivestorage from '../fs/gDrivestorage.js'
 let gDrivestorage = new GDrivestorage();
 
 
+const noAuthorize = document.querySelectorAll('.no_authorize');
+const reqAuthorize = document.querySelectorAll('.req_authorize');
+gDrivestorage.onUpdateSigninStatus((isSignedIn)=>{
+  if (isSignedIn) {
+    noAuthorize.forEach(el => el.style.display = 'none');
+    reqAuthorize.forEach(el => el.style.display = 'block');
+  } else {
+    noAuthorize.forEach(el => el.style.display = 'block');
+    reqAuthorize.forEach(el => el.style.display = 'none');
+  }
+})
+/**
+ *  Sign in the user upon button click.
+ */
+function handleAuthClick(event) {
+  gDrivestorage.signIn();
+}
+
+/**
+ *  Sign out the user upon button click.
+ */
+function handleSignoutClick(event) {
+  gDrivestorage.signOut();
+}
+
+/**
+ *  Sign out the user upon button click.
+ */
+function handlePickerClick(event) {
+  gDrivestorage.loadPicker((data) => {
+    if (data.action == google.picker.Action.PICKED) {
+      var fileId = data.docs[0].id;
+      loadProject(fileId, "gdrive", () => {})
+    }
+  });
+}
+
 var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
 const xmlStr =
   '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -51,17 +88,11 @@ var bpmnModeler = new BpmnJS({
  * Save diagram contents and print them to the console.
  */
 async function exportDiagram() {
-
   try {
-
     var result = await bpmnModeler.saveXML({ format: true });
-
-    alert('Diagram exported. Check the developer tools!');
-
     console.log('DIAGRAM', result.xml);
     gDrivestorage.saveDraft(bpmnModeler)
   } catch (err) {
-
     console.error('could not save BPMN 2.0 diagram', err);
   }
 }
@@ -101,31 +132,10 @@ async function openDiagram(bpmnXML) {
     canvas.addMarker('SCAN_OK', 'needs-discussion');
     */
   } catch (err) {
-
     console.error('could not import BPMN 2.0 diagram', err);
   }
 }
 
-
-//プロジェクト一覧表示
-function projectjsonCallback(json, type) {
-  $("#prjlist").empty();
-
-  const prj = $('<li ><a  class="project" data-url=""><i class="uk-icon-folder"></i></a></li>');
-  prj.on("click", (event) => {
-    loadProject($(event.target).attr("data-url"), type, () => {
-      //fileContainer.refreshCache(EditorFileData, monaco);
-    })
-  });
-
-  json.rows.forEach((val, i) => {
-    // [{description, id, public},,]
-    let _prj = prj.clone(true);
-    _prj.children('.project').attr('data-url', val.id);
-    _prj.children('.project').append(' ' + val.description);
-    $("#prjlist").append(_prj);
-  });
-}
 
 //プロジェクトファイルの読み込み
 function loadProject(url, type, cb) {
@@ -142,14 +152,11 @@ function loadProject(url, type, cb) {
 $(document).ready(() => {
   // load external diagram file via AJAX and open it
   $.get(diagramUrl, openDiagram, 'text');
-
+  gDrivestorage.loadAuth2()
   // wire save button
   $('#save').click(exportDiagram);
 
-  $('#list').click(() => {
-    //プロジェクト一覧取得
-    gDrivestorage.loadList((json, type) => {
-      projectjsonCallback(json, type)
-    })
-  })
+  $('#authorize_button').click(handleAuthClick);
+  $('#signout_button').click(handleSignoutClick);
+  $('#picker_button').click(handlePickerClick);
 });
