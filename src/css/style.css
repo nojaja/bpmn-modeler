@@ -13,6 +13,44 @@ h2 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   text-transform: none;
+  float: left;
+}
+.branding-icon {
+  height: 40px;
+  width: 40px;
+  text-align: left;
+  height: 60px;
+  overflow: hidden;
+  vertical-align: middle;
+  content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);
+}
+.title-input {
+  border: 1px solid transparent;
+  border-radius: 2px!important;
+  color: #999;
+  background: #444;
+  font-size: 24px;
+  font-variant-ligatures: no-contextual;
+  height: 20px;
+  line-height: 22px;
+  margin: 0;
+  min-width: 1px;
+  padding: 2px 7px;
+  /*visibility: hidden;*/
+}
+.title-input:focus {
+  border: 2px solid #1a73e8!important;
+  margin: -1px;
+  box-shadow: none;
+  border-radius: 4px!important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid #4d90fe!important;
+  color: #fff;
+  outline: none;
+}
+.title-input:hover {
+  border-color: #e5e5e5;
 }
 .navbar {
   position: relative;
@@ -69,7 +107,7 @@ h2 {
 .main-panel {
   height: 100%;
   overflow: hidden;
-  width: 50%;
+  width: 100%;
   box-sizing: border-box;
   float: left;
 }

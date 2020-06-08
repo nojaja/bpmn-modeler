@@ -175,10 +175,10 @@ export class GDrivestorage {
     deleteDraft(fileContainer, url) {
     }
 
-    async saveDraft(bpmnModeler) {
+    async saveDraft(currentFile,callback) {
         // ローカルストレージに最新の状態を保存
-        var result = await bpmnModeler.saveXML({ format: true });
-        const prjName = 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
+        var result = await currentFile.bpmnModeler.saveXML({ format: true });
+        currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
 
         const boundary = '-------314159265358979323846'
         const delimiter = "\r\n--" + boundary + "\r\n"
@@ -186,7 +186,7 @@ export class GDrivestorage {
         let fileType = 'application/vnd.bpmn'
         let contentType = fileType || 'text/plain'
         let metadata = {
-            'name': prjName,
+            'name': currentFile.filename,
             'mimeType': contentType
         };
 
@@ -201,21 +201,25 @@ export class GDrivestorage {
             '\r\n' +
             base64Data +
             close_delim;
-
-        let request = gapi.client.request({
-            'path': '/upload/drive/v3/files',
-            'method': 'POST',
-            'params': {
+        let param = {
+            'path': (currentFile.fileid)? '/upload/drive/v3/files/'+currentFile.fileid : '/upload/drive/v3/files',
+            'method': (currentFile.fileid)? 'PATCH' : 'POST',
+            'params': (currentFile.fileid)? {
+                'fileId': currentFile.fileid,
+                'uploadType': 'multipart'
+            } : {
                 'uploadType': 'multipart'
             },
             'headers': {
                 'Content-Type': 'multipart/related; boundary="' + boundary + '"'
             },
             'body': multipartRequestBody
-        })
+        }
+        let request = gapi.client.request(param)
         try {
             request.execute( (file) => {
                 console.log(file)
+                if(callback)callback()
             });
         } catch (e) {
             console.error(e);
@@ -231,15 +235,24 @@ export class GDrivestorage {
         return decodeURIComponent( escape(window.atob( str )) );
     }
 
-    loadDraft(bpmnModeler, url, callback) {
+    loadDraft(currentFile, url, callback) {
         gapi.client.drive.files.get({
             fileId: url,
-            alt: "media"
+            //alt: "media",
+            fields: 'name, fileExtension, trashed'
         }).then(res => {
-            console.log(res.body)
-            let data = res.body
-            bpmnModeler.importXML(data);
-            return (callback) ? callback(bpmnModeler) : data
+
+            console.log('loadDraft',res)
+            currentFile.filename = res.result.name
+            currentFile.fileid = url
+            gapi.client.drive.files.get({
+                fileId: url,
+                alt: "media"
+            }).then(res => {
+                let data = res.body
+                currentFile.bpmnModeler.importXML(data);
+                return (callback) ? callback(currentFile) : data
+            })
         })
     }
 
