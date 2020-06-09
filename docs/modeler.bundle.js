@@ -74231,6 +74231,7 @@ const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/r
 // included, separated by spaces.
 //const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly','https://www.googleapis.com/auth/drive'];
 const SCOPES = 'https://www.googleapis.com/auth/drive';
+//const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 
 class GDrivestorage {
     constructor() {
@@ -74242,13 +74243,16 @@ class GDrivestorage {
     }
 
     init (callback) {
+        console.log('init_1')
         let ev = this.ev
         if(!this.apiLoaded){
+            console.log('init_2')
             let script = document.createElement('script')
             script.async = true
             script.defer = true
             script.src = 'https://apis.google.com/js/api.js'
             script.onload = () => {
+                console.log('init_3')
                 script.onload = function () { }
                 this.apiLoaded = true
                 ev.emit('init')
@@ -74298,9 +74302,12 @@ class GDrivestorage {
      *  listeners.
      */
     loadAuth2(callback) {
+        console.log('loadAuth2_1')
         if(!this.auth2ApiLoaded){
+            console.log('loadAuth2_2')
             let ev = this.ev
             this.init ( () =>{
+                console.log('loadAuth2_3')
                 gapi.load('client:auth2', () =>{
                     gapi.client.init({
                         apiKey: API_KEY,
@@ -74308,7 +74315,7 @@ class GDrivestorage {
                         discoveryDocs: DISCOVERY_DOCS,
                         scope: SCOPES
                     }).then(() => {
-                        console.log('client:auth2')
+                        console.log('loadAuth2_4')
                         // Listen for sign-in state changes.
                         gapi.auth2.getAuthInstance().isSignedIn.listen((isSignedIn) => {
                             ev.emit('updateSigninStatus', isSignedIn)
@@ -74749,4 +74756,4 @@ $(window).keydown((e) => {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=map/modeler.9c691a921713c33c1a51.js.map
+//# sourceMappingURL=map/modeler.01984104eac4c45dc2c6.js.map
