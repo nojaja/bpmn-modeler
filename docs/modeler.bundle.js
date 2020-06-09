@@ -74229,7 +74229,8 @@ const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/r
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
-const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly','https://www.googleapis.com/auth/drive'];
+//const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly','https://www.googleapis.com/auth/drive'];
+const SCOPES = 'https://www.googleapis.com/auth/drive';
 
 class GDrivestorage {
     constructor() {
@@ -74307,6 +74308,7 @@ class GDrivestorage {
                         discoveryDocs: DISCOVERY_DOCS,
                         scope: SCOPES
                     }).then(() => {
+                        console.log('client:auth2')
                         // Listen for sign-in state changes.
                         gapi.auth2.getAuthInstance().isSignedIn.listen((isSignedIn) => {
                             ev.emit('updateSigninStatus', isSignedIn)
@@ -74747,4 +74749,4 @@ $(window).keydown((e) => {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=map/modeler.a2f225c5101a63fffb08.js.map
+//# sourceMappingURL=map/modeler.9c691a921713c33c1a51.js.map
