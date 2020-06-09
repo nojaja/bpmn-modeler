@@ -1,4 +1,30 @@
-
+html {
+  --color-900: #1a237e;
+  --color-800: #283593;
+  --color-700: #303f9f;
+  --color-600: #3949ab;
+  --color-500: #3f51b5;
+  --color-200: #9fa8da;
+  --color-100: #c5cae9;
+  --color-50: #e8eaf6;
+  --color-10: #f0f2fe;
+  --gray-300: #e0e0e0;
+  --gray-50: #FAFAFA;
+  --app-header-bg: var(--color-800);
+  --app-header-bg-highlight: var(--color-600);
+  --app-header-color: var(--gray-50);
+  --app-menu-color: var(--color-900);
+  --app-menu-bg: var(--color-10);
+  --app-menu-selected: var(--color-600);
+  --app-menu-bg-highlight: var(--color-100);
+  --app-menu-toggled-bg: var(--color-600);
+  --app-menu-toggled-color: var(--color-10);
+  --app-editor-bg: white;
+  --app-editor-bg-disabled: var(--gray-300);
+  --app-footer-bg: var(--app-header-bg);
+  --app-footer-color: var(--color-100);
+  --app-footer-color-light: var(--color-10);
+}
 html, body, #canvas {
   height: 100%;
   padding: 0;
@@ -7,6 +33,116 @@ html, body, #canvas {
 body {
   height: 100vh;
 }
+header {
+  background-color: var(--app-header-bg);
+  color: var(--app-header-color);
+  user-select: none;
+}
+header h1 {
+  font-size: x-large;
+  margin: 0;
+  padding: 4px 14px 0;
+}
+
+
+.title-input {
+  border: 1px solid transparent;
+  border-radius: 2px!important;
+  color: var(--app-header-color);
+  background-color: var(--app-header-bg);
+  font-size: x-large;
+  font-variant-ligatures: no-contextual;
+  height: 20px;
+  line-height: 22px;
+  margin: 0;
+  min-width: 1px;
+  padding: 2px 7px;
+  /*visibility: hidden;*/
+}
+.title-input:focus {
+  border: 1px solid #4d90fe!important;
+  color: var(--color-200);
+  margin: -1px;
+  box-shadow: none;
+  border-radius: 4px!important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+.title-input:hover {
+  border-color: #e5e5e5;
+}
+
+.menuContainer {
+  display: inline-block;
+  position: relative;
+}
+.menuContainer>button:focus, .menuContainer>button:hover, .menuContainer>button[aria-expanded=true] {
+  background-color: var(--app-menu-selected);
+}
+
+.menuContainer button:focus {
+  outline: 0;
+}
+.menuContainer button {
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+.menuContainer>button {
+  background-color: inherit;
+  color: inherit;
+  min-width: 48px;
+  padding: 4px 16px;
+}
+.menuContainer button {
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+.menuContainer>button {
+  background-color: inherit;
+  color: inherit;
+  min-width: 48px;
+  padding: 4px 16px;
+}
+
+.menuContainer .menuItemContainer {
+  background-color: var(--app-menu-bg);
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);
+  min-width: 180px;
+  position: absolute;
+  z-index: 1;
+}
+
+.menuContainer .menuItemContainer button {
+  background-color: var(--app-menu-bg);
+  color: var(--app-menu-color);
+  display: block;
+  padding: 16px;
+  text-align: left;
+  width: 100%;
+}
+.menuItemContainer button:focus, .menuItemContainer button:hover {
+  background-color: var(--app-menu-bg-highlight);
+}
+
+.menuContainer button {
+  border: 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+.menuContainer kbd {
+  float: right;
+  font-family: inherit;
+}
+.hidden {
+  display: none!important;
+}
+:focus {
+  outline: -webkit-focus-ring-color auto 1px;
+}
+
 h2 {
   font-size: 24px;
   line-height: 30px;
@@ -23,34 +159,6 @@ h2 {
   overflow: hidden;
   vertical-align: middle;
   content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);
-}
-.title-input {
-  border: 1px solid transparent;
-  border-radius: 2px!important;
-  color: #999;
-  background: #444;
-  font-size: 24px;
-  font-variant-ligatures: no-contextual;
-  height: 20px;
-  line-height: 22px;
-  margin: 0;
-  min-width: 1px;
-  padding: 2px 7px;
-  /*visibility: hidden;*/
-}
-.title-input:focus {
-  border: 2px solid #1a73e8!important;
-  margin: -1px;
-  box-shadow: none;
-  border-radius: 4px!important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border: 1px solid #4d90fe!important;
-  color: #fff;
-  outline: none;
-}
-.title-input:hover {
-  border-color: #e5e5e5;
 }
 .navbar {
   position: relative;

@@ -8,28 +8,61 @@
 </head>
 
 <body>
-
-  <nav class="navbar">
-    <div class="container">
-      <div class="left-navbar">
-        <!-- <div class="branding-icon"></div> -->
-        <h2 >
-          <input id="title-input" class="title-input" type="text" value="test">
-        </h2>
-      </div>
-      <div class="navbar-flip">
-        <ul class="navbar-nav">
-          
-          <li class=""><a id="new_button"><i class="far fa-plus-square"></i>new</a></li>
-          <li class="no_authorize" id="authorize_li" style="display: none;"><a id="authorize_button" > <i class="fab fa-google"></i>Authorize</a></li>
-          <li class="req_authorize" id="signout_li" style="display: none;"><a id="signout_button" > <i class="fab fa-google"></i>Sign Out</a></li>
-          <li class="req_authorize" style="display: none;"><a id="picker_button" > <i class="fab fa-google-drive"></i>Picker</a></li>
-          <li class="req_authorize" style="display: none;"><a id="save"> <i class="fas fa-save"></i>Save (Ctrl+s)</a></li>
-        
-        </ul>
-      </div>
+<header>
+  <div class="container">
+    <div class="left-navbar">
+      <h1>
+        <input id="title-input" class="title-input" type="text" value=""><span id="modifiedHeader" class="hidden">*</span> <span id="headerAppName" class="hidden">- Text Editor</span>
+      </h1>
+      <nav class="menubar">
+        <div id="menuFile" class="menuContainer">
+          <button id="butFile" class="menuTop" aria-label="File" aria-haspopup="true" aria-expanded="false"><span class="kbdShortcut">F</span>ile</button>
+          <div role="menu" class="menuItemContainer hidden">
+            <button id="butNew" type="button" role="menuitem">New <kbd>^N</kbd></button> 
+            <button id="butOpen" type="button" role="menuitem">Open <kbd>^O</kbd></button> 
+            <button id="butSave" type="button" role="menuitem" class="hidden">Save <kbd>^S</kbd></button> 
+            <button id="butSaveAs" type="button" role="menuitem">Save As <kbd>^↑S</kbd></button> 
+            <button id="butClose" type="button" role="menuitem" class="hidden">Close <kbd>^W</kbd></button>
+          </div>
+        </div>
+        <!--
+        <div id="menuEdit" class="menuContainer">
+          <button id="butEdit" class="menuTop" aria-label="Edit" aria-haspopup="true" aria-expanded="false"><span class="kbdShortcut">E</span>dit</button>
+          <div role="menu" class="menuItemContainer hidden">
+            <button id="butCut" type="button" role="menuitem">Cut <kbd>^X</kbd></button> 
+            <button id="butCopy" type="button" role="menuitem">Copy <kbd>^C</kbd></button> 
+            <button id="butPaste" type="button" role="menuitem">Paste <kbd>^V</kbd></button>
+          </div>
+        </div>
+        <div id="menuView" class="menuContainer">
+          <button id="butView" class="menuTop" aria-label="View" aria-haspopup="true" aria-expanded="false"><span class="kbdShortcut">V</span>iew</button>
+          <div role="menu" class="menuItemContainer hidden">
+            <button id="butWordWrap" type="button" aria-checked="true" role="menuitemcheckbox">Word Wrap</button> 
+            <button id="butMonospace" type="button" aria-checked="false" role="menuitemcheckbox">Monospace Font</button> 
+            <button id="butCaptureTabs" type="button" aria-checked="true" role="menuitemcheckbox">Capture Tabs <kbd>^↑M</kbd></button> 
+            <button id="butFontBigger" type="button" role="menuitem">Increase Font Size</button> 
+            <button id="butFontSmaller" type="button" role="menuitem">Decrease Font Size</button>
+          </div>
+        </div>
+        <div id="menuInstall" class="menuContainer">
+          <button id="butInstall" aria-label="Install" class="menuTop" aria-expanded="false" disabled="true"><span class="kbdShortcut">I</span>nstall</button>
+        </div>
+        -->
+      </nav>
     </div>
-  </nav>
+    <div class="navbar-flip">
+      <ul class="navbar-nav">
+        
+        <li class="no_authorize" id="authorize_li" style="display: none;"><a id="authorize_button" > <i class="fab fa-google"></i>Authorize</a></li>
+        <li class="req_authorize" id="signout_li" style="display: none;"><a id="signout_button" > <i class="fab fa-google"></i>Sign Out</a></li>
+        <li class="req_authorize" style="display: none;"><a id="picker_button" > <i class="fab fa-google-drive"></i>Picker</a></li>
+        <li class="req_authorize" style="display: none;"><a id="save"> <i class="fas fa-save"></i>google sync</a></li>
+      
+      </ul>
+    </div>
+  </div>
+</header>
+
   <div class="panel-parent">
     <div class="main-panel">
       <div id="canvas"></div>

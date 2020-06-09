@@ -61374,7 +61374,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\r\nhtml, body, #canvas {\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\nbody {\r\n  height: 100vh;\r\n}\r\nh2 {\r\n  font-size: 24px;\r\n  line-height: 30px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n  text-transform: none;\r\n  float: left;\r\n}\r\n.branding-icon {\r\n  height: 40px;\r\n  width: 40px;\r\n  text-align: left;\r\n  height: 60px;\r\n  overflow: hidden;\r\n  vertical-align: middle;\r\n  content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);\r\n}\r\n.title-input {\r\n  border: 1px solid transparent;\r\n  border-radius: 2px!important;\r\n  color: #999;\r\n  background: #444;\r\n  font-size: 24px;\r\n  font-variant-ligatures: no-contextual;\r\n  height: 20px;\r\n  line-height: 22px;\r\n  margin: 0;\r\n  min-width: 1px;\r\n  padding: 2px 7px;\r\n  /*visibility: hidden;*/\r\n}\r\n.title-input:focus {\r\n  border: 2px solid #1a73e8!important;\r\n  margin: -1px;\r\n  box-shadow: none;\r\n  border-radius: 4px!important;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  border: 1px solid #4d90fe!important;\r\n  color: #fff;\r\n  outline: none;\r\n}\r\n.title-input:hover {\r\n  border-color: #e5e5e5;\r\n}\r\n.navbar {\r\n  position: relative;\r\n  padding: 0px 0;\r\n  border: none;\r\n  background: #444;\r\n  color: #999;\r\n  display: block;\r\n}\r\n.container {\r\n  display: table;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  padding: 0 25px;\r\n}\r\n.left-navbar {\r\n  float: left;\r\n}\r\n.navbar-flip {\r\n  float: right;\r\n}\r\n.navbar-nav > li {\r\n  float: left;\r\n  position: relative;\r\n  list-style: none;\r\n}\r\n.navbar-nav > li > a {\r\n  cursor: pointer;\r\n  background-color: #f5f5f5;\r\n  color: #444;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-decoration: none;\r\n  height: 40px;\r\n  padding: 0 15px;\r\n  line-height: 40px;\r\n  font-size: 14px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n}\r\n.panel-parent {\r\n  height: 90%;\r\n  overflow: auto;\r\n  /*margin-left: -35px;*/\r\n}\r\n.left-panel {\r\n  height: 100%;\r\n  overflow: auto;\r\n  width: 16.666%;\r\n  background: #333;\r\n  color: #fff;\r\n  float: left;\r\n}\r\n.main-panel {\r\n  height: 100%;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  float: left;\r\n}\r\n\r\n.diagram-note {\r\n  background-color: rgba(66, 180, 21, 0.7);\r\n  color: White;\r\n  border-radius: 5px;\r\n  font-family: Arial;\r\n  font-size: 12px;\r\n  padding: 5px;\r\n  min-height: 16px;\r\n  width: 50px;\r\n  text-align: center;\r\n}\r\n\r\n.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {\r\n  stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */\r\n}\r\n", ""]);
+exports.push([module.i, "html {\r\n  --color-900: #1a237e;\r\n  --color-800: #283593;\r\n  --color-700: #303f9f;\r\n  --color-600: #3949ab;\r\n  --color-500: #3f51b5;\r\n  --color-200: #9fa8da;\r\n  --color-100: #c5cae9;\r\n  --color-50: #e8eaf6;\r\n  --color-10: #f0f2fe;\r\n  --gray-300: #e0e0e0;\r\n  --gray-50: #FAFAFA;\r\n  --app-header-bg: var(--color-800);\r\n  --app-header-bg-highlight: var(--color-600);\r\n  --app-header-color: var(--gray-50);\r\n  --app-menu-color: var(--color-900);\r\n  --app-menu-bg: var(--color-10);\r\n  --app-menu-selected: var(--color-600);\r\n  --app-menu-bg-highlight: var(--color-100);\r\n  --app-menu-toggled-bg: var(--color-600);\r\n  --app-menu-toggled-color: var(--color-10);\r\n  --app-editor-bg: white;\r\n  --app-editor-bg-disabled: var(--gray-300);\r\n  --app-footer-bg: var(--app-header-bg);\r\n  --app-footer-color: var(--color-100);\r\n  --app-footer-color-light: var(--color-10);\r\n}\r\nhtml, body, #canvas {\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\nbody {\r\n  height: 100vh;\r\n}\r\nheader {\r\n  background-color: var(--app-header-bg);\r\n  color: var(--app-header-color);\r\n  user-select: none;\r\n}\r\nheader h1 {\r\n  font-size: x-large;\r\n  margin: 0;\r\n  padding: 4px 14px 0;\r\n}\r\n\r\n\r\n.title-input {\r\n  border: 1px solid transparent;\r\n  border-radius: 2px!important;\r\n  color: var(--app-header-color);\r\n  background-color: var(--app-header-bg);\r\n  font-size: x-large;\r\n  font-variant-ligatures: no-contextual;\r\n  height: 20px;\r\n  line-height: 22px;\r\n  margin: 0;\r\n  min-width: 1px;\r\n  padding: 2px 7px;\r\n  /*visibility: hidden;*/\r\n}\r\n.title-input:focus {\r\n  border: 1px solid #4d90fe!important;\r\n  color: var(--color-200);\r\n  margin: -1px;\r\n  box-shadow: none;\r\n  border-radius: 4px!important;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  outline: none;\r\n}\r\n.title-input:hover {\r\n  border-color: #e5e5e5;\r\n}\r\n\r\n.menuContainer {\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n.menuContainer>button:focus, .menuContainer>button:hover, .menuContainer>button[aria-expanded=true] {\r\n  background-color: var(--app-menu-selected);\r\n}\r\n\r\n.menuContainer button:focus {\r\n  outline: 0;\r\n}\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer>button {\r\n  background-color: inherit;\r\n  color: inherit;\r\n  min-width: 48px;\r\n  padding: 4px 16px;\r\n}\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer>button {\r\n  background-color: inherit;\r\n  color: inherit;\r\n  min-width: 48px;\r\n  padding: 4px 16px;\r\n}\r\n\r\n.menuContainer .menuItemContainer {\r\n  background-color: var(--app-menu-bg);\r\n  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);\r\n  min-width: 180px;\r\n  position: absolute;\r\n  z-index: 1;\r\n}\r\n\r\n.menuContainer .menuItemContainer button {\r\n  background-color: var(--app-menu-bg);\r\n  color: var(--app-menu-color);\r\n  display: block;\r\n  padding: 16px;\r\n  text-align: left;\r\n  width: 100%;\r\n}\r\n.menuItemContainer button:focus, .menuItemContainer button:hover {\r\n  background-color: var(--app-menu-bg-highlight);\r\n}\r\n\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer kbd {\r\n  float: right;\r\n  font-family: inherit;\r\n}\r\n.hidden {\r\n  display: none!important;\r\n}\r\n:focus {\r\n  outline: -webkit-focus-ring-color auto 1px;\r\n}\r\n\r\nh2 {\r\n  font-size: 24px;\r\n  line-height: 30px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n  text-transform: none;\r\n  float: left;\r\n}\r\n.branding-icon {\r\n  height: 40px;\r\n  width: 40px;\r\n  text-align: left;\r\n  height: 60px;\r\n  overflow: hidden;\r\n  vertical-align: middle;\r\n  content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);\r\n}\r\n.navbar {\r\n  position: relative;\r\n  padding: 0px 0;\r\n  border: none;\r\n  background: #444;\r\n  color: #999;\r\n  display: block;\r\n}\r\n.container {\r\n  display: table;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  padding: 0 25px;\r\n}\r\n.left-navbar {\r\n  float: left;\r\n}\r\n.navbar-flip {\r\n  float: right;\r\n}\r\n.navbar-nav > li {\r\n  float: left;\r\n  position: relative;\r\n  list-style: none;\r\n}\r\n.navbar-nav > li > a {\r\n  cursor: pointer;\r\n  background-color: #f5f5f5;\r\n  color: #444;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-decoration: none;\r\n  height: 40px;\r\n  padding: 0 15px;\r\n  line-height: 40px;\r\n  font-size: 14px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n}\r\n.panel-parent {\r\n  height: 90%;\r\n  overflow: auto;\r\n  /*margin-left: -35px;*/\r\n}\r\n.left-panel {\r\n  height: 100%;\r\n  overflow: auto;\r\n  width: 16.666%;\r\n  background: #333;\r\n  color: #fff;\r\n  float: left;\r\n}\r\n.main-panel {\r\n  height: 100%;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  float: left;\r\n}\r\n\r\n.diagram-note {\r\n  background-color: rgba(66, 180, 21, 0.7);\r\n  color: White;\r\n  border-radius: 5px;\r\n  font-family: Arial;\r\n  font-size: 12px;\r\n  padding: 5px;\r\n  min-height: 16px;\r\n  width: 50px;\r\n  text-align: center;\r\n}\r\n\r\n.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {\r\n  stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -74206,6 +74206,325 @@ module.exports = content.locals || {};
 
 /***/ }),
 
+/***/ "./js/fs/Nfsstorage.js":
+/*!*****************************!*\
+  !*** ./js/fs/Nfsstorage.js ***!
+  \*****************************/
+/*! exports provided: Nfsstorage, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Nfsstorage", function() { return Nfsstorage; });
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! events */ "../node_modules/events/events.js");
+/* harmony import */ var events__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(events__WEBPACK_IMPORTED_MODULE_0__);
+
+
+class Nfsstorage {
+    constructor() {
+        this.ev = new events__WEBPACK_IMPORTED_MODULE_0__["EventEmitter"]()
+        this.hasNativeFS = 'chooseFileSystemEntries' in window
+
+        if(!this.hasNativeFS){
+            let atag = document.createElement('a')
+            atag.id = "aDownloadFile"
+            atag.download = true
+            document.body.appendChild(atag)
+            let inputtag = document.createElement('input')
+            inputtag.id = "filePicker"
+            inputtag.type = "file"
+            document.body.appendChild(inputtag)
+            
+            this.filePicker = inputtag
+            this.aDownloadFile = atag
+        }
+            
+    }
+
+    /**
+     * Open a handle to an existing file on the local file system.
+     *
+     * @return {!Promise<FileSystemFileHandle>} Handle to the existing file.
+     */
+    getFileHandle () {
+        const handle = window.chooseFileSystemEntries();
+        return handle;
+    }
+
+    /**
+     * Create a handle to a new (text) file on the local file system.
+     *
+     * @return {!Promise<FileSystemFileHandle>} Handle to the new file.
+     */
+    getNewFileHandle() {
+        const opts = {
+            type: 'save-file',
+            accepts: [{
+                description: 'Text file',
+                extensions: ['txt'],
+                mimeTypes: ['text/plain'],
+            }],
+        };
+        const handle = window.chooseFileSystemEntries(opts);
+        return handle;
+    }
+
+    /**
+     * Reads the raw text from a file.
+     *
+     * @param {File} file
+     * @return {!Promise<string>} A promise that resolves to the parsed string.
+     */
+    readFile(file) {
+        // If the new .text() reader is available, use it.
+        if (file.text) {
+            return file.text();
+        }
+        // Otherwise use the traditional file reading technique.
+        return _readFileLegacy(file);
+    }
+
+    /**
+     * Reads the raw text from a file.
+     *
+     * @private
+     * @param {File} file
+     * @return {Promise<string>} A promise that resolves to the parsed string.
+     */
+    _readFileLegacy(file) {
+        return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.addEventListener('loadend', (e) => {
+                const text = e.srcElement.result;
+                resolve(text);
+            });
+            reader.readAsText(file);
+        });
+    }
+
+    /**
+     * Writes the contents to disk.
+     *
+     * @param {FileSystemFileHandle} fileHandle File handle to write to.
+     * @param {string} contents Contents to write.
+     */
+    async writeFile(fileHandle, contents) {
+        // Support for Chrome 82 and earlier.
+        if (fileHandle.createWriter) {
+            // Create a writer (request permission if necessary).
+            const writer = await fileHandle.createWriter();
+            // Write the full length of the contents
+            await writer.write(0, contents);
+            // Close the file and write the contents to disk
+            await writer.close();
+            return;
+        }
+        // For Chrome 83 and later.
+        // Create a FileSystemWritableFileStream to write to.
+        const writable = await fileHandle.createWritable();
+        // Write the contents of the file to the stream.
+        await writable.write(contents);
+        // Close the file and write the contents to disk.
+        await writable.close();
+    }
+
+    /**
+     * Verify the user has granted permission to read or write to the file, if
+     * permission hasn't been granted, request permission.
+     *
+     * @param {FileSystemFileHandle} fileHandle File handle to check.
+     * @param {boolean} withWrite True if write permission should be checked.
+     * @return {boolean} True if the user has granted read/write permission.
+     */
+    async verifyPermission(fileHandle, withWrite) {
+        const opts = {};
+        if (withWrite) {
+            opts.writable = true;
+        }
+        // Check if we already have permission, if so, return true.
+        if (await fileHandle.queryPermission(opts) === 'granted') {
+            return true;
+        }
+        // Request permission to the file, if the user grants permission, return true.
+        if (await fileHandle.requestPermission(opts) === 'granted') {
+            return true;
+        }
+        // The user did nt grant permission, return false.
+        return false;
+    }
+
+
+  
+    /**
+     * Uses the <input type="file"> to open a new file
+     *
+     * @return {!Promise<File>} File selected by the user.
+     */
+    getFileLegacy () {
+      return new Promise((resolve, reject) => {
+        this.filePicker.onchange = (e) => {
+          const file = this.filePicker.files[0];
+          if (file) {
+            resolve(file);
+            return;
+          }
+          reject(new Error('AbortError'));
+        };
+        this.filePicker.click();
+      });
+    };
+  
+    /**
+     * Saves a file by creating a downloadable instance, and clicking on the
+     * download link.
+     *
+     * @param {string} filename Filename to save the file as.
+     * @param {string} contents Contents of the file to save.
+     */
+    // function saveAsLegacy(filename, contents) {
+    saveAsLegacy (filename, contents) {
+      filename = filename || 'Untitled.txt';
+      const opts = {type: 'text/plain'};
+      const file = new File([contents], '', opts);
+      this.aDownloadFile.href = window.URL.createObjectURL(file);
+      this.aDownloadFile.setAttribute('download', filename);
+      this.aDownloadFile.click();
+    };
+
+    //プロジェクト一覧取得
+    loadList(callback) {
+    }
+
+    deleteDraft(fileContainer, url) {
+    }
+
+    async saveDraftAs(currentFile,callback) {
+        // ローカルストレージに最新の状態を保存
+        var result = await currentFile.bpmnModeler.saveXML({ format: true });
+        currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
+
+        if (!this.hasNativeFS) {
+            this.saveAsLegacy(currentFile.filename, result.xml);
+            if(callback)callback()
+            return;
+        }
+    }
+
+    async saveDraft(currentFile,callback) {
+
+        // ローカルストレージに最新の状態を保存
+        var result = await currentFile.bpmnModeler.saveXML({ format: true });
+        currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
+
+        let fileHandle = await getNewFileHandle();
+        //Create a writer (request permission if necessary).
+        const writer = await fileHandle.createWriter();
+        // Make sure we start with an empty file
+        await writer.truncate(0);
+        // Write the full length of the contents
+        await writer.write(0, elmOutCanvas.value);
+        // Close the file and write the contents to disk
+        await writer.close();
+        
+
+        const boundary = '-------314159265358979323846'
+        const delimiter = "\r\n--" + boundary + "\r\n"
+        const close_delim = "\r\n--" + boundary + "--"
+        let fileType = 'application/vnd.bpmn'
+        let contentType = fileType || 'text/plain'
+        let metadata = {
+            'name': currentFile.filename,
+            'mimeType': contentType
+        };
+
+        let base64Data = this.utf8_to_b64(result.xml)
+        let multipartRequestBody =
+            delimiter +
+            'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
+            JSON.stringify(metadata) +
+            delimiter +
+            'Content-Type: ' + contentType + '\r\n' +
+            'Content-Transfer-Encoding: base64\r\n' +
+            '\r\n' +
+            base64Data +
+            close_delim;
+        let param = {
+            'path': (currentFile.fileid)? '/upload/drive/v3/files/'+currentFile.fileid : '/upload/drive/v3/files',
+            'method': (currentFile.fileid)? 'PATCH' : 'POST',
+            'params': (currentFile.fileid)? {
+                'fileId': currentFile.fileid,
+                'uploadType': 'multipart'
+            } : {
+                'uploadType': 'multipart'
+            },
+            'headers': {
+                'Content-Type': 'multipart/related; boundary="' + boundary + '"'
+            },
+            'body': multipartRequestBody
+        }
+        let request = gapi.client.request(param)
+        try {
+            request.execute( (file) => {
+                console.log(file)
+                if(callback)callback()
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    async loadDraft(currentFile, url, callback) {
+
+
+        // If the Native File System API is not supported, use the legacy file apis.
+        if (!this.hasNativeFS) {
+            const file = await this.getFileLegacy();
+            if (file) {
+                const contents = await this.readFile(file);
+                console.log('loadDraft',file,contents)
+                currentFile.filename = file.name
+                currentFile.bpmnModeler.importXML(contents);
+                return (callback) ? callback(currentFile) : contents
+            }
+            return;
+        }
+
+        // If a fileHandle is provided, verify we have permission to read/write it,
+        // otherwise, show the file open prompt and allow the user to select the file.
+        if (currentFile.fileHandle) {
+            if (await this.verifyPermission(currentFile.fileHandle, true) === false) {
+                console.error(`User did not grant permission to '${fileHandle.name}'`);
+                return;
+            }
+        } else {
+            try {
+                currentFile.fileHandle = await this.getFileHandle();
+            } catch (ex) {
+                if (ex.name === 'AbortError') {
+                    return;
+                }
+                const msg = 'An error occured trying to open the file.';
+                console.error(msg, ex);
+                alert(msg);
+            }
+        }
+
+        if (!currentFile.fileHandle) {
+            return;
+        }
+        const file = await currentFile.fileHandle.getFile();
+        const contents = await this.readFile(file, currentFile.fileHandle);
+
+        console.log('loadDraft',file,contents)
+        currentFile.filename = file.name
+        currentFile.bpmnModeler.importXML(contents);
+        return (callback) ? callback(currentFile) : contents
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (Nfsstorage);
+
+/***/ }),
+
 /***/ "./js/fs/gDrivestorage.js":
 /*!********************************!*\
   !*** ./js/fs/gDrivestorage.js ***!
@@ -74243,16 +74562,13 @@ class GDrivestorage {
     }
 
     init (callback) {
-        console.log('init_1')
         let ev = this.ev
         if(!this.apiLoaded){
-            console.log('init_2')
             let script = document.createElement('script')
             script.async = true
             script.defer = true
             script.src = 'https://apis.google.com/js/api.js'
             script.onload = () => {
-                console.log('init_3')
                 script.onload = function () { }
                 this.apiLoaded = true
                 ev.emit('init')
@@ -74510,6 +74826,203 @@ To run it, please go [here](https://nojaja.github.io/SiteEditor/editor.html?q=${
 
 /***/ }),
 
+/***/ "./js/menus.js":
+/*!*********************!*\
+  !*** ./js/menus.js ***!
+  \*********************/
+/*! exports provided: Menus, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Menus", function() { return Menus; });
+
+
+class Menus {
+
+    constructor(container) {
+        const menuContainer = document.querySelectorAll('.menuContainer');
+        menuContainer.forEach(el => this.setup(el));
+    }
+
+    /**
+     * Initializes a drop down menu.
+     *
+     * @param {Element} container Container element with the drop down menu.
+     */
+    setup(container) {
+        const toggleButton = container.querySelector('button.menuTop');
+        toggleButton.addEventListener('click', () => {
+            this._toggle(toggleButton);
+        });
+        this.addKeyboardShortcut(toggleButton);
+        container.addEventListener('keydown', (e) => {
+            if (e.keyCode === 27) {
+                this.hideAll();
+                //app.setFocus();
+                return;
+            }
+            if (e.keyCode === 40) {
+                const next = e.srcElement.nextElementSibling;
+                if (next) {
+                    next.focus();
+                }
+                return;
+            }
+            if (e.keyCode === 38) {
+                const prev = e.srcElement.previousElementSibling;
+                if (prev) {
+                    prev.focus();
+                }
+                return;
+            }
+        });
+    };
+
+    /**
+     * Initializes a drop down menu.
+     *
+     * @param {Element} button Toggle button to show/hide menu.
+     */
+    addKeyboardShortcut(button) {
+        /*
+        if (app.isMac) {
+            // Keyboard shortcuts aren't available on mac.
+            return;
+        }
+        */
+        let key;
+        try {
+            key = button.querySelector('.kbdShortcut').textContent.trim().toLowerCase();
+        } catch (ex) {
+            // No keyboard shortcut found.
+        }
+        if (!key) {
+            return;
+        }
+        window.addEventListener('keydown', (e) => {
+            if (e.altKey === true && e.key === key) {
+                button.click();
+            }
+        });
+    };
+
+    /**
+     * Hides all visible menus.
+     */
+    hideAll() {
+        const elems = document.querySelectorAll('.menuContainer');
+        elems.forEach((elem) => {
+            this.hide(elem);
+        });
+    };
+
+    /**
+     * Hides a menu dropdown.
+     *
+     * @param {Element} menuContainer Container element with the drop down menu.
+     */
+    hide(menuContainer) {
+        const button = menuContainer.querySelector('.menuTop');
+        button.setAttribute('aria-expanded', false);
+        const panel = menuContainer.querySelector('.menuItemContainer');
+        if (panel) {
+            panel.classList.toggle('hidden', true);
+        }
+    };
+
+    /**
+     * Shows a menu dropdown.
+     *
+     * @param {Element} menuContainer Container element with the drop down menu.
+     */
+    show(menuContainer) {
+        this.hideAll();
+        const button = menuContainer.querySelector('.menuTop');
+        button.setAttribute('aria-expanded', true);
+        const panel = menuContainer.querySelector('.menuItemContainer');
+        panel.classList.toggle('hidden', false);
+        const firstButton = panel.querySelector('button');
+        if (!firstButton) {
+            this.hideAll();
+            //app.setFocus();
+            return;
+        }
+        firstButton.focus();
+    };
+
+    /**
+     * Creates a new menu item button.
+     *
+     * @param {string} label Label for button
+     * @return {Button} Returns an HTML button.
+     */
+    createButton(label) {
+        const butt = document.createElement('button');
+        butt.innerText = label;
+        butt.setAttribute('type', 'button');
+        butt.setAttribute('role', 'menuitem');
+        return butt;
+    };
+
+    /**
+     * Adds an element to the menu.
+     *
+     * @param {Element} menuContainer Container element with the drop down menu.
+     * @param {Element} elem Element to add to the menu container.
+     */
+    addElement(menuContainer, elem) {
+        const container = menuContainer.querySelector('.menuItemContainer');
+        container.appendChild(elem);
+    };
+
+    /**
+     * Removes all items from the menu.
+     *
+     * @param {Element} menuContainer Container element with the drop down menu.
+     */
+    clearMenu(menuContainer) {
+        const container = menuContainer.querySelector('.menuItemContainer');
+        container.innerHTML = '';
+    };
+
+    /**
+     * Toggles a menu open or closed.
+     *
+     * @private
+     * @param {Element} button Toggle button to show/hide menu.
+     */
+    _toggle(button) {
+        const parent = button.parentElement;
+        const expanded = button.getAttribute('aria-expanded');
+        if (expanded === 'true') {
+            this.hide(parent);
+        } else {
+            this.show(parent);
+        }
+    };
+
+    /* Show shortcuts on menu items when ALT key is pressed, non-Mac only */
+    /*
+    if (!app.isMac) {
+      window.addEventListener('keydown', (e) => {
+        if (e.altKey === true && e.key === 'Alt') {
+          document.body.classList.toggle('altKey', true);
+        }
+      });
+      window.addEventListener('keyup', (e) => {
+        if (e.key === 'Alt') {
+          document.body.classList.toggle('altKey', false);
+        }
+      });
+    }
+    */
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Menus);
+
+/***/ }),
+
 /***/ "./js/modeler/index.js":
 /*!*****************************!*\
   !*** ./js/modeler/index.js ***!
@@ -74538,8 +75051,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! bpmn-js/dist/bpmn-modeler.development */ "../node_modules/bpmn-js/dist/bpmn-modeler.development.js");
 /* harmony import */ var bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(bpmn_js_dist_bpmn_modeler_development__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../fs/gDrivestorage.js */ "./js/fs/gDrivestorage.js");
-/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! toastr */ "../node_modules/toastr/toastr.js");
-/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _fs_Nfsstorage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../fs/Nfsstorage */ "./js/fs/Nfsstorage.js");
+/* harmony import */ var _menus_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../menus.js */ "./js/menus.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! toastr */ "../node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -74556,19 +75071,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-window.toastr = toastr__WEBPACK_IMPORTED_MODULE_10___default.a
-toastr__WEBPACK_IMPORTED_MODULE_10___default.a.options = {
+
+
+
+
+window.toastr = toastr__WEBPACK_IMPORTED_MODULE_12___default.a
+toastr__WEBPACK_IMPORTED_MODULE_12___default.a.options = {
   timeOut: 1000,
   positionClass: 'toast-top-center'
 }
 
-let gDrivestorage = new _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_9__["default"]();
+const gDrivestorage = new _fs_gDrivestorage_js__WEBPACK_IMPORTED_MODULE_9__["default"]();
+const nfs = new _fs_Nfsstorage__WEBPACK_IMPORTED_MODULE_10__["default"]()
+
+const t = document.getElementById("menuFile");
+const myMenu = new _menus_js__WEBPACK_IMPORTED_MODULE_11__["default"](t);
+
+
+const isMac = navigator.userAgent.includes('Mac OS X')
 
 let currentFile = {
   filename : 'new bpmn',
   fileid : '',
+  handle: null,
+  isModified: false,
   bpmnModeler :null
 }
+
+// Verify the APIs we need are supported, show a polite warning if not.
+if (nfs.hasNativeFS) {
+  //document.getElementById('not-supported').classList.add('hidden');
+} else {
+  //document.getElementById('lblLegacyFS').classList.toggle('hidden', false);
+  document.getElementById('butSave').classList.toggle('hidden', true);
+}
+
 const noAuthorize = document.querySelectorAll('.no_authorize');
 const reqAuthorize = document.querySelectorAll('.req_authorize');
 gDrivestorage.onUpdateSigninStatus((isSignedIn)=>{
@@ -74602,12 +75139,30 @@ function handlePickerClick(event) {
     if (data.action == google.picker.Action.PICKED) {
       var fileId = data.docs[0].id;
       loadProject(fileId, "gdrive", () => {
-        toastr__WEBPACK_IMPORTED_MODULE_10___default.a.success('Open BPMN')
+        toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Open BPMN')
       })
     }
   });
 }
 
+function handleOpenClick(event) {
+  myMenu.hideAll()
+  loadProject(null, "nfs", () => {
+        toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Open BPMN')
+  })
+}
+
+function handleSaveAsClick(event) {
+  myMenu.hideAll()
+  try {
+    nfs.saveDraftAs(currentFile,() =>{
+      toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Save BPMN')
+    })
+  } catch (err) {
+    console.error('could not save BPMN 2.0 diagram', err);
+    toastr__WEBPACK_IMPORTED_MODULE_12___default.a.error('could not save BPMN 2.0 diagram')
+  }
+}
 
 function handleTitleChange(event) {
   let val = $(event.currentTarget).val();
@@ -74657,11 +75212,11 @@ async function exportDiagram() {
     var result = await currentFile.bpmnModeler.saveXML({ format: true });
     console.log('DIAGRAM', result.xml);
     gDrivestorage.saveDraft(currentFile,() =>{
-      toastr__WEBPACK_IMPORTED_MODULE_10___default.a.success('Save BPMN')
+      toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Save BPMN')
     })
   } catch (err) {
     console.error('could not save BPMN 2.0 diagram', err);
-    toastr__WEBPACK_IMPORTED_MODULE_10___default.a.error('could not save BPMN 2.0 diagram')
+    toastr__WEBPACK_IMPORTED_MODULE_12___default.a.error('could not save BPMN 2.0 diagram')
   }
 }
 
@@ -74674,7 +75229,7 @@ async function openDiagram(bpmnXML) {
 
   // import diagram
   try {
-    toastr__WEBPACK_IMPORTED_MODULE_10___default.a.success('Open BPMN')
+    toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Open BPMN')
 
     //await bpmnModeler.importXML(bpmnXML);
     await currentFile.bpmnModeler.importXML(initialDiagram);
@@ -74702,7 +75257,7 @@ async function openDiagram(bpmnXML) {
     */
   } catch (err) {
     console.error('could not import BPMN 2.0 diagram', err);
-    toastr__WEBPACK_IMPORTED_MODULE_10___default.a.error('could not import BPMN 2.0 diagram')
+    toastr__WEBPACK_IMPORTED_MODULE_12___default.a.error('could not import BPMN 2.0 diagram')
   }
 }
 
@@ -74717,10 +75272,18 @@ function loadProject(url, type, cb) {
       console.log(currentFile.bpmnModeler)
       return (cb) ? cb() : true;
     })
+  } else if (type == "nfs") {
+    nfs.loadDraft(currentFile, url, (currentFile) => {
+      console.log('loadDraft',currentFile)
+      $('#title-input').val(currentFile.filename);
+      console.log(currentFile.bpmnModeler)
+      return (cb) ? cb() : true;
+    })
   }
 }
 
 function newfile() {
+  myMenu.hideAll()
   // load external diagram file via AJAX and open it
   currentFile.filename = 'new bpmn'
   currentFile.fileid = ''
@@ -74734,11 +75297,13 @@ $(document).ready(() => {
   gDrivestorage.loadAuth2()
   // wire save button
   $('#save').click(exportDiagram);
-
+  $('#butSaveAs').click(handleSaveAsClick);
+  
   $('#authorize_button').click(handleAuthClick);
   $('#signout_button').click(handleSignoutClick);
   $('#picker_button').click(handlePickerClick);
-  $('#new_button').click(newfile);
+  $('#butNew').click(newfile);
+  $('#butOpen').click(handleOpenClick);
   
   $('#title-input').change(handleTitleChange);
 });
@@ -74746,7 +75311,7 @@ $(document).ready(() => {
 $(window).keydown((e) => {
   if (e.ctrlKey) {
     if (e.keyCode === 83) {
-      exportDiagram()
+      handleSaveAsClick()
       return false;
     }
   }
@@ -74756,4 +75321,4 @@ $(window).keydown((e) => {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=map/modeler.01984104eac4c45dc2c6.js.map
+//# sourceMappingURL=map/modeler.414057e1644fa202ddec.js.map
