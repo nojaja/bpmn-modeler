@@ -23,16 +23,13 @@ export class GDrivestorage {
     }
 
     init (callback) {
-        console.log('init_1')
         let ev = this.ev
         if(!this.apiLoaded){
-            console.log('init_2')
             let script = document.createElement('script')
             script.async = true
             script.defer = true
             script.src = 'https://apis.google.com/js/api.js'
             script.onload = () => {
-                console.log('init_3')
                 script.onload = function () { }
                 this.apiLoaded = true
                 ev.emit('init')

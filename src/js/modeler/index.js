@@ -13,6 +13,10 @@ import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
 //import BpmnJS from 'bpmn-js'
 
 import GDrivestorage from '../fs/gDrivestorage.js'
+import Nfsstorage from '../fs/Nfsstorage'
+
+import Menus from '../menus.js'
+
 import toastr from 'toastr'
 window.toastr = toastr
 toastr.options = {
@@ -20,13 +24,31 @@ toastr.options = {
   positionClass: 'toast-top-center'
 }
 
-let gDrivestorage = new GDrivestorage();
+const gDrivestorage = new GDrivestorage();
+const nfs = new Nfsstorage()
+
+const t = document.getElementById("menuFile");
+const myMenu = new Menus(t);
+
+
+const isMac = navigator.userAgent.includes('Mac OS X')
 
 let currentFile = {
   filename : 'new bpmn',
   fileid : '',
+  handle: null,
+  isModified: false,
   bpmnModeler :null
 }
+
+// Verify the APIs we need are supported, show a polite warning if not.
+if (nfs.hasNativeFS) {
+  //document.getElementById('not-supported').classList.add('hidden');
+} else {
+  //document.getElementById('lblLegacyFS').classList.toggle('hidden', false);
+  document.getElementById('butSave').classList.toggle('hidden', true);
+}
+
 const noAuthorize = document.querySelectorAll('.no_authorize');
 const reqAuthorize = document.querySelectorAll('.req_authorize');
 gDrivestorage.onUpdateSigninStatus((isSignedIn)=>{
@@ -66,6 +88,24 @@ function handlePickerClick(event) {
   });
 }
 
+function handleOpenClick(event) {
+  myMenu.hideAll()
+  loadProject(null, "nfs", () => {
+        toastr.success('Open BPMN')
+  })
+}
+
+function handleSaveAsClick(event) {
+  myMenu.hideAll()
+  try {
+    nfs.saveDraftAs(currentFile,() =>{
+      toastr.success('Save BPMN')
+    })
+  } catch (err) {
+    console.error('could not save BPMN 2.0 diagram', err);
+    toastr.error('could not save BPMN 2.0 diagram')
+  }
+}
 
 function handleTitleChange(event) {
   let val = $(event.currentTarget).val();
@@ -175,10 +215,18 @@ function loadProject(url, type, cb) {
       console.log(currentFile.bpmnModeler)
       return (cb) ? cb() : true;
     })
+  } else if (type == "nfs") {
+    nfs.loadDraft(currentFile, url, (currentFile) => {
+      console.log('loadDraft',currentFile)
+      $('#title-input').val(currentFile.filename);
+      console.log(currentFile.bpmnModeler)
+      return (cb) ? cb() : true;
+    })
   }
 }
 
 function newfile() {
+  myMenu.hideAll()
   // load external diagram file via AJAX and open it
   currentFile.filename = 'new bpmn'
   currentFile.fileid = ''
@@ -192,11 +240,13 @@ $(document).ready(() => {
   gDrivestorage.loadAuth2()
   // wire save button
   $('#save').click(exportDiagram);
-
+  $('#butSaveAs').click(handleSaveAsClick);
+  
   $('#authorize_button').click(handleAuthClick);
   $('#signout_button').click(handleSignoutClick);
   $('#picker_button').click(handlePickerClick);
-  $('#new_button').click(newfile);
+  $('#butNew').click(newfile);
+  $('#butOpen').click(handleOpenClick);
   
   $('#title-input').change(handleTitleChange);
 });
@@ -204,7 +254,7 @@ $(document).ready(() => {
 $(window).keydown((e) => {
   if (e.ctrlKey) {
     if (e.keyCode === 83) {
-      exportDiagram()
+      handleSaveAsClick()
       return false;
     }
   }
