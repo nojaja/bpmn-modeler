@@ -266,7 +266,16 @@ $(document).ready(() => {
 
 $(window).keydown((e) => {
   if (e.ctrlKey) {
-    if (e.keyCode === 83) {
+    if (e.keyCode === 83) { // ^s
+      handleSaveClick()
+      return false;
+    } else if (e.keyCode === 78) { // ^n
+      newfile()
+      return false;
+    } else if (e.keyCode === 79) { // ^o
+      handleOpenClick()
+      return false;
+    } else if (e.shiftKey && e.keyCode === 83) {// ^↑s
       handleSaveAsClick()
       return false;
     }
