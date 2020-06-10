@@ -79,12 +79,9 @@ export class GDrivestorage {
      *  listeners.
      */
     loadAuth2(callback) {
-        console.log('loadAuth2_1')
         if(!this.auth2ApiLoaded){
-            console.log('loadAuth2_2')
             let ev = this.ev
             this.init ( () =>{
-                console.log('loadAuth2_3')
                 gapi.load('client:auth2', () =>{
                     gapi.client.init({
                         apiKey: API_KEY,
@@ -247,8 +244,6 @@ export class GDrivestorage {
             //alt: "media",
             fields: 'name, fileExtension, trashed'
         }).then(res => {
-
-            console.log('loadDraft',res)
             currentFile.filename = res.result.name
             currentFile.fileid = url
             gapi.client.drive.files.get({

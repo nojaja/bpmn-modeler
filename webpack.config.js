@@ -60,6 +60,14 @@ module.exports = {
             {
                 from: 'css/*.css',
                 to: dist
+            },
+            {
+                from: 'assets/*/*.*',
+                to: dist
+            },
+            {
+                from: 'assets/*.*',
+                to: dist
             }
         ],
         { copyUnmodified: true }
