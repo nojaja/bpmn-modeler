@@ -61374,7 +61374,7 @@ module.exports = exports;
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "html {\r\n  --color-900: #1a237e;\r\n  --color-800: #283593;\r\n  --color-700: #303f9f;\r\n  --color-600: #3949ab;\r\n  --color-500: #3f51b5;\r\n  --color-200: #9fa8da;\r\n  --color-100: #c5cae9;\r\n  --color-50: #e8eaf6;\r\n  --color-10: #f0f2fe;\r\n  --gray-300: #e0e0e0;\r\n  --gray-50: #FAFAFA;\r\n  --app-header-bg: var(--color-800);\r\n  --app-header-bg-highlight: var(--color-600);\r\n  --app-header-color: var(--gray-50);\r\n  --app-menu-color: var(--color-900);\r\n  --app-menu-bg: var(--color-10);\r\n  --app-menu-selected: var(--color-600);\r\n  --app-menu-bg-highlight: var(--color-100);\r\n  --app-menu-toggled-bg: var(--color-600);\r\n  --app-menu-toggled-color: var(--color-10);\r\n  --app-editor-bg: white;\r\n  --app-editor-bg-disabled: var(--gray-300);\r\n  --app-footer-bg: var(--app-header-bg);\r\n  --app-footer-color: var(--color-100);\r\n  --app-footer-color-light: var(--color-10);\r\n}\r\nhtml, body, #canvas {\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\nbody {\r\n  height: 100vh;\r\n}\r\nheader {\r\n  background-color: var(--app-header-bg);\r\n  color: var(--app-header-color);\r\n  user-select: none;\r\n}\r\nheader h1 {\r\n  font-size: x-large;\r\n  margin: 0;\r\n  padding: 4px 14px 0;\r\n}\r\n\r\n\r\n.title-input {\r\n  border: 1px solid transparent;\r\n  border-radius: 2px!important;\r\n  color: var(--app-header-color);\r\n  background-color: var(--app-header-bg);\r\n  font-size: x-large;\r\n  font-variant-ligatures: no-contextual;\r\n  height: 20px;\r\n  line-height: 22px;\r\n  margin: 0;\r\n  min-width: 1px;\r\n  padding: 2px 7px;\r\n  /*visibility: hidden;*/\r\n}\r\n.title-input:focus {\r\n  border: 1px solid #4d90fe!important;\r\n  color: var(--color-200);\r\n  margin: -1px;\r\n  box-shadow: none;\r\n  border-radius: 4px!important;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  outline: none;\r\n}\r\n.title-input:hover {\r\n  border-color: #e5e5e5;\r\n}\r\n\r\n.menuContainer {\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n.menuContainer>button:focus, .menuContainer>button:hover, .menuContainer>button[aria-expanded=true] {\r\n  background-color: var(--app-menu-selected);\r\n}\r\n\r\n.menuContainer button:focus {\r\n  outline: 0;\r\n}\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer>button {\r\n  background-color: inherit;\r\n  color: inherit;\r\n  min-width: 48px;\r\n  padding: 4px 16px;\r\n}\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer>button {\r\n  background-color: inherit;\r\n  color: inherit;\r\n  min-width: 48px;\r\n  padding: 4px 16px;\r\n}\r\n\r\n.menuContainer .menuItemContainer {\r\n  background-color: var(--app-menu-bg);\r\n  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);\r\n  min-width: 180px;\r\n  position: absolute;\r\n  z-index: 1;\r\n}\r\n\r\n.menuContainer .menuItemContainer button {\r\n  background-color: var(--app-menu-bg);\r\n  color: var(--app-menu-color);\r\n  display: block;\r\n  padding: 16px;\r\n  text-align: left;\r\n  width: 100%;\r\n}\r\n.menuItemContainer button:focus, .menuItemContainer button:hover {\r\n  background-color: var(--app-menu-bg-highlight);\r\n}\r\n\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer kbd {\r\n  float: right;\r\n  font-family: inherit;\r\n}\r\n.hidden {\r\n  display: none!important;\r\n}\r\n:focus {\r\n  outline: -webkit-focus-ring-color auto 1px;\r\n}\r\n\r\nh2 {\r\n  font-size: 24px;\r\n  line-height: 30px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n  text-transform: none;\r\n  float: left;\r\n}\r\n.branding-icon {\r\n  height: 40px;\r\n  width: 40px;\r\n  text-align: left;\r\n  height: 60px;\r\n  overflow: hidden;\r\n  vertical-align: middle;\r\n  content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);\r\n}\r\n.navbar {\r\n  position: relative;\r\n  padding: 0px 0;\r\n  border: none;\r\n  background: #444;\r\n  color: #999;\r\n  display: block;\r\n}\r\n.container {\r\n  display: table;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  padding: 0 25px;\r\n}\r\n.left-navbar {\r\n  float: left;\r\n}\r\n.navbar-flip {\r\n  float: right;\r\n}\r\n.navbar-nav > li {\r\n  float: left;\r\n  position: relative;\r\n  list-style: none;\r\n}\r\n.navbar-nav > li > a {\r\n  cursor: pointer;\r\n  background-color: #f5f5f5;\r\n  color: #444;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-decoration: none;\r\n  height: 40px;\r\n  padding: 0 15px;\r\n  line-height: 40px;\r\n  font-size: 14px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n}\r\n.panel-parent {\r\n  height: 90%;\r\n  overflow: auto;\r\n  /*margin-left: -35px;*/\r\n}\r\n.left-panel {\r\n  height: 100%;\r\n  overflow: auto;\r\n  width: 16.666%;\r\n  background: #333;\r\n  color: #fff;\r\n  float: left;\r\n}\r\n.main-panel {\r\n  height: 100%;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  float: left;\r\n}\r\n\r\n.diagram-note {\r\n  background-color: rgba(66, 180, 21, 0.7);\r\n  color: White;\r\n  border-radius: 5px;\r\n  font-family: Arial;\r\n  font-size: 12px;\r\n  padding: 5px;\r\n  min-height: 16px;\r\n  width: 50px;\r\n  text-align: center;\r\n}\r\n\r\n.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {\r\n  stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */\r\n}\r\n", ""]);
+exports.push([module.i, "html {\r\n  --color-900: #1a237e;\r\n  --color-800: #283593;\r\n  --color-700: #303f9f;\r\n  --color-600: #3949ab;\r\n  --color-500: #3f51b5;\r\n  --color-200: #9fa8da;\r\n  --color-100: #c5cae9;\r\n  --color-50: #e8eaf6;\r\n  --color-10: #f0f2fe;\r\n  --gray-300: #e0e0e0;\r\n  --gray-50: #FAFAFA;\r\n  --app-header-bg: var(--color-800);\r\n  --app-header-bg-highlight: var(--color-600);\r\n  --app-header-color: var(--gray-50);\r\n  --app-menu-color: var(--color-900);\r\n  --app-menu-bg: var(--color-10);\r\n  --app-menu-selected: var(--color-600);\r\n  --app-menu-bg-highlight: var(--color-100);\r\n  --app-menu-toggled-bg: var(--color-600);\r\n  --app-menu-toggled-color: var(--color-10);\r\n  --app-editor-bg: white;\r\n  --app-editor-bg-disabled: var(--gray-300);\r\n  --app-footer-bg: var(--app-header-bg);\r\n  --app-footer-color: var(--color-100);\r\n  --app-footer-color-light: var(--color-10);\r\n}\r\nhtml, body, #canvas {\r\n  height: 100%;\r\n  padding: 0;\r\n  margin: 0;\r\n}\r\nbody {\r\n  height: 100vh;\r\n}\r\nheader {\r\n  background-color: var(--app-header-bg);\r\n  color: var(--app-header-color);\r\n  user-select: none;\r\n}\r\nheader h1 {\r\n  font-size: x-large;\r\n  margin: 0;\r\n  padding: 4px 14px 0;\r\n}\r\n\r\n#aDownloadFile, #filePicker, header #butClose {\r\n  display: none;\r\n}\r\n\r\n.title-input {\r\n  border: 1px solid transparent;\r\n  border-radius: 2px!important;\r\n  color: var(--app-header-color);\r\n  background-color: var(--app-header-bg);\r\n  font-size: x-large;\r\n  font-variant-ligatures: no-contextual;\r\n  height: 20px;\r\n  line-height: 22px;\r\n  margin: 0;\r\n  min-width: 1px;\r\n  padding: 2px 7px;\r\n  /*visibility: hidden;*/\r\n}\r\n.title-input:focus {\r\n  border: 1px solid #4d90fe!important;\r\n  color: var(--color-200);\r\n  margin: -1px;\r\n  box-shadow: none;\r\n  border-radius: 4px!important;\r\n  -webkit-appearance: none;\r\n  -moz-appearance: none;\r\n  outline: none;\r\n}\r\n.title-input:hover {\r\n  border-color: #e5e5e5;\r\n}\r\n\r\n.menuContainer {\r\n  display: inline-block;\r\n  position: relative;\r\n}\r\n.menuContainer>button:focus, .menuContainer>button:hover, .menuContainer>button[aria-expanded=true] {\r\n  background-color: var(--app-menu-selected);\r\n}\r\n\r\n.menuContainer button:focus {\r\n  outline: 0;\r\n}\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer>button {\r\n  background-color: inherit;\r\n  color: inherit;\r\n  min-width: 48px;\r\n  padding: 4px 16px;\r\n}\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer>button {\r\n  background-color: inherit;\r\n  color: inherit;\r\n  min-width: 48px;\r\n  padding: 4px 16px;\r\n}\r\n\r\n.menuContainer .menuItemContainer {\r\n  background-color: var(--app-menu-bg);\r\n  box-shadow: 0 8px 16px 0 rgba(0,0,0,.2);\r\n  min-width: 180px;\r\n  position: absolute;\r\n  z-index: 1;\r\n}\r\n\r\n.menuContainer .menuItemContainer button {\r\n  background-color: var(--app-menu-bg);\r\n  color: var(--app-menu-color);\r\n  display: block;\r\n  padding: 16px;\r\n  text-align: left;\r\n  width: 100%;\r\n}\r\n.menuItemContainer button:focus, .menuItemContainer button:hover {\r\n  background-color: var(--app-menu-bg-highlight);\r\n}\r\n\r\n.menuContainer button {\r\n  border: 0;\r\n  cursor: pointer;\r\n  font-size: 16px;\r\n}\r\n.menuContainer kbd {\r\n  float: right;\r\n  font-family: inherit;\r\n}\r\n.hidden {\r\n  display: none!important;\r\n}\r\n:focus {\r\n  outline: -webkit-focus-ring-color auto 1px;\r\n}\r\n\r\nh2 {\r\n  font-size: 24px;\r\n  line-height: 30px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n  text-transform: none;\r\n  float: left;\r\n}\r\n.branding-icon {\r\n  height: 40px;\r\n  width: 40px;\r\n  text-align: left;\r\n  height: 60px;\r\n  overflow: hidden;\r\n  vertical-align: middle;\r\n  content: url(//ssl.gstatic.com/docs/common/material_common_sprite181.svg);\r\n}\r\n.navbar {\r\n  position: relative;\r\n  padding: 0px 0;\r\n  border: none;\r\n  background: #444;\r\n  color: #999;\r\n  display: block;\r\n}\r\n.container {\r\n  display: table;\r\n  box-sizing: border-box;\r\n  width: 100%;\r\n  padding: 0 25px;\r\n}\r\n.left-navbar {\r\n  float: left;\r\n}\r\n.navbar-flip {\r\n  float: right;\r\n}\r\n.navbar-nav > li {\r\n  float: left;\r\n  position: relative;\r\n  list-style: none;\r\n}\r\n.navbar-nav > li > a {\r\n  cursor: pointer;\r\n  background-color: #f5f5f5;\r\n  color: #444;\r\n  display: block;\r\n  box-sizing: border-box;\r\n  text-decoration: none;\r\n  height: 40px;\r\n  padding: 0 15px;\r\n  line-height: 40px;\r\n  font-size: 14px;\r\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\r\n  font-weight: normal;\r\n}\r\n.panel-parent {\r\n  height: 90%;\r\n  overflow: auto;\r\n  /*margin-left: -35px;*/\r\n}\r\n.left-panel {\r\n  height: 100%;\r\n  overflow: auto;\r\n  width: 16.666%;\r\n  background: #333;\r\n  color: #fff;\r\n  float: left;\r\n}\r\n.main-panel {\r\n  height: 100%;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  box-sizing: border-box;\r\n  float: left;\r\n}\r\n\r\n.diagram-note {\r\n  background-color: rgba(66, 180, 21, 0.7);\r\n  color: White;\r\n  border-radius: 5px;\r\n  font-family: Arial;\r\n  font-size: 12px;\r\n  padding: 5px;\r\n  min-height: 16px;\r\n  width: 50px;\r\n  text-align: center;\r\n}\r\n\r\n.needs-discussion:not(.djs-connection) .djs-visual > :nth-child(1) {\r\n  stroke: rgba(66, 180, 21, 0.7) !important; /* color elements as red */\r\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -74247,7 +74247,15 @@ class Nfsstorage {
      * @return {!Promise<FileSystemFileHandle>} Handle to the existing file.
      */
     getFileHandle () {
-        const handle = window.chooseFileSystemEntries();
+        const opts = {
+            type: 'open-file',
+            accepts: [{
+                description: 'bpmn file',
+                extensions: ['bpmn'],
+                mimeTypes: ['application/vnd.bpmn'],
+            }],
+        };
+        const handle = window.chooseFileSystemEntries(opts);
         return handle;
     }
 
@@ -74260,9 +74268,9 @@ class Nfsstorage {
         const opts = {
             type: 'save-file',
             accepts: [{
-                description: 'Text file',
-                extensions: ['txt'],
-                mimeTypes: ['text/plain'],
+                description: 'bpmn file',
+                extensions: ['bpmn'],
+                mimeTypes: ['application/vnd.bpmn'],
             }],
         };
         const handle = window.chooseFileSystemEntries(opts);
@@ -74353,8 +74361,6 @@ class Nfsstorage {
         return false;
     }
 
-
-  
     /**
      * Uses the <input type="file"> to open a new file
      *
@@ -74383,8 +74389,8 @@ class Nfsstorage {
      */
     // function saveAsLegacy(filename, contents) {
     saveAsLegacy (filename, contents) {
-      filename = filename || 'Untitled.txt';
-      const opts = {type: 'text/plain'};
+      filename = filename || 'Untitled.bpmn';
+      const opts = {type: 'application/vnd.bpmn'};
       const file = new File([contents], '', opts);
       this.aDownloadFile.href = window.URL.createObjectURL(file);
       this.aDownloadFile.setAttribute('download', filename);
@@ -74408,74 +74414,49 @@ class Nfsstorage {
             if(callback)callback()
             return;
         }
+
+        try {
+          currentFile.fileHandle = await this.getNewFileHandle();
+        } catch (ex) {
+          if (ex.name === 'AbortError') {
+            return;
+          }
+          const msg = 'An error occured trying to open the file.';
+          console.error(msg, ex);
+          alert(msg);
+          return;
+        }
+        try {
+          await this.writeFile(currentFile.fileHandle, result.xml);
+          if(callback)callback()
+        } catch (ex) {
+          const msg = 'Unable to save file.';
+          console.error(msg, ex);
+          alert(msg);
+          return;
+        }
+
     }
 
     async saveDraft(currentFile,callback) {
-
         // ローカルストレージに最新の状態を保存
         var result = await currentFile.bpmnModeler.saveXML({ format: true });
         currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
-
-        let fileHandle = await getNewFileHandle();
-        //Create a writer (request permission if necessary).
-        const writer = await fileHandle.createWriter();
-        // Make sure we start with an empty file
-        await writer.truncate(0);
-        // Write the full length of the contents
-        await writer.write(0, elmOutCanvas.value);
-        // Close the file and write the contents to disk
-        await writer.close();
-        
-
-        const boundary = '-------314159265358979323846'
-        const delimiter = "\r\n--" + boundary + "\r\n"
-        const close_delim = "\r\n--" + boundary + "--"
-        let fileType = 'application/vnd.bpmn'
-        let contentType = fileType || 'text/plain'
-        let metadata = {
-            'name': currentFile.filename,
-            'mimeType': contentType
-        };
-
-        let base64Data = this.utf8_to_b64(result.xml)
-        let multipartRequestBody =
-            delimiter +
-            'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
-            JSON.stringify(metadata) +
-            delimiter +
-            'Content-Type: ' + contentType + '\r\n' +
-            'Content-Transfer-Encoding: base64\r\n' +
-            '\r\n' +
-            base64Data +
-            close_delim;
-        let param = {
-            'path': (currentFile.fileid)? '/upload/drive/v3/files/'+currentFile.fileid : '/upload/drive/v3/files',
-            'method': (currentFile.fileid)? 'PATCH' : 'POST',
-            'params': (currentFile.fileid)? {
-                'fileId': currentFile.fileid,
-                'uploadType': 'multipart'
-            } : {
-                'uploadType': 'multipart'
-            },
-            'headers': {
-                'Content-Type': 'multipart/related; boundary="' + boundary + '"'
-            },
-            'body': multipartRequestBody
-        }
-        let request = gapi.client.request(param)
+ 
         try {
-            request.execute( (file) => {
-                console.log(file)
-                if(callback)callback()
-            });
-        } catch (e) {
-            console.error(e);
+            if (!currentFile.fileHandle) {
+                return await this.saveFileAs(currentFile,callback);
+            }
+            await this.writeFile(currentFile.fileHandle, result.xml);
+            if(callback)callback()
+        } catch (ex) {
+            const msg = 'Unable to save file';
+            console.error(msg, ex);
+            alert(msg);
         }
     }
 
     async loadDraft(currentFile, url, callback) {
-
-
         // If the Native File System API is not supported, use the legacy file apis.
         if (!this.hasNativeFS) {
             const file = await this.getFileLegacy();
@@ -74491,6 +74472,7 @@ class Nfsstorage {
 
         // If a fileHandle is provided, verify we have permission to read/write it,
         // otherwise, show the file open prompt and allow the user to select the file.
+        /*
         if (currentFile.fileHandle) {
             if (await this.verifyPermission(currentFile.fileHandle, true) === false) {
                 console.error(`User did not grant permission to '${fileHandle.name}'`);
@@ -74507,6 +74489,18 @@ class Nfsstorage {
                 console.error(msg, ex);
                 alert(msg);
             }
+        }
+        */
+        
+        try {
+            currentFile.fileHandle = await this.getFileHandle();
+        } catch (ex) {
+            if (ex.name === 'AbortError') {
+                return;
+            }
+            const msg = 'An error occured trying to open the file.';
+            console.error(msg, ex);
+            alert(msg);
         }
 
         if (!currentFile.fileHandle) {
@@ -74618,12 +74612,9 @@ class GDrivestorage {
      *  listeners.
      */
     loadAuth2(callback) {
-        console.log('loadAuth2_1')
         if(!this.auth2ApiLoaded){
-            console.log('loadAuth2_2')
             let ev = this.ev
             this.init ( () =>{
-                console.log('loadAuth2_3')
                 gapi.load('client:auth2', () =>{
                     gapi.client.init({
                         apiKey: API_KEY,
@@ -74786,8 +74777,6 @@ class GDrivestorage {
             //alt: "media",
             fields: 'name, fileExtension, trashed'
         }).then(res => {
-
-            console.log('loadDraft',res)
             currentFile.filename = res.result.name
             currentFile.fileid = url
             gapi.client.drive.files.get({
@@ -75086,16 +75075,14 @@ const nfs = new _fs_Nfsstorage__WEBPACK_IMPORTED_MODULE_10__["default"]()
 
 const t = document.getElementById("menuFile");
 const myMenu = new _menus_js__WEBPACK_IMPORTED_MODULE_11__["default"](t);
-
-
 const isMac = navigator.userAgent.includes('Mac OS X')
 
 let currentFile = {
-  filename : 'new bpmn',
-  fileid : '',
+  filename: 'new bpmn',
+  fileid: '',
   handle: null,
   isModified: false,
-  bpmnModeler :null
+  bpmnModeler: null
 }
 
 // Verify the APIs we need are supported, show a polite warning if not.
@@ -75106,17 +75093,36 @@ if (nfs.hasNativeFS) {
   document.getElementById('butSave').classList.toggle('hidden', true);
 }
 
-const noAuthorize = document.querySelectorAll('.no_authorize');
-const reqAuthorize = document.querySelectorAll('.req_authorize');
-gDrivestorage.onUpdateSigninStatus((isSignedIn)=>{
-  if (isSignedIn) {
-    noAuthorize.forEach(el => el.style.display = 'none');
-    reqAuthorize.forEach(el => el.style.display = 'block');
+
+let setting = {}
+fetch("./assets/setting.json", {
+  method: "get"
+}).then(async (response) => {
+  if (response.status === 200) {
+    console.log(response); // => "OK"
+    setting = await response.json()
+    if('google_oauth' in setting){
+      const noAuthorize = document.querySelectorAll('.no_authorize');
+      const reqAuthorize = document.querySelectorAll('.req_authorize');
+      gDrivestorage.onUpdateSigninStatus((isSignedIn) => {
+        if (isSignedIn) {
+          noAuthorize.forEach(el => el.style.display = 'none');
+          reqAuthorize.forEach(el => el.style.display = 'block');
+        } else {
+          noAuthorize.forEach(el => el.style.display = 'block');
+          reqAuthorize.forEach(el => el.style.display = 'none');
+        }
+      })
+      gDrivestorage.loadAuth2()
+    }
   } else {
-    noAuthorize.forEach(el => el.style.display = 'block');
-    reqAuthorize.forEach(el => el.style.display = 'none');
+    console.log(response.statusText); // => Error Message
   }
-})
+}).catch((response) => {
+  console.log(response); // => "TypeError: ~"
+});
+
+
 /**
  *  Sign in the user upon button click.
  */
@@ -75148,14 +75154,26 @@ function handlePickerClick(event) {
 function handleOpenClick(event) {
   myMenu.hideAll()
   loadProject(null, "nfs", () => {
-        toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Open BPMN')
+    toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Open BPMN')
   })
+}
+
+function handleSaveClick(event) {
+  myMenu.hideAll()
+  try {
+    nfs.saveDraft(currentFile, () => {
+      toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Save BPMN')
+    })
+  } catch (err) {
+    console.error('could not save BPMN 2.0 diagram', err);
+    toastr__WEBPACK_IMPORTED_MODULE_12___default.a.error('could not save BPMN 2.0 diagram')
+  }
 }
 
 function handleSaveAsClick(event) {
   myMenu.hideAll()
   try {
-    nfs.saveDraftAs(currentFile,() =>{
+    nfs.saveDraftAs(currentFile, () => {
       toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Save BPMN')
     })
   } catch (err) {
@@ -75173,27 +75191,27 @@ var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba
 const xmlStr =
   '<?xml version="1.0" encoding="UTF-8"?>' +
   '<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
-                     'id="empty-definitions" ' +
-                     'targetNamespace="http://bpmn.io/schema/bpmn">' +
+  'id="empty-definitions" ' +
+  'targetNamespace="http://bpmn.io/schema/bpmn">' +
   '</bpmn2:definitions>';
-  var initialDiagram =
+var initialDiagram =
   '<?xml version="1.0" encoding="UTF-8"?>' +
   '<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
-                    'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
-                    'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
-                    'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" ' +
-                    'targetNamespace="http://bpmn.io/schema/bpmn" ' +
-                    'id="Definitions_1">' +
-    '<bpmn:process id="Process_1" isExecutable="false">' +
-      '<bpmn:startEvent id="StartEvent_1"/>' +
-    '</bpmn:process>' +
-    '<bpmndi:BPMNDiagram id="BPMNDiagram_1">' +
-      '<bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">' +
-        '<bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">' +
-          '<dc:Bounds height="36.0" width="36.0" x="173.0" y="102.0"/>' +
-        '</bpmndi:BPMNShape>' +
-      '</bpmndi:BPMNPlane>' +
-    '</bpmndi:BPMNDiagram>' +
+  'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
+  'xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" ' +
+  'xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" ' +
+  'targetNamespace="http://bpmn.io/schema/bpmn" ' +
+  'id="Definitions_1">' +
+  '<bpmn:process id="Process_1" isExecutable="false">' +
+  '<bpmn:startEvent id="StartEvent_1"/>' +
+  '</bpmn:process>' +
+  '<bpmndi:BPMNDiagram id="BPMNDiagram_1">' +
+  '<bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">' +
+  '<bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">' +
+  '<dc:Bounds height="36.0" width="36.0" x="173.0" y="102.0"/>' +
+  '</bpmndi:BPMNShape>' +
+  '</bpmndi:BPMNPlane>' +
+  '</bpmndi:BPMNDiagram>' +
   '</bpmn:definitions>';
 
 // modeler instance
@@ -75211,7 +75229,7 @@ async function exportDiagram() {
   try {
     var result = await currentFile.bpmnModeler.saveXML({ format: true });
     console.log('DIAGRAM', result.xml);
-    gDrivestorage.saveDraft(currentFile,() =>{
+    gDrivestorage.saveDraft(currentFile, () => {
       toastr__WEBPACK_IMPORTED_MODULE_12___default.a.success('Save BPMN')
     })
   } catch (err) {
@@ -75242,19 +75260,19 @@ async function openDiagram(bpmnXML) {
 
     // zoom to fit full viewport
     canvas.zoom('fit-viewport');
-/*
-    // attach an overlay to a node
-    overlays.add('SCAN_OK', 'note', {
-      position: {
-        bottom: 0,
-        right: 0
-      },
-      html: '<div class="diagram-note">Mixed up the labels?</div>'
-    });
-
-    // add marker
-    canvas.addMarker('SCAN_OK', 'needs-discussion');
-    */
+    /*
+        // attach an overlay to a node
+        overlays.add('SCAN_OK', 'note', {
+          position: {
+            bottom: 0,
+            right: 0
+          },
+          html: '<div class="diagram-note">Mixed up the labels?</div>'
+        });
+    
+        // add marker
+        canvas.addMarker('SCAN_OK', 'needs-discussion');
+        */
   } catch (err) {
     console.error('could not import BPMN 2.0 diagram', err);
     toastr__WEBPACK_IMPORTED_MODULE_12___default.a.error('could not import BPMN 2.0 diagram')
@@ -75267,14 +75285,12 @@ function loadProject(url, type, cb) {
   // URL指定がない場合はlocalから取得
   if (type == "gdrive") {
     gDrivestorage.loadDraft(currentFile, url, (currentFile) => {
-      console.log('loadDraft',currentFile)
       $('#title-input').val(currentFile.filename);
       console.log(currentFile.bpmnModeler)
       return (cb) ? cb() : true;
     })
   } else if (type == "nfs") {
     nfs.loadDraft(currentFile, url, (currentFile) => {
-      console.log('loadDraft',currentFile)
       $('#title-input').val(currentFile.filename);
       console.log(currentFile.bpmnModeler)
       return (cb) ? cb() : true;
@@ -75294,23 +75310,33 @@ function newfile() {
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
   newfile()
-  gDrivestorage.loadAuth2()
+  
   // wire save button
   $('#save').click(exportDiagram);
+  $('#butSave').click(handleSaveClick);
   $('#butSaveAs').click(handleSaveAsClick);
-  
+
   $('#authorize_button').click(handleAuthClick);
   $('#signout_button').click(handleSignoutClick);
   $('#picker_button').click(handlePickerClick);
   $('#butNew').click(newfile);
   $('#butOpen').click(handleOpenClick);
-  
+
   $('#title-input').change(handleTitleChange);
 });
 
 $(window).keydown((e) => {
   if (e.ctrlKey) {
-    if (e.keyCode === 83) {
+    if (e.keyCode === 83) { // ^s
+      handleSaveClick()
+      return false;
+    } else if (e.keyCode === 78) { // ^n
+      newfile()
+      return false;
+    } else if (e.keyCode === 79) { // ^o
+      handleOpenClick()
+      return false;
+    } else if (e.shiftKey && e.keyCode === 83) {// ^↑s
       handleSaveAsClick()
       return false;
     }
@@ -75321,4 +75347,4 @@ $(window).keydown((e) => {
 /***/ })
 
 /******/ });
-//# sourceMappingURL=map/modeler.414057e1644fa202ddec.js.map
+//# sourceMappingURL=map/modeler.a8bac1c7bb6926a3680e.js.map

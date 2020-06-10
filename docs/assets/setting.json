@@ -1,0 +1,10 @@
+{
+    "google_oauth": {
+        "CLIENT_ID": "941050951476-akmt430s16rgv8vn69uegvpl2top89kt.apps.googleusercontent.com",
+        "API_KEY": "AIzaSyDit9VW9b_8-T_7QRAasT7j4IPTQV740RI",
+        "DISCOVERY_DOCS": [
+            "https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"
+        ],
+        "SCOPES": "https: //www.googleapis.com/auth/drive"
+    }
+}
