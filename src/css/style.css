@@ -44,6 +44,9 @@ header h1 {
   padding: 4px 14px 0;
 }
 
+#aDownloadFile, #filePicker, header #butClose {
+  display: none;
+}
 
 .title-input {
   border: 1px solid transparent;

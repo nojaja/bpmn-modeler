@@ -27,7 +27,15 @@ export class Nfsstorage {
      * @return {!Promise<FileSystemFileHandle>} Handle to the existing file.
      */
     getFileHandle () {
-        const handle = window.chooseFileSystemEntries();
+        const opts = {
+            type: 'open-file',
+            accepts: [{
+                description: 'bpmn file',
+                extensions: ['bpmn'],
+                mimeTypes: ['application/vnd.bpmn'],
+            }],
+        };
+        const handle = window.chooseFileSystemEntries(opts);
         return handle;
     }
 
@@ -40,9 +48,9 @@ export class Nfsstorage {
         const opts = {
             type: 'save-file',
             accepts: [{
-                description: 'Text file',
-                extensions: ['txt'],
-                mimeTypes: ['text/plain'],
+                description: 'bpmn file',
+                extensions: ['bpmn'],
+                mimeTypes: ['application/vnd.bpmn'],
             }],
         };
         const handle = window.chooseFileSystemEntries(opts);
@@ -133,8 +141,6 @@ export class Nfsstorage {
         return false;
     }
 
-
-  
     /**
      * Uses the <input type="file"> to open a new file
      *
@@ -163,8 +169,8 @@ export class Nfsstorage {
      */
     // function saveAsLegacy(filename, contents) {
     saveAsLegacy (filename, contents) {
-      filename = filename || 'Untitled.txt';
-      const opts = {type: 'text/plain'};
+      filename = filename || 'Untitled.bpmn';
+      const opts = {type: 'application/vnd.bpmn'};
       const file = new File([contents], '', opts);
       this.aDownloadFile.href = window.URL.createObjectURL(file);
       this.aDownloadFile.setAttribute('download', filename);
@@ -188,74 +194,49 @@ export class Nfsstorage {
             if(callback)callback()
             return;
         }
+
+        try {
+          currentFile.fileHandle = await this.getNewFileHandle();
+        } catch (ex) {
+          if (ex.name === 'AbortError') {
+            return;
+          }
+          const msg = 'An error occured trying to open the file.';
+          console.error(msg, ex);
+          alert(msg);
+          return;
+        }
+        try {
+          await this.writeFile(currentFile.fileHandle, result.xml);
+          if(callback)callback()
+        } catch (ex) {
+          const msg = 'Unable to save file.';
+          console.error(msg, ex);
+          alert(msg);
+          return;
+        }
+
     }
 
     async saveDraft(currentFile,callback) {
-
         // ローカルストレージに最新の状態を保存
         var result = await currentFile.bpmnModeler.saveXML({ format: true });
         currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
-
-        let fileHandle = await getNewFileHandle();
-        //Create a writer (request permission if necessary).
-        const writer = await fileHandle.createWriter();
-        // Make sure we start with an empty file
-        await writer.truncate(0);
-        // Write the full length of the contents
-        await writer.write(0, elmOutCanvas.value);
-        // Close the file and write the contents to disk
-        await writer.close();
-        
-
-        const boundary = '-------314159265358979323846'
-        const delimiter = "\r\n--" + boundary + "\r\n"
-        const close_delim = "\r\n--" + boundary + "--"
-        let fileType = 'application/vnd.bpmn'
-        let contentType = fileType || 'text/plain'
-        let metadata = {
-            'name': currentFile.filename,
-            'mimeType': contentType
-        };
-
-        let base64Data = this.utf8_to_b64(result.xml)
-        let multipartRequestBody =
-            delimiter +
-            'Content-Type: application/json; charset=UTF-8\r\n\r\n' +
-            JSON.stringify(metadata) +
-            delimiter +
-            'Content-Type: ' + contentType + '\r\n' +
-            'Content-Transfer-Encoding: base64\r\n' +
-            '\r\n' +
-            base64Data +
-            close_delim;
-        let param = {
-            'path': (currentFile.fileid)? '/upload/drive/v3/files/'+currentFile.fileid : '/upload/drive/v3/files',
-            'method': (currentFile.fileid)? 'PATCH' : 'POST',
-            'params': (currentFile.fileid)? {
-                'fileId': currentFile.fileid,
-                'uploadType': 'multipart'
-            } : {
-                'uploadType': 'multipart'
-            },
-            'headers': {
-                'Content-Type': 'multipart/related; boundary="' + boundary + '"'
-            },
-            'body': multipartRequestBody
-        }
-        let request = gapi.client.request(param)
+ 
         try {
-            request.execute( (file) => {
-                console.log(file)
-                if(callback)callback()
-            });
-        } catch (e) {
-            console.error(e);
+            if (!currentFile.fileHandle) {
+                return await this.saveFileAs(currentFile,callback);
+            }
+            await this.writeFile(currentFile.fileHandle, result.xml);
+            if(callback)callback()
+        } catch (ex) {
+            const msg = 'Unable to save file';
+            console.error(msg, ex);
+            alert(msg);
         }
     }
 
     async loadDraft(currentFile, url, callback) {
-
-
         // If the Native File System API is not supported, use the legacy file apis.
         if (!this.hasNativeFS) {
             const file = await this.getFileLegacy();
@@ -271,6 +252,7 @@ export class Nfsstorage {
 
         // If a fileHandle is provided, verify we have permission to read/write it,
         // otherwise, show the file open prompt and allow the user to select the file.
+        /*
         if (currentFile.fileHandle) {
             if (await this.verifyPermission(currentFile.fileHandle, true) === false) {
                 console.error(`User did not grant permission to '${fileHandle.name}'`);
@@ -287,6 +269,18 @@ export class Nfsstorage {
                 console.error(msg, ex);
                 alert(msg);
             }
+        }
+        */
+        
+        try {
+            currentFile.fileHandle = await this.getFileHandle();
+        } catch (ex) {
+            if (ex.name === 'AbortError') {
+                return;
+            }
+            const msg = 'An error occured trying to open the file.';
+            console.error(msg, ex);
+            alert(msg);
         }
 
         if (!currentFile.fileHandle) {

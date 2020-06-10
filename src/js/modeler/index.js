@@ -95,6 +95,18 @@ function handleOpenClick(event) {
   })
 }
 
+function handleSaveClick(event) {
+  myMenu.hideAll()
+  try {
+    nfs.saveDraft(currentFile,() =>{
+      toastr.success('Save BPMN')
+    })
+  } catch (err) {
+    console.error('could not save BPMN 2.0 diagram', err);
+    toastr.error('could not save BPMN 2.0 diagram')
+  }
+}
+
 function handleSaveAsClick(event) {
   myMenu.hideAll()
   try {
@@ -240,6 +252,7 @@ $(document).ready(() => {
   gDrivestorage.loadAuth2()
   // wire save button
   $('#save').click(exportDiagram);
+  $('#butSave').click(handleSaveClick);
   $('#butSaveAs').click(handleSaveAsClick);
   
   $('#authorize_button').click(handleAuthClick);
