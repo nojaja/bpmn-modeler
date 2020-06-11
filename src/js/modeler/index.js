@@ -5,18 +5,14 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
-
-import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
+//import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 //import BpmnJS from 'bpmn-js'
-
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
-
 import Menus from '../menus.js'
-
 import toastr from 'toastr'
 window.toastr = toastr
 toastr.options = {
@@ -169,7 +165,7 @@ var initialDiagram =
   '</bpmn:definitions>';
 
 // modeler instance
-currentFile.bpmnModeler = new BpmnJS({
+currentFile.bpmnModeler = new BpmnModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
