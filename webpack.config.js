@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyFilePlugin = require('copy-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+const ShakePlugin = require('webpack-common-shake').Plugin
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'development' : 'production',
@@ -39,10 +40,14 @@ module.exports = {
     }, {
       test: /\.(woff|woff2|eot|ttf|svg)$/,
       use: ['file-loader']
+    }, {
+      test: /\.(gif)$/,
+      use: ['url-loader']
     }
   ]
   },
   plugins: [
+    new ShakePlugin(),
     new HardSourceWebpackPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',

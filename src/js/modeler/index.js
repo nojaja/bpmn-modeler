@@ -20,6 +20,12 @@ toastr.options = {
   positionClass: 'toast-top-center'
 }
 
+import resizeAllModule from '../custom-elements/resize-all-rules'
+import colorPickerModule from '../custom-elements/color-picker'
+import nyanDrawModule from '../custom-elements/nyan/draw'
+import nyanPaletteModule from '../custom-elements/nyan/palette'
+
+
 const gDrivestorage = new GDrivestorage();
 const nfs = new Nfsstorage()
 
@@ -172,7 +178,13 @@ currentFile.bpmnModeler = new BpmnModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
-  }
+  },
+  additionalModules: [
+    //resizeAllModule,
+    colorPickerModule,
+    nyanDrawModule,
+    nyanPaletteModule
+  ]
 });
 
 /**
