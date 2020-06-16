@@ -20,11 +20,16 @@ toastr.options = {
   positionClass: 'toast-top-center'
 }
 
-import resizeAllModule from '../custom-elements/resize-all-rules'
-import colorPickerModule from '../custom-elements/color-picker'
-import nyanDrawModule from '../custom-elements/nyan/draw'
-import nyanPaletteModule from '../custom-elements/nyan/palette'
+import resizeAllModule from '../custom-modeler/custom/resize-all-rules'
+import colorPickerModule from '../custom-modeler/custom/color-picker'
 
+//import colorPickerModule from '../../../dist/custom-modeler.bundled.js'
+
+import nyanDrawModule from '../custom-modeler/custom/nyan/draw'
+import nyanPaletteModule from '../custom-modeler/custom/nyan/palette'
+
+
+//import BpmnModeler from '../../../dist/custom-modeler.bundled.js'
 
 const gDrivestorage = new GDrivestorage();
 const nfs = new Nfsstorage()
@@ -180,7 +185,7 @@ currentFile.bpmnModeler = new BpmnModeler({
     bindTo: window
   },
   additionalModules: [
-    //resizeAllModule,
+    resizeAllModule,
     colorPickerModule,
     nyanDrawModule,
     nyanPaletteModule
