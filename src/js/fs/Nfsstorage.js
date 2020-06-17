@@ -5,7 +5,7 @@ export class Nfsstorage {
         this.ev = new EventEmitter()
         this.hasNativeFS = 'chooseFileSystemEntries' in window
 
-        if(!this.hasNativeFS){
+        //if(!this.hasNativeFS){
             let atag = document.createElement('a')
             atag.id = "aDownloadFile"
             atag.download = true
@@ -17,7 +17,7 @@ export class Nfsstorage {
             
             this.filePicker = inputtag
             this.aDownloadFile = atag
-        }
+        //}
             
     }
 

@@ -143,6 +143,20 @@ function handleSaveAsClick(event) {
   }
 }
 
+async function handleSaveSVGClick(event) {
+  myMenu.hideAll()
+  try {
+    const { svg } = await currentFile.bpmnModeler.saveSVG();
+    nfs.saveAsLegacy('diagram.svg', svg)
+    toastr.success('Save BPMN')
+  } catch (err) {
+    console.error('could not save svg BPMN 2.0 diagram', err);
+    toastr.error('could not save svg BPMN 2.0 diagram')
+  }
+
+}
+
+
 function handleTitleChange(event) {
   let val = $(event.currentTarget).val();
   currentFile.filename = val
@@ -325,7 +339,8 @@ $(document).ready(() => {
   $('#save').click(exportDiagram);
   $('#butSave').click(handleSaveClick);
   $('#butSaveAs').click(handleSaveAsClick);
-
+  $('#butSaveSVG').click(handleSaveSVGClick);
+  
   $('#authorize_button').click(handleAuthClick);
   $('#signout_button').click(handleSignoutClick);
   $('#picker_button').click(handlePickerClick);
