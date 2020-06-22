@@ -11,7 +11,7 @@ export default class NyanPaletteProvider {
     palette.registerProvider(this);
   }
   getPaletteEntries () {
-    var elementFactory = this._elementFactory,
+    let elementFactory = this._elementFactory,
         create = this._create;
   
     function startCreate(event) {

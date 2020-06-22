@@ -7,9 +7,7 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
-//import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
-import BpmnModeler from 'bpmn-js/lib/Modeler';
-//import BpmnJS from 'bpmn-js'
+//import BpmnModeler from 'bpmn-js/lib/Modeler';
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
 import Menus from '../menus.js'
@@ -20,13 +18,22 @@ toastr.options = {
   positionClass: 'toast-top-center'
 }
 
-import resizeAllModule from '../custom-modeler/custom/resize-all-rules'
-import colorPickerModule from '../custom-modeler/custom/color-picker'
+
+import CustomModeler from '../custom-modeler';
+
+//import resizeAllModule from '../custom-modeler/resize-all-rules'
+//import colorPickerModule from '../custom-modeler/color-picker'
 
 //import colorPickerModule from '../../../dist/custom-modeler.bundled.js'
 
-import nyanDrawModule from '../custom-modeler/custom/nyan/draw'
-import nyanPaletteModule from '../custom-modeler/custom/nyan/palette'
+//import nyanDrawModule from '../custom-modeler/nyan/draw'
+//import nyanPaletteModule from '../custom-modeler/nyan/palette'
+
+
+//import customUpdaterModule from '../custom-modeler/custom/CustomUpdater.js'
+//import customPaletteModule from '../custom-modeler/custom/CustomPaletteProvider.js'
+
+//import custom from '../custom-modeler/custom'
 
 
 //import BpmnModeler from '../../../dist/custom-modeler.bundled.js'
@@ -193,17 +200,11 @@ const initialDiagram =
   '</bpmn:definitions>';
 
 // modeler instance
-currentFile.bpmnModeler = new BpmnModeler({
+currentFile.bpmnModeler = new CustomModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
-  },
-  additionalModules: [
-    resizeAllModule,
-    colorPickerModule,
-    nyanDrawModule,
-    nyanPaletteModule
-  ]
+  }
 });
 
 /**

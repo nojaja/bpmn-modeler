@@ -1,18 +1,25 @@
-import ResizeAllModule from './resize-all-rules'
-import ColorPickerModule from './color-picker'
-//import NyanDrawModule from './nyan/draw'
-//import NyanPaletteModule from './nyan/palette'
-
+import CustomContextPadProvider from './CustomContextPadProvider';
+import CustomElementFactory from './CustomElementFactory';
+import CustomOrderingProvider from './CustomOrderingProvider';
+import CustomPaletteProvider from './CustomPaletteProvider';
+import CustomRenderer from './CustomRenderer';
+import CustomRules from './CustomRules';
+import CustomUpdater from './CustomUpdater';
 
 export default {
   __init__: [
-    'resizeAllModule',
-    'colorPickerModule',
-//    'nyanDrawModule',
-//    'nyanPaletteModule'
+    'contextPadProvider',
+    'customOrderingProvider',
+    'customRenderer',
+    'customRules',
+    'customUpdater',
+    'paletteProvider'
   ],
-  resizeAllModule: [ 'type', ResizeAllModule ],
-  colorPickerModule: [ 'type', ColorPickerModule ],
-//  nyanDrawModule: [ 'type', NyanDrawModule ],
-//  nyanPaletteModule: [ 'type', NyanPaletteModule ],
+  contextPadProvider: [ 'type', CustomContextPadProvider ],
+  customOrderingProvider: [ 'type', CustomOrderingProvider ],
+  customRenderer: [ 'type', CustomRenderer ],
+  customRules: [ 'type', CustomRules ],
+  customUpdater: [ 'type', CustomUpdater ],
+  elementFactory: [ 'type', CustomElementFactory ],
+  paletteProvider: [ 'type', CustomPaletteProvider ]
 };

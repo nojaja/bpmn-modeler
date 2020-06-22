@@ -8,6 +8,10 @@ import {
 import inherits from 'inherits';
 
 import CustomModule from './custom';
+import ResizeAllModule from './resize-all-rules'
+import ColorPickerModule from './color-picker'
+import NyanDrawModule from './nyan/draw'
+import NyanPaletteModule from './nyan/palette'
 
 export default function CustomModeler(options) {
   Modeler.call(this, options);
@@ -20,7 +24,11 @@ inherits(CustomModeler, Modeler);
 CustomModeler.prototype._modules = [].concat(
   CustomModeler.prototype._modules,
   [
-    CustomModule
+    CustomModule,
+    ResizeAllModule,
+    ColorPickerModule,
+    NyanDrawModule,
+    NyanPaletteModule
   ]
 );
 
