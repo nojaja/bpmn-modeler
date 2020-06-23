@@ -1,6 +1,11 @@
+/**
+ * BPMNとカスタム形状の作成方法を知っているファクトリー
+ */
 import {
   assign
 } from 'min-dash';
+
+import inherits from 'inherits';
 
 import BpmnElementFactory from 'bpmn-js/lib/features/modeling/ElementFactory';
 import {
@@ -11,44 +16,14 @@ import {
 /**
  * A custom factory that knows how to create BPMN _and_ custom elements.
  */
-export default class CustomElementFactory extends BpmnElementFactory {
-  constructor(bpmnFactory, moddle) {
-    super(bpmnFactory, moddle)
-    console.log('CustomElementFactory constructor')
-    this.self = this;
-  }
+export default function CustomElementFactory(bpmnFactory, moddle, translate) {
+  BpmnElementFactory.call(this, bpmnFactory, moddle);
 
-  /**
-   * Returns the default size of custom shapes.
-   *
-   * The following example shows an interface on how
-   * to setup the custom shapes's dimensions.
-   *
-   * @example
-   *
-   * var shapes = {
-   *   triangle: { width: 40, height: 40 },
-   *   rectangle: { width: 100, height: 20 }
-   * };
-   *
-   * return shapes[type];
-   *
-   *
-   * @param {String} type
-   *
-   * @return {Dimensions} a {width, height} object representing the size of the element
-   */
-  _getCustomElementSize(type) {
-    console.log('CustomElementFactory _getCustomElementSize')
-    var shapes = {
-      __default: { width: 100, height: 80 },
-      'custom:triangle': { width: 40, height: 40 },
-      'custom:circle': { width: 140, height: 140 }
-    };
+  var self = this;
 
-    return shapes[type] || shapes.__default;
-  };
-
+  this._bpmnFactory = bpmnFactory;
+  this._moddle = moddle;
+  this._translate = translate;
 
   /**
    * Create a diagram-js element with the given type (any of shape, connection, label).
@@ -58,8 +33,8 @@ export default class CustomElementFactory extends BpmnElementFactory {
    *
    * @return {djs.model.Base}
    */
-  create(elementType, attrs) {
-    console.log('CustomElementFactory create')
+  this.create = function(elementType, attrs) {
+    console.log('CustomElementFactory',elementType, attrs)
     var type = attrs.type;
 
     if (elementType === 'label') {
@@ -98,7 +73,7 @@ export default class CustomElementFactory extends BpmnElementFactory {
       if (!('$instanceOf' in attrs.businessObject)) {
         // ensures we can use ModelUtil#is for type checks
         Object.defineProperty(attrs.businessObject, '$instanceOf', {
-          value: function (type) {
+          value: function(type) {
             return this.type === type;
           }
         });
@@ -106,7 +81,7 @@ export default class CustomElementFactory extends BpmnElementFactory {
 
       if (!('get' in attrs.businessObject)) {
         Object.defineProperty(attrs.businessObject, 'get', {
-          value: function (key) {
+          value: function(key) {
             return this[key];
           }
         });
@@ -114,7 +89,7 @@ export default class CustomElementFactory extends BpmnElementFactory {
 
       if (!('set' in attrs.businessObject)) {
         Object.defineProperty(attrs.businessObject, 'set', {
-          value: function (key, value) {
+          value: function(key, value) {
             return this[key] = value;
           }
         });
@@ -129,9 +104,41 @@ export default class CustomElementFactory extends BpmnElementFactory {
   };
 }
 
+inherits(CustomElementFactory, BpmnElementFactory);
 
 CustomElementFactory.$inject = [
   'bpmnFactory',
-  'moddle'
+  'moddle',
+  'translate'
 ];
 
+
+/**
+ * Returns the default size of custom shapes.
+ *
+ * The following example shows an interface on how
+ * to setup the custom shapes's dimensions.
+ *
+ * @example
+ *
+ * var shapes = {
+ *   triangle: { width: 40, height: 40 },
+ *   rectangle: { width: 100, height: 20 }
+ * };
+ *
+ * return shapes[type];
+ *
+ *
+ * @param {String} type
+ *
+ * @return {Dimensions} a {width, height} object representing the size of the element
+ */
+CustomElementFactory.prototype._getCustomElementSize = function(type) {
+  var shapes = {
+    __default: { width: 100, height: 80 },
+    'custom:triangle': { width: 40, height: 40 },
+    'custom:circle': { width: 140, height: 140 }
+  };
+
+  return shapes[type] || shapes.__default;
+};

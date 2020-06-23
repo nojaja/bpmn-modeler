@@ -220,6 +220,10 @@ export default class CustomPaletteProvider {
             'custom:circle', 'custom', 'icon-custom-circle',
             translate('Create DataStoreReference')
           ),
+          'custom-image': createAction(
+            'custom:image', 'custom', 'icon-custom-image',
+            translate('Create DataStoreReference')
+          ),
         });
         return actions;
   }

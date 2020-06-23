@@ -1,3 +1,6 @@
+/**
+ * ユーザーがダイアグラムを操作しているときにビジネスデータを更新するアップデーター
+ */
 import inherits from 'inherits';
 
 import {
@@ -20,6 +23,7 @@ import {
 export default function CustomUpdater(eventBus, modeling, bpmnjs) {
 
   CommandInterceptor.call(this, eventBus);
+  console.log('CustomUpdater constructor',eventBus, modeling, bpmnjs)
 
   function updateCustomElement(e) {
     var context = e.context,

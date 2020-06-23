@@ -21,7 +21,10 @@ import {
 export default class CustomUpdater extends CommandInterceptor {
   constructor(eventBus, modeling, bpmnjs) {
     super(eventBus);
-
+    console.log('CustomUpdater constructor',eventBus, modeling, bpmnjs)
+    this.eventBus = eventBus
+    this.modeling = modeling
+    this.bpmnjs = bpmnjs
     this.executed([
       'shape.create',
       'shape.move',
@@ -68,7 +71,7 @@ export default class CustomUpdater extends CommandInterceptor {
 
     var parent = shape.parent;
 
-    var customElements = bpmnjs._customElements;
+    var customElements = this.bpmnjs._customElements;
 
     // make sure element is added / removed from bpmnjs.customElements
     if (!parent) {
@@ -91,7 +94,7 @@ export default class CustomUpdater extends CommandInterceptor {
 
     var parent = connection.parent;
 
-    var customElements = bpmnjs._customElements;
+    var customElements = this.bpmnjs._customElements;
 
     // make sure element is added / removed from bpmnjs.customElements
     if (!parent) {

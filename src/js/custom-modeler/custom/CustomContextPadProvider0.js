@@ -1,3 +1,6 @@
+/**
+ * カスタム要素をBPMN要素に接続できるようにするカスタムコンテキストパッド
+ */
 import ContextPadProvider from 'bpmn-js/lib/features/context-pad/ContextPadProvider';
 
 import {
@@ -14,8 +17,9 @@ export default class CustomContextPadProvider extends ContextPadProvider {
 
   constructor(injector, connect, translate) {
     super()
-    injector.registerProvider(this);
+    
     console.log('CustomContextPadProvider constructor')
+    injector.registerProvider(this);
     injector.invoke(ContextPadProvider, this);
 
     var cached = bind(this.getContextPadEntries, this);

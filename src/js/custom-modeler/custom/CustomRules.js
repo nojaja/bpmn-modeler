@@ -107,13 +107,15 @@ CustomRules.prototype.init = function() {
     return canCreate(shape, target);
   });
 
+  
   this.addRule('shape.resize', HIGH_PRIORITY, function(context) {
     var shape = context.shape;
-
+    /*
     if (isCustom(shape)) {
       // cannot resize custom elements
       return false;
     }
+    */
   });
 
   this.addRule('connection.create', HIGH_PRIORITY, function(context) {

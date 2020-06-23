@@ -178,6 +178,10 @@ CustomRenderer.prototype.drawShape = function(p, element) {
   if (type === 'custom:circle') {
     return this.drawCircle(p, element.width, element.height);
   }
+  if (type === 'custom:image') {
+    //return this.drawTriangle(p, element.width);
+    return this.drawNyan(p, element);
+  }
 };
 
 CustomRenderer.prototype.getShapePath = function(shape) {
