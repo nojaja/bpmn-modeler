@@ -10,9 +10,11 @@ import {
   DEFAULT_LABEL_SIZE
 } from 'bpmn-js/lib/util/LabelUtil';
 
+import Cat from '../nyan/cat/cat.gif';
 
 /**
  * A custom factory that knows how to create BPMN _and_ custom elements.
+ * カスタムコンポーネント作成
  */
 export default class CustomElementFactory extends BpmnElementFactory {
   constructor(bpmnFactory, moddle, translate) {
@@ -42,6 +44,7 @@ export default class CustomElementFactory extends BpmnElementFactory {
       // add type to businessObject if custom
       if (/^custom:/.test(type)) {
         if (!attrs.businessObject) {
+          //属性の初期化
           attrs.businessObject = {
             type: type
           };
@@ -51,6 +54,13 @@ export default class CustomElementFactory extends BpmnElementFactory {
               id: attrs.id
             });
           }
+        }
+
+        //image用の属性設定
+        if (/:image$/.test(type)) {
+          assign(attrs, {
+            href: Cat
+          });
         }
 
         // add width and height if shape

@@ -1,5 +1,6 @@
 import Modeler from 'bpmn-js/lib/Modeler';
 
+
 import {
   assign,
   isArray

@@ -1,5 +1,10 @@
 import { is } from 'bpmn-js/lib/util/ModelUtil';
 
+import {
+  isAny
+} from 'bpmn-js/lib/features/modeling/util/ModelingUtil';
+
+
 /**
  * A basic color picker implementation.
  *
@@ -22,7 +27,9 @@ export default class ColorPicker {
   }
 
   getContextPadEntries (element) {
-    if (is(element, 'bpmn:Event')) {
+    var businessObject = element.businessObject;
+    if (isAny(businessObject, [ 'bpmn:Event', 'custom:triangle', 'custom:circle'])) {
+    //if (is(element, 'bpmn:Event')) {
       return {
         'changeColor': {
           group: 'edit',

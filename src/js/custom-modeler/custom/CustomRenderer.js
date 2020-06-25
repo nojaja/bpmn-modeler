@@ -31,8 +31,10 @@ export default function CustomRenderer(eventBus, styles) {
 
   var computeStyle = styles.computeStyle;
 
+  //コンポネントのレンダリング
   this.drawNyan = function(parent, shape) {
-    let url = Cat;
+    console.log('drawNyan',parent, shape)
+    let url = shape.businessObject.href || Cat;
     
     let catGfx = svgCreate('image', {
       x: 0,

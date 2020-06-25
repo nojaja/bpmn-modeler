@@ -5,6 +5,9 @@ import CustomPaletteProvider from './CustomPaletteProvider';
 import CustomRenderer from './CustomRenderer';
 import CustomRules from './CustomRules';
 import CustomUpdater from './CustomUpdater';
+import CustomLabelEditingProvider from './CustomLabelEditingProvider';
+
+
 
 export default {
   __init__: [
@@ -13,7 +16,8 @@ export default {
     'customRenderer',
     'customRules',
     'customUpdater',
-    'paletteProvider'
+    'paletteProvider',
+    'customLabelEditingProvider'
   ],
   contextPadProvider: [ 'type', CustomContextPadProvider ],
   customOrderingProvider: [ 'type', CustomOrderingProvider ],
@@ -21,5 +25,6 @@ export default {
   customRules: [ 'type', CustomRules ],
   customUpdater: [ 'type', CustomUpdater ],
   elementFactory: [ 'type', CustomElementFactory ],
-  paletteProvider: [ 'type', CustomPaletteProvider ]
+  paletteProvider: [ 'type', CustomPaletteProvider ],
+  customLabelEditingProvider: [ 'type', CustomLabelEditingProvider ],
 };

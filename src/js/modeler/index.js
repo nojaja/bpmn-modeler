@@ -298,17 +298,56 @@ function newfile() {
 function registerFileDrop(container, callback) {
 
   function handleFileSelect(e) {
+    console.log('handleFileSelect',e.x,e.y)
+    let dropObject = {
+      pos:{x:e.x, y:e.y},
+      file:{
+        filetype:null,
+        filename:null,
+        filedata:null
+      }
+    }
     e.stopPropagation();
     e.preventDefault();
     var files = e.dataTransfer.files;
     var file = files[0];
+    console.log('handleFileSelect file',file)
+    /*
+    name: "art-gallery-15.svg"
+    type: "image/svg+xml"
+     */
+    dropObject.file.filename = file.name;
     var reader = new FileReader();
-    reader.onload = function(e) {
-      var xml = e.target.result;
-      console.log(xml)
-      callback(xml);
-    };
-    reader.readAsText(file);
+
+    if (/.bpmn$/.test(file.name)) {
+      dropObject.file.filetype = "bpmn"
+      reader.onload = function(e) {
+        dropObject.file.filedata = e.target.result
+        console.log(dropObject)
+        callback(dropObject);
+      };
+      reader.readAsText(file);
+    }
+
+    if (/.svg$/.test(file.name)) {
+      dropObject.file.filetype = "svg"
+      reader.onload = function(e) {
+        dropObject.file.filedata = "data:image/svg+xml;base64,"
+          + btoa(unescape(encodeURIComponent(e.target.result)))
+        console.log(dropObject)
+        callback(dropObject);
+      };
+      reader.readAsText(file);
+    }
+    if (/.png$/.test(file.name)) {
+      dropObject.file.filetype = "png"
+      reader.onload = function(e) {
+        dropObject.file.filedata = e.target.result
+        console.log(dropObject)
+        callback(dropObject);
+      };
+      reader.readAsDataURL(file);
+    }
   }
   function handleDragOver(e) {
     e.stopPropagation();
@@ -328,9 +367,38 @@ if (!window.FileList || !window.FileReader) {
     'Looks like you use an older browser that does not support drag and drop. ' +
     'Try using Chrome, Firefox or the Internet Explorer > 10.');
 } else {
-  registerFileDrop(container, openDiagram);
+  registerFileDrop(container, openFile);
 }
 
+
+function openFile(dropObject) {
+  if(dropObject.file.filetype=='bpmn'){
+    openDiagram(dropObject.file.filedata)
+    $('#title-input').val(dropObject.file.filename);
+  }
+  
+  if(dropObject.file.filetype=='svg'){
+
+    let customElements =  [{
+      "type":"custom:image",
+      "href":dropObject.file.filedata,
+      "x":dropObject.pos.x,
+      "y":dropObject.pos.y
+   }]
+   currentFile.bpmnModeler.addCustomElements(customElements);
+  }
+  if(dropObject.file.filetype=='png'){
+
+    let customElements =  [{
+      "type":"custom:image",
+      "href":dropObject.file.filedata,
+      "x":806,
+      "y":210
+   }]
+   currentFile.bpmnModeler.addCustomElements(customElements);
+  }
+
+}
 
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
