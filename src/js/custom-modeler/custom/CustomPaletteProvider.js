@@ -192,38 +192,26 @@ export default class CustomPaletteProvider {
             group: 'custom',
             separator: true
           },
-          /*
-          'custom-triangle': {
-            group: 'custom',
-            className: 'icon-custom-triangle',
-            title: translate('Create expanded SubProcess'),
-            action: {
-              dragstart: createListener,
-              click: createListener
-            }
-          },
-          'custom-circle': {
-            group: 'custom',
-            className: 'icon-custom-circle',
-            title: translate('Create expanded SubProcess'),
-            action: {
-              dragstart: createListener,
-              click: createListener
-            }
-          },
-          */
-          'custom-triangle': createAction(
-            'custom:triangle', 'custom', 'icon-custom-triangle',
-            translate('Create DataStoreReference')
+          'custom-star': createAction(
+            'custom:star', 'custom', 'icon-custom-star',
+            translate('Create shpe')
           ),
-          'custom-circle': createAction(
-            'custom:circle', 'custom', 'icon-custom-circle',
-            translate('Create DataStoreReference')
+          'custom-iphone': createAction(
+            'custom:iphone', 'custom', 'icon-custom-iphone',
+            translate('Create shpe')
           ),
-          'custom-image': createAction(
-            'custom:image', 'custom', 'icon-custom-image',
-            translate('Create DataStoreReference')
+          'custom-team': createAction(
+            'custom:team', 'custom', 'icon-custom-team',
+            translate('Create shpe')
           ),
+          'custom-tv-display': createAction(
+            'custom:tv-display', 'custom', 'icon-custom-tv-display',
+            translate('Create shpe')
+          ),
+          'custom-warning': createAction(
+            'custom:warning', 'custom', 'icon-custom-warning',
+            translate('Create shpe')
+          )
         });
         return actions;
   }

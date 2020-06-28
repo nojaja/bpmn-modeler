@@ -16,7 +16,10 @@ import {
   create as svgCreate
 } from 'tiny-svg';
 
-import Cat from '../nyan/cat/cat.gif';
+import Image from '../../../assets/shpes/image.svg';
+import Iphone from '../../../assets/shpes/iphone.svg';
+import TvDisplay from '../../../assets/shpes/tv-display.svg';
+import Warning from '../../../assets/shpes/warning.svg';
 
 var COLOR_GREEN = '#52B415',
     COLOR_RED = '#cc0000',
@@ -32,10 +35,9 @@ export default function CustomRenderer(eventBus, styles) {
   var computeStyle = styles.computeStyle;
 
   //コンポネントのレンダリング
-  this.drawNyan = function(parent, shape) {
-    console.log('drawNyan',parent, shape)
-    let url = shape.businessObject.href || Cat;
-    
+  this.drawImage = function(parent, shape) {
+    console.log('drawImage',parent, shape)
+    let url = shape.businessObject.href || Image;
     let catGfx = svgCreate('image', {
       x: 0,
       y: 0,
@@ -164,26 +166,43 @@ inherits(CustomRenderer, BaseRenderer);
 
 CustomRenderer.$inject = [ 'eventBus', 'styles' ];
 
-
+//シェイプの描画チェック？
 CustomRenderer.prototype.canRender = function(element) {
   return /^custom:/.test(element.type);
 };
 
+//シェイプの描画
 CustomRenderer.prototype.drawShape = function(p, element) {
   var type = element.type;
 
   if (type === 'custom:triangle') {
-    //return this.drawTriangle(p, element.width);
-    return this.drawNyan(p, element);
+    return this.drawTriangle(p, element.width);
+    //return this.drawNyan(p, element);
   }
 
   if (type === 'custom:circle') {
     return this.drawCircle(p, element.width, element.height);
   }
-  if (type === 'custom:image') {
-    //return this.drawTriangle(p, element.width);
-    return this.drawNyan(p, element);
+  if (type === 'custom:star') {
+    element.businessObject.href = Star
+    return this.drawImage(p, element);
   }
+  if (type === 'custom:iphone') {
+    element.businessObject.href = Iphone
+    return this.drawImage(p, element);
+  }
+  if (type === 'custom:tv-display') {
+    element.businessObject.href = TvDisplay
+    return this.drawImage(p, element);
+  }
+  if (type === 'custom:warning') {
+    element.businessObject.href = Warning
+    return this.drawImage(p, element);
+  }
+  if (type === 'custom:image') {
+    return this.drawImage(p, element);
+  }
+
 };
 
 CustomRenderer.prototype.getShapePath = function(shape) {
@@ -198,6 +217,7 @@ CustomRenderer.prototype.getShapePath = function(shape) {
   }
 };
 
+//接続線の描画
 CustomRenderer.prototype.drawConnection = function(p, element) {
 
   var type = element.type;
@@ -207,7 +227,7 @@ CustomRenderer.prototype.drawConnection = function(p, element) {
   }
 };
 
-
+//接続線の取得
 CustomRenderer.prototype.getConnectionPath = function(connection) {
 
   var type = connection.type;

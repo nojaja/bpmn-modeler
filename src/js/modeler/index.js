@@ -348,6 +348,24 @@ function registerFileDrop(container, callback) {
       };
       reader.readAsDataURL(file);
     }
+    if (/.gif$/.test(file.name)) {
+      dropObject.file.filetype = "gif"
+      reader.onload = function(e) {
+        dropObject.file.filedata = e.target.result
+        console.log(dropObject)
+        callback(dropObject);
+      };
+      reader.readAsDataURL(file);
+    }
+    if (/.jpg$/.test(file.name)) {
+      dropObject.file.filetype = "jpg"
+      reader.onload = function(e) {
+        dropObject.file.filedata = e.target.result
+        console.log(dropObject)
+        callback(dropObject);
+      };
+      reader.readAsDataURL(file);
+    }
   }
   function handleDragOver(e) {
     e.stopPropagation();
@@ -392,8 +410,26 @@ function openFile(dropObject) {
     let customElements =  [{
       "type":"custom:image",
       "href":dropObject.file.filedata,
-      "x":806,
-      "y":210
+      "x":dropObject.pos.x,
+      "y":dropObject.pos.y
+   }]
+   currentFile.bpmnModeler.addCustomElements(customElements);
+  }
+  if(dropObject.file.filetype=='gif'){
+    let customElements =  [{
+      "type":"custom:image",
+      "href":dropObject.file.filedata,
+      "x":dropObject.pos.x,
+      "y":dropObject.pos.y
+   }]
+   currentFile.bpmnModeler.addCustomElements(customElements);
+  }
+  if(dropObject.file.filetype=='jpg'){
+    let customElements =  [{
+      "type":"custom:image",
+      "href":dropObject.file.filedata,
+      "x":dropObject.pos.x,
+      "y":dropObject.pos.y
    }]
    currentFile.bpmnModeler.addCustomElements(customElements);
   }

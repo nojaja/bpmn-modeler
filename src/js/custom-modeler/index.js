@@ -11,8 +11,8 @@ import inherits from 'inherits';
 import CustomModule from './custom';
 import ResizeAllModule from './resize-all-rules'
 import ColorPickerModule from './color-picker'
-import NyanDrawModule from './nyan/draw'
-import NyanPaletteModule from './nyan/palette'
+//import NyanDrawModule from './nyan/draw'
+//import NyanPaletteModule from './nyan/palette'
 
 export default function CustomModeler(options) {
   Modeler.call(this, options);
@@ -28,8 +28,8 @@ CustomModeler.prototype._modules = [].concat(
     CustomModule,
     ResizeAllModule,
     ColorPickerModule,
-    NyanDrawModule,
-    NyanPaletteModule
+//    NyanDrawModule,
+//    NyanPaletteModule
   ]
 );
 

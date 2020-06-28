@@ -1,4 +1,4 @@
-import CustomContextPadProvider from './CustomContextPadProvider';
+//import CustomContextPadProvider from './CustomContextPadProvider';
 import CustomElementFactory from './CustomElementFactory';
 import CustomOrderingProvider from './CustomOrderingProvider';
 import CustomPaletteProvider from './CustomPaletteProvider';
@@ -11,7 +11,7 @@ import CustomLabelEditingProvider from './CustomLabelEditingProvider';
 
 export default {
   __init__: [
-    'contextPadProvider',
+//    'contextPadProvider',
     'customOrderingProvider',
     'customRenderer',
     'customRules',
@@ -19,8 +19,8 @@ export default {
     'paletteProvider',
     'customLabelEditingProvider'
   ],
-  contextPadProvider: [ 'type', CustomContextPadProvider ],
-  customOrderingProvider: [ 'type', CustomOrderingProvider ],
+//  contextPadProvider: [ 'type', CustomContextPadProvider ], //コンポーネントの設定パネル
+  customOrderingProvider: [ 'type', CustomOrderingProvider ],　//表示順
   customRenderer: [ 'type', CustomRenderer ],
   customRules: [ 'type', CustomRules ],
   customUpdater: [ 'type', CustomUpdater ],
