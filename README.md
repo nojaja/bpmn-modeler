@@ -11,6 +11,9 @@ A bpmn modeler that embeds the bpmn.io project and supports Google Drive
 ## Live Demo
 https://nojaja.github.io/bpmn-modeler/
 
+## Screenshot
+![screenshot](/assets/screenshots/bpmn-modeler.png)
+
 ## Development
 1. init
 ```sh
