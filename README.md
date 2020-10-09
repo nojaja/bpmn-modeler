@@ -1,4 +1,9 @@
 # bpmn-modeler
+
+[![Licence](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE) 
+
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/nojaja/bpmn-modeler) 
+
 A bpmn modeler that embeds the bpmn.io project and supports Google Drive
 
 ## Feature
@@ -29,3 +34,7 @@ $ npm start
 ```
 http://localhost:8080
 ```
+
+## License
+
+Licensed under the [MIT](LICENSE) License.
