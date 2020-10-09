@@ -5,18 +5,14 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
-
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
-
-import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
+//import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
+import BpmnModeler from 'bpmn-js/lib/Modeler';
 //import BpmnJS from 'bpmn-js'
-
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
-
 import Menus from '../menus.js'
-
 import toastr from 'toastr'
 window.toastr = toastr
 toastr.options = {
@@ -142,13 +138,16 @@ function handleTitleChange(event) {
 }
 
 var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
-const xmlStr =
+/*
+const initialDiagram =
   '<?xml version="1.0" encoding="UTF-8"?>' +
   '<bpmn2:definitions xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
   'id="empty-definitions" ' +
   'targetNamespace="http://bpmn.io/schema/bpmn">' +
   '</bpmn2:definitions>';
-var initialDiagram =
+*/
+
+const initialDiagram =
   '<?xml version="1.0" encoding="UTF-8"?>' +
   '<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
   'xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" ' +
@@ -169,7 +168,7 @@ var initialDiagram =
   '</bpmn:definitions>';
 
 // modeler instance
-currentFile.bpmnModeler = new BpmnJS({
+currentFile.bpmnModeler = new BpmnModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
@@ -204,7 +203,7 @@ async function openDiagram(bpmnXML) {
     toastr.success('Open BPMN')
 
     //await bpmnModeler.importXML(bpmnXML);
-    await currentFile.bpmnModeler.importXML(initialDiagram);
+    await currentFile.bpmnModeler.importXML(bpmnXML || initialDiagram);
     //await bpmnModeler.fromXML(xmlStr);
 
     // access modeler components
@@ -257,9 +256,49 @@ function newfile() {
   // load external diagram file via AJAX and open it
   currentFile.filename = 'new bpmn'
   currentFile.fileid = ''
-  $.get(diagramUrl, openDiagram, 'text');
+  //$.get(diagramUrl, openDiagram, 'text');
+  openDiagram(initialDiagram)
   $('#title-input').val(currentFile.filename);
 }
+
+
+// file drag / drop ///////////////////////
+function registerFileDrop(container, callback) {
+
+  function handleFileSelect(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    var files = e.dataTransfer.files;
+    var file = files[0];
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      var xml = e.target.result;
+      console.log(xml)
+      callback(xml);
+    };
+    reader.readAsText(file);
+  }
+  function handleDragOver(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+  }
+
+  container.addEventListener('dragover', handleDragOver, false);
+  container.addEventListener('drop', handleFileSelect, false);
+}
+
+const container = document.querySelectorAll('.panel-parent')[0];
+
+// check file api availability
+if (!window.FileList || !window.FileReader) {
+  window.alert(
+    'Looks like you use an older browser that does not support drag and drop. ' +
+    'Try using Chrome, Firefox or the Internet Explorer > 10.');
+} else {
+  registerFileDrop(container, openDiagram);
+}
+
 
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
