@@ -58,6 +58,21 @@ module.exports = {
     new CopyFilePlugin(
         [
             {
+              context: 'assets/',
+              from: '*.json',
+              to: dist
+            },
+            {
+              context: 'assets/',
+              from: '_locales/**/*.*',
+              to: dist
+            },
+            {
+              context: 'assets/',
+              from: 'icons/*.*',
+              to: dist
+            },
+            {
                 from: 'css/*.css',
                 to: dist
             },

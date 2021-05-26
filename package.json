@@ -17,6 +17,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "babel-jest": "^26.0.1",
     "bpmn-js": "^7.0.1",
+    "cheerio": "^1.0.0-rc.9",
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",

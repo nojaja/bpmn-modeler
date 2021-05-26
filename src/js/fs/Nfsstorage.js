@@ -1,4 +1,5 @@
 import { EventEmitter } from 'events'
+import * as cheerio from 'cheerio';
 
 export class Nfsstorage {
     constructor() {
@@ -31,7 +32,7 @@ export class Nfsstorage {
             type: 'open-file',
             accepts: [{
                 description: 'bpmn file',
-                extensions: ['bpmn'],
+                extensions: ['bpmn','bpmn.svg'],
                 mimeTypes: ['application/vnd.bpmn'],
             }],
         };
@@ -244,7 +245,16 @@ export class Nfsstorage {
                 const contents = await this.readFile(file);
                 console.log('loadDraft',file,contents)
                 currentFile.filename = file.name
-                currentFile.bpmnModeler.importXML(contents);
+                //svgの場合はsvgタグのcontentからデータを取り出す
+                if(currentFile.filename.endsWith('svg')){
+                    const $ = cheerio.load(contents, {xmlMode: true});
+                    const contentData = $('svg').attr('content')
+                    const base64 = Buffer.from(contentData, 'base64');
+                    const xml = base64.toString();
+                    currentFile.bpmnModeler.importXML(xml);
+                }else{
+                    currentFile.bpmnModeler.importXML(contents);
+                }
                 return (callback) ? callback(currentFile) : contents
             }
             return;
