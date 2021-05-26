@@ -221,13 +221,21 @@ async function exportDiagram() {
  * @param {String} bpmnXML diagram to display
  */
 async function openDiagram(bpmnXML) {
-
+  const $ = cheerio.load(bpmnXML, {xmlMode: true});
   // import diagram
   try {
     toastr.success('Open BPMN')
 
     //await bpmnModeler.importXML(bpmnXML);
-    await currentFile.bpmnModeler.importXML(bpmnXML || initialDiagram);
+    if($('svg[content]').length > 0){
+      const contentData = $('svg').attr('content')
+      const base64 = Buffer.from(contentData, 'base64');
+      const xml = base64.toString();
+      currentFile.bpmnModeler.importXML(xml);
+      await currentFile.bpmnModeler.importXML(xml || initialDiagram);
+    } else { //$('semantic\\:definitions'))
+      await currentFile.bpmnModeler.importXML(bpmnXML || initialDiagram);
+    }
     //await bpmnModeler.fromXML(xmlStr);
 
     // access modeler components
