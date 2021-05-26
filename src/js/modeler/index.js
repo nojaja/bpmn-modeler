@@ -13,6 +13,7 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
 import Menus from '../menus.js'
+import * as cheerio from 'cheerio';
 import toastr from 'toastr'
 window.toastr = toastr
 toastr.options = {
@@ -135,8 +136,17 @@ function handleSaveAsClick(event) {
 async function handleSaveSVGClick(event) {
   myMenu.hideAll()
   try {
-    const { svg } = await currentFile.bpmnModeler.saveSVG();
-    nfs.saveAsLegacy('diagram.svg', svg)
+    //svgのタグにcontent属性を追加して編集用データをbase64で埋め込む
+    const {svg} = await currentFile.bpmnModeler.saveSVG();
+    const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
+
+    const $ = cheerio.load(svg, {xmlMode: true});
+    const contentData = Buffer.from(xml);
+    const base64 = contentData.toString('base64');
+    $('svg').attr('content', base64);
+    const svgData = $.xml();
+
+    nfs.saveAsLegacy('diagram.svg', svgData)
     toastr.success('Save BPMN')
   } catch (err) {
     console.error('could not save svg BPMN 2.0 diagram', err);
