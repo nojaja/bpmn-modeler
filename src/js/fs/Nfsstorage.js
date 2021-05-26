@@ -245,9 +245,10 @@ export class Nfsstorage {
                 const contents = await this.readFile(file);
                 console.log('loadDraft',file,contents)
                 currentFile.filename = file.name
-                //svgの場合はsvgタグのcontentからデータを取り出す
-                if(currentFile.filename.endsWith('svg')){
-                    const $ = cheerio.load(contents, {xmlMode: true});
+
+                //svgの場合はsvgタグのcontentからデータを取り出す 
+                const $ = cheerio.load(contents, {xmlMode: true});
+                if($('svg[content]').length > 0){
                     const contentData = $('svg').attr('content')
                     const base64 = Buffer.from(contentData, 'base64');
                     const xml = base64.toString();
