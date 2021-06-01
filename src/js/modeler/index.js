@@ -30,6 +30,7 @@ const isMac = navigator.userAgent.includes('Mac OS X')
 
 let currentFile = {
   filename: 'new bpmn',
+  fileext: 'bpmn',
   fileid: '',
   handle: null,
   isModified: false,
@@ -109,10 +110,28 @@ function handleOpenClick(event) {
   })
 }
 
-function handleSaveClick(event) {
+async function saveSVG() {
+  //svgのタグにcontent属性を追加して編集用データをbase64で埋め込む
+  const {svg} = await currentFile.bpmnModeler.saveSVG();
+  const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
+
+  const $ = cheerio.load(svg, {xmlMode: true});
+  const contentData = Buffer.from(xml);
+  const base64 = contentData.toString('base64');
+  $('svg').attr('content', base64);
+  return $.xml();
+}
+async function saveXML() {
+  const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
+  return xml;
+}
+
+async function handleSaveClick(event) {
   myMenu.hideAll()
   try {
-    nfs.saveDraft(currentFile, () => {
+    const result = (currentFile.fileext === 'bpmn.svg')? await saveSVG():await saveXML();
+    const filename = (currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()))+ '.'+currentFile.fileext;
+    nfs.saveDraft(currentFile.handle,filename,result, () => {
       toastr.success('Save BPMN')
     })
   } catch (err) {
@@ -121,10 +140,13 @@ function handleSaveClick(event) {
   }
 }
 
-function handleSaveAsClick(event) {
+async function handleSaveAsClick(event) {
   myMenu.hideAll()
   try {
-    nfs.saveDraftAs(currentFile, () => {
+    const result = await saveXML();
+    currentFile.fileext = 'bpmn';
+    const filename = (currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random())) + '.'+currentFile.fileext;
+    nfs.saveDraftAs(currentFile.handle,filename,result, () => {
       toastr.success('Save BPMN')
     })
   } catch (err) {
@@ -136,18 +158,12 @@ function handleSaveAsClick(event) {
 async function handleSaveSVGClick(event) {
   myMenu.hideAll()
   try {
-    //svgのタグにcontent属性を追加して編集用データをbase64で埋め込む
-    const {svg} = await currentFile.bpmnModeler.saveSVG();
-    const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
-
-    const $ = cheerio.load(svg, {xmlMode: true});
-    const contentData = Buffer.from(xml);
-    const base64 = contentData.toString('base64');
-    $('svg').attr('content', base64);
-    const svgData = $.xml();
-
-    nfs.saveAsLegacy('diagram.svg', svgData)
-    toastr.success('Save BPMN')
+    const result = await saveSVG();
+    currentFile.fileext = 'bpmn.svg';
+    const filename = (currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()))+ '.'+currentFile.fileext;
+    nfs.saveDraftAs(currentFile.handle,filename,result, () => {
+      toastr.success('Save BPMN SVG')
+    })
   } catch (err) {
     console.error('could not save svg BPMN 2.0 diagram', err);
     toastr.error('could not save svg BPMN 2.0 diagram')
@@ -161,7 +177,7 @@ function handleTitleChange(event) {
   currentFile.filename = val
 }
 
-var diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
+const diagramUrl = 'https://cdn.staticaly.com/gh/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
 /*
 const initialDiagram =
   '<?xml version="1.0" encoding="UTF-8"?>' +
@@ -204,8 +220,9 @@ currentFile.bpmnModeler = new BpmnModeler({
  */
 async function exportDiagram() {
   try {
-    var result = await currentFile.bpmnModeler.saveXML({ format: true });
-    console.log('DIAGRAM', result.xml);
+    const result = await saveXML();
+    currentFile.fileext = 'bpmn';
+    console.log('DIAGRAM', result);
     gDrivestorage.saveDraft(currentFile, () => {
       toastr.success('Save BPMN')
     })
@@ -215,33 +232,43 @@ async function exportDiagram() {
   }
 }
 
-/**
- * Open diagram in our modeler instance.
- *
- * @param {String} bpmnXML diagram to display
- */
-async function openDiagram(bpmnXML) {
-  const $ = cheerio.load(bpmnXML, {xmlMode: true});
-  // import diagram
-  try {
-    toastr.success('Open BPMN')
 
-    //await bpmnModeler.importXML(bpmnXML);
-    if($('svg[content]').length > 0){
+async function importXML(contents) {
+  //svgの場合はsvgタグのcontentからデータを取り出す 
+  const $ = cheerio.load(contents, {xmlMode: true});
+  if($('svg[content]').length > 0){
       const contentData = $('svg').attr('content')
       const base64 = Buffer.from(contentData, 'base64');
       const xml = base64.toString();
-      currentFile.bpmnModeler.importXML(xml);
       await currentFile.bpmnModeler.importXML(xml || initialDiagram);
-    } else { //$('semantic\\:definitions'))
-      await currentFile.bpmnModeler.importXML(bpmnXML || initialDiagram);
-    }
-    //await bpmnModeler.fromXML(xmlStr);
+  }else{
+      await currentFile.bpmnModeler.importXML(contents || initialDiagram);
+  }
+}
+
+
+/**
+ * Open diagram in our modeler instance.
+ *
+ * @param {String} filename 
+ * @param {String} fileext 
+ * @param {String} contents diagram to display
+ * @param callback
+ */
+async function openDiagram(filename,fileext,contents) {
+  console.log('openDiagram',filename,fileext,contents);
+  // import diagram
+  try {
+    toastr.success('Open BPMN')
+    currentFile.filename = filename;
+    currentFile.fileext = fileext;
+
+    await importXML(contents);
+    $('#title-input').val(currentFile.filename);
 
     // access modeler components
     var canvas = currentFile.bpmnModeler.get('canvas');
     var overlays = currentFile.bpmnModeler.get('overlays');
-
 
     // zoom to fit full viewport
     canvas.zoom('fit-viewport');
@@ -264,7 +291,6 @@ async function openDiagram(bpmnXML) {
   }
 }
 
-
 //プロジェクトファイルの読み込み
 function loadProject(url, type, cb) {
   // URL指定がない場合はlocalから取得
@@ -275,11 +301,7 @@ function loadProject(url, type, cb) {
       return (cb) ? cb() : true;
     })
   } else if (type == "nfs") {
-    nfs.loadDraft(currentFile, url, (currentFile) => {
-      $('#title-input').val(currentFile.filename);
-      console.log(currentFile.bpmnModeler)
-      return (cb) ? cb() : true;
-    })
+    nfs.loadDraft(currentFile, url, openDiagram)
   }
 }
 
@@ -287,10 +309,10 @@ function newfile() {
   myMenu.hideAll()
   // load external diagram file via AJAX and open it
   currentFile.filename = 'new bpmn'
+  currentFile.fileext = 'bpmn'
   currentFile.fileid = ''
   //$.get(diagramUrl, openDiagram, 'text');
-  openDiagram(initialDiagram)
-  $('#title-input').val(currentFile.filename);
+  openDiagram(currentFile.filename,currentFile.fileext,initialDiagram)
 }
 
 
@@ -300,13 +322,16 @@ function registerFileDrop(container, callback) {
   function handleFileSelect(e) {
     e.stopPropagation();
     e.preventDefault();
-    var files = e.dataTransfer.files;
-    var file = files[0];
-    var reader = new FileReader();
+    const files = e.dataTransfer.files;
+    const file = files[0];
+    const filefullname = file.name;
+    const filename = filefullname.substring(0,filefullname.indexOf('.'))
+    const fileext = filefullname.substring(filefullname.indexOf('.')+1);
+    const reader = new FileReader();
     reader.onload = function(e) {
-      var xml = e.target.result;
-      console.log(xml)
-      callback(xml);
+      const xml = e.target.result;
+      console.log('onload',filename,fileext,xml);
+      callback(filename,fileext,xml);
     };
     reader.readAsText(file);
   }

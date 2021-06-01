@@ -50,7 +50,7 @@ export class Nfsstorage {
             type: 'save-file',
             accepts: [{
                 description: 'bpmn file',
-                extensions: ['bpmn'],
+                extensions: ['bpmn','bpmn.svg'],
                 mimeTypes: ['application/vnd.bpmn'],
             }],
         };
@@ -185,19 +185,17 @@ export class Nfsstorage {
     deleteDraft(fileContainer, url) {
     }
 
-    async saveDraftAs(currentFile,callback) {
+    async saveDraftAs(fileHandle,filename,content,callback) {
         // ローカルストレージに最新の状態を保存
-        var result = await currentFile.bpmnModeler.saveXML({ format: true });
-        currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
 
         if (!this.hasNativeFS) {
-            this.saveAsLegacy(currentFile.filename, result.xml);
+            this.saveAsLegacy(filename, content);
             if(callback)callback()
             return;
         }
 
         try {
-          currentFile.fileHandle = await this.getNewFileHandle();
+          fileHandle = await this.getNewFileHandle();
         } catch (ex) {
           if (ex.name === 'AbortError') {
             return;
@@ -208,7 +206,7 @@ export class Nfsstorage {
           return;
         }
         try {
-          await this.writeFile(currentFile.fileHandle, result.xml);
+          await this.writeFile(fileHandle, content);
           if(callback)callback()
         } catch (ex) {
           const msg = 'Unable to save file.';
@@ -219,16 +217,13 @@ export class Nfsstorage {
 
     }
 
-    async saveDraft(currentFile,callback) {
+    async saveDraft(fileHandle,filename,content,callback) {
         // ローカルストレージに最新の状態を保存
-        var result = await currentFile.bpmnModeler.saveXML({ format: true });
-        currentFile.filename = currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()) + '.bpmn'
- 
         try {
-            if (!currentFile.fileHandle) {
-                return await this.saveFileAs(currentFile,callback);
+            if (!fileHandle) {
+                return await this.saveDraftAs(fileHandle,filename,content,callback);
             }
-            await this.writeFile(currentFile.fileHandle, result.xml);
+            await this.writeFile(fileHandle, content);
             if(callback)callback()
         } catch (ex) {
             const msg = 'Unable to save file';
@@ -237,26 +232,22 @@ export class Nfsstorage {
         }
     }
 
-    async loadDraft(currentFile, url, callback) {
+    /**
+     * loadDraft
+     * @param {object} fileHandle
+     * @param {String} url
+     * @param {function} callback(filename,fileext,contents)
+     */
+    async loadDraft(fileHandle, url, callback) {
         // If the Native File System API is not supported, use the legacy file apis.
         if (!this.hasNativeFS) {
             const file = await this.getFileLegacy();
             if (file) {
                 const contents = await this.readFile(file);
                 console.log('loadDraft',file,contents)
-                currentFile.filename = file.name
-
-                //svgの場合はsvgタグのcontentからデータを取り出す 
-                const $ = cheerio.load(contents, {xmlMode: true});
-                if($('svg[content]').length > 0){
-                    const contentData = $('svg').attr('content')
-                    const base64 = Buffer.from(contentData, 'base64');
-                    const xml = base64.toString();
-                    currentFile.bpmnModeler.importXML(xml);
-                }else{
-                    currentFile.bpmnModeler.importXML(contents);
-                }
-                return (callback) ? callback(currentFile) : contents
+                const filename = file.name.substring(0,file.name.indexOf('.'))
+                const fileext = file.name.substring(file.name.indexOf('.')+1);
+                return (callback) ? callback(filename,fileext,contents) : contents
             }
             return;
         }
@@ -284,7 +275,7 @@ export class Nfsstorage {
         */
         
         try {
-            currentFile.fileHandle = await this.getFileHandle();
+            fileHandle = await this.getFileHandle();
         } catch (ex) {
             if (ex.name === 'AbortError') {
                 return;
@@ -294,16 +285,16 @@ export class Nfsstorage {
             alert(msg);
         }
 
-        if (!currentFile.fileHandle) {
+        if (!fileHandle) {
             return;
         }
-        const file = await currentFile.fileHandle.getFile();
-        const contents = await this.readFile(file, currentFile.fileHandle);
+        const file = await fileHandle.getFile();
+        const contents = await this.readFile(file, fileHandle);
 
         console.log('loadDraft',file,contents)
-        currentFile.filename = file.name
-        currentFile.bpmnModeler.importXML(contents);
-        return (callback) ? callback(currentFile) : contents
+        const filename = file.name.substring(0,file.name.indexOf('.'))
+        const fileext = file.name.substring(file.name.indexOf('.')+1);
+        return (callback) ? callback(filename,fileext,contents) : contents
     }
 }
 export default Nfsstorage
