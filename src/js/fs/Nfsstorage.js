@@ -1,5 +1,4 @@
 import { EventEmitter } from 'events'
-import * as cheerio from 'cheerio';
 
 export class Nfsstorage {
     constructor() {
@@ -166,7 +165,7 @@ export class Nfsstorage {
      * download link.
      *
      * @param {string} filename Filename to save the file as.
-     * @param {string} contents Contents of the file to save.
+     * @param {arrayBuffer} contents Contents of the file to save.
      */
     // function saveAsLegacy(filename, contents) {
     saveAsLegacy (filename, contents) {

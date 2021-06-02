@@ -13,7 +13,10 @@ import BpmnModeler from 'bpmn-js/lib/Modeler';
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
 import Menus from '../menus.js'
-import * as cheerio from 'cheerio';
+import * as cheerio from 'cheerio'
+import Canvg from 'canvg';
+import jszip from 'jszip';
+import ZipAsPng from '../fs/ZipAsPng';
 import toastr from 'toastr'
 window.toastr = toastr
 toastr.options = {
@@ -171,6 +174,57 @@ async function handleSaveSVGClick(event) {
 
 }
 
+async function handleSavePNGClick(event) {
+  myMenu.hideAll()
+  try {
+    const result = await saveSVG();
+    currentFile.fileext = 'zip.png';
+    const filename = (currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random()))+ '.'+currentFile.fileext;
+
+    //zipファイルの作成、sourceのbpmnを格納
+    const source = await saveXML();
+    const sourcefilename = (currentFile.filename || 'bpmn_'+Date.now() + Math.floor(1e4 + 9e4 * Math.random())) + '.bpmn';
+    const zip = new jszip();
+    zip.file(sourcefilename,source);
+    const compressed = await zip.generateAsync({type:'arraybuffer', compression: "DEFLATE",compressionOptions: {level: 1} }) //blobタイプのzipを作成。
+
+    //svgをpngに変換
+    const offscreenCanvas = document.createElement('canvas');
+    const ctx = offscreenCanvas.getContext('2d');
+    const v = Canvg.fromString(ctx, result);
+    v.render();
+    const png = offscreenCanvas.toDataURL();
+
+    //pngファイルのblob形式を取得する
+    const pngblob = await (() =>
+      new Promise(resolve => {
+        offscreenCanvas.toBlob(async (blob) => {
+          resolve(await blob.arrayBuffer())
+        })
+      }))()
+    
+    //pngにzip埋め込み処理
+    // [png] + [zip] = [zip.png] 
+    const zipAsPng = new ZipAsPng();
+    const out = zipAsPng.zipToPng(Buffer.from(compressed, 'binary'),Buffer.from(pngblob, 'binary'))
+
+    //ダウンロード処理
+    let atag = document.createElement('a')
+    atag.id = "aDownloadFile"
+    atag.download = true
+    document.body.appendChild(atag)
+    const opts = {type: 'image/png'};
+    const file = new File([out], '', opts);
+    atag.href = window.URL.createObjectURL(file);
+    atag.setAttribute('download', filename);
+    atag.click();
+    
+  } catch (err) {
+    console.error('could not save svg BPMN 2.0 diagram', err);
+    toastr.error('could not save svg BPMN 2.0 diagram')
+  }
+
+}
 
 function handleTitleChange(event) {
   let val = $(event.currentTarget).val();
@@ -362,16 +416,17 @@ $(document).ready(() => {
   newfile()
   
   // wire save button
-  $('#save').click(exportDiagram);
-  $('#butSave').click(handleSaveClick);
-  $('#butSaveAs').click(handleSaveAsClick);
-  $('#butSaveSVG').click(handleSaveSVGClick);
+  $('#save').on("click", exportDiagram);
+  $('#butSave').on("click", handleSaveClick);
+  $('#butSaveAs').on("click", handleSaveAsClick);
+  $('#butSaveSVG').on("click", handleSaveSVGClick);
+  $('#butSavePNG').on("click", handleSavePNGClick);
   
-  $('#authorize_button').click(handleAuthClick);
-  $('#signout_button').click(handleSignoutClick);
-  $('#picker_button').click(handlePickerClick);
-  $('#butNew').click(newfile);
-  $('#butOpen').click(handleOpenClick);
+  $('#authorize_button').on("click", handleAuthClick);
+  $('#signout_button').on("click", handleSignoutClick);
+  $('#picker_button').on("click", handlePickerClick);
+  $('#butNew').on("click", newfile);
+  $('#butOpen').on("click", handleOpenClick);
 
   $('#title-input').change(handleTitleChange);
 });
