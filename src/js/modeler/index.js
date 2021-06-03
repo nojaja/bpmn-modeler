@@ -274,7 +274,7 @@ currentFile.bpmnModeler = new BpmnModeler({
  */
 async function exportDiagram() {
   try {
-    const result = await saveXML();
+    const result = await saveXML({ format: true });
     currentFile.fileext = 'bpmn';
     console.log('DIAGRAM', result);
     gDrivestorage.saveDraft(currentFile, () => {
