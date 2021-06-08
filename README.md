@@ -34,6 +34,8 @@ $ npm start
 ```
 http://localhost:8080
 ```
+## Chrome 86以下の場合
+URL欄に`chrome://flags/#native-file-system-api`と入力して、該当するフラグを有効にします
 
 ## License
 
