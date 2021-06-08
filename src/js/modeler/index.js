@@ -8,7 +8,7 @@ import '@fortawesome/fontawesome-free/js/brands';
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 //import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
-import BpmnModeler from 'bpmn-js/lib/Modeler';
+//import BpmnModeler from 'bpmn-js/lib/Modeler';
 //import BpmnJS from 'bpmn-js'
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
@@ -24,6 +24,8 @@ toastr.options = {
   positionClass: 'toast-top-center'
 }
 
+import CustomModeler from '../custom-modeler';
+import qaExtension from '../../../resources/qa';
 const gDrivestorage = new GDrivestorage();
 const nfs = new Nfsstorage()
 
@@ -125,6 +127,12 @@ async function saveSVG() {
   return $.xml();
 }
 async function saveXML() {
+  //console.log('saveXML-getModules',currentFile.bpmnModeler.getModules())
+  console.log('saveXML-getDefinitions',JSON.stringify(currentFile.bpmnModeler.getDefinitions()))
+  console.log('saveXML-getDefinitions',currentFile.bpmnModeler.getDefinitions().diagrams[0].plane.planeElement)
+
+  console.log('saveXML-bpmnModeler',currentFile.bpmnModeler)  
+
   const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
   return xml;
 }
@@ -262,10 +270,13 @@ const initialDiagram =
   '</bpmn:definitions>';
 
 // modeler instance
-currentFile.bpmnModeler = new BpmnModeler({
+currentFile.bpmnModeler = new CustomModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
+  },
+  moddleExtensions: {
+    custom: qaExtension
   }
 });
 
@@ -374,6 +385,16 @@ function newfile() {
 function registerFileDrop(container, callback) {
 
   function handleFileSelect(e) {
+    console.log('handleFileSelect',e.x,e.y)
+    let dropObject = {
+      pos:{x:e.x, y:e.y},
+      file:{
+        filetype:null,
+        filename:null,
+        filedata:null
+      }
+    }
+
     e.stopPropagation();
     e.preventDefault();
     const files = e.dataTransfer.files;
@@ -381,13 +402,21 @@ function registerFileDrop(container, callback) {
     const filefullname = file.name;
     const filename = filefullname.substring(0,filefullname.indexOf('.'))
     const fileext = filefullname.substring(filefullname.indexOf('.')+1);
+
+    dropObject.file.filename = filename;
+    dropObject.file.filetype = fileext;
+    dropObject.file.filename = filename;
     const reader = new FileReader();
     reader.onload = function(e) {
-      const xml = e.target.result;
-      console.log('onload',filename,fileext,xml);
-      callback(filename,fileext,xml);
+      dropObject.file.filedata = e.target.result;
+      console.log('onload',dropObject);
+      callback(dropObject);
     };
-    reader.readAsText(file);
+    
+    if(['jpg','png','gif'].indexOf(dropObject.file.filetype) !== -1 )
+      reader.readAsDataURL(file)
+    else 
+      reader.readAsText(file);
   }
   function handleDragOver(e) {
     e.stopPropagation();
@@ -407,9 +436,33 @@ if (!window.FileList || !window.FileReader) {
     'Looks like you use an older browser that does not support drag and drop. ' +
     'Try using Chrome, Firefox or the Internet Explorer > 10.');
 } else {
-  registerFileDrop(container, openDiagram);
+  registerFileDrop(container, openFile);
 }
 
+
+function openFile(dropObject) {
+  if(dropObject.file.filetype=='svg'){
+    let customElements =  [{
+      "type":"custom:image",
+      "href":"data:image/svg+xml;base64,"
+          + btoa(unescape(encodeURIComponent(dropObject.file.filedata))),
+      "x":dropObject.pos.x,
+      "y":dropObject.pos.y
+   }]
+   currentFile.bpmnModeler.addCustomElements(customElements);
+  }else
+  if(['jpg','png','gif'].indexOf(dropObject.file.filetype) !== -1 ){
+    let customElements =  [{
+      "type":"custom:image",
+      "href":dropObject.file.filedata,
+      "x":dropObject.pos.x,
+      "y":dropObject.pos.y
+   }]
+   currentFile.bpmnModeler.addCustomElements(customElements);
+  }else{
+    openDiagram(dropObject.file.filename,dropObject.file.filetype,dropObject.file.filedata)
+  }
+}
 
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
