@@ -112,11 +112,6 @@ export default class CustomPaletteProvider {
       });
     }
 
-    console.log('Star',Star)
-    console.log('Star',"data:image/svg+xml;base64,"
-    + btoa(unescape(encodeURIComponent(Star))))
-    
-
     return {
       'hand-tool': {
         group: 'tools',
