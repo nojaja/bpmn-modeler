@@ -43,6 +43,14 @@ export default class CustomElementFactory extends BpmnElementFactory {
       return this.self.baseCreate(elementType, assign({ type: 'label' }, DEFAULT_LABEL_SIZE, attrs));
     }
 
+    if (elementType === 'DataObjectReference') {
+      attrs.businessObject = this._bpmnFactory.create(attrs.type);
+      if (attrs && attrs.imagedata) {
+        attrs.businessObject.imagedata = attrs.imagedata;
+      }
+      return this.self.createBpmnElement(elementType, attrs);
+    }
+
     // add type to businessObject if custom
     if (/^custom:/.test(type)) {
 

@@ -24,6 +24,10 @@ toastr.options = {
   positionClass: 'toast-top-center'
 }
 
+import {
+  assign
+} from 'min-dash';
+
 import CustomModeler from '../custom-modeler';
 import qaExtension from '../../../resources/qa';
 const gDrivestorage = new GDrivestorage();
@@ -127,12 +131,6 @@ async function saveSVG() {
   return $.xml();
 }
 async function saveXML() {
-  //console.log('saveXML-getModules',currentFile.bpmnModeler.getModules())
-  console.log('saveXML-getDefinitions',JSON.stringify(currentFile.bpmnModeler.getDefinitions()))
-  console.log('saveXML-getDefinitions',currentFile.bpmnModeler.getDefinitions().diagrams[0].plane.planeElement)
-
-  console.log('saveXML-bpmnModeler',currentFile.bpmnModeler)  
-
   const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
   return xml;
 }
@@ -387,6 +385,7 @@ function registerFileDrop(container, callback) {
   function handleFileSelect(e) {
     console.log('handleFileSelect',e.x,e.y)
     let dropObject = {
+      event:e,
       pos:{x:e.x, y:e.y},
       file:{
         filetype:null,
@@ -443,8 +442,8 @@ if (!window.FileList || !window.FileReader) {
 function openFile(dropObject) {
   if(dropObject.file.filetype=='svg'){
     let customElements =  [{
-      "type":"custom:image",
-      "href":"data:image/svg+xml;base64,"
+      "type":"bpmn:DataObjectReference",
+      "imagedata":"data:image/svg+xml;base64,"
           + btoa(unescape(encodeURIComponent(dropObject.file.filedata))),
       "x":dropObject.pos.x,
       "y":dropObject.pos.y
@@ -452,13 +451,32 @@ function openFile(dropObject) {
    currentFile.bpmnModeler.addCustomElements(customElements);
   }else
   if(['jpg','png','gif'].indexOf(dropObject.file.filetype) !== -1 ){
-    let customElements =  [{
-      "type":"custom:image",
-      "href":dropObject.file.filedata,
+    let customElements =  {
+      "type":"bpmn:DataObjectReference",
+      "imagedata":dropObject.file.filedata,
       "x":dropObject.pos.x,
       "y":dropObject.pos.y
-   }]
-   currentFile.bpmnModeler.addCustomElements(customElements);
+   }
+   //currentFile.bpmnModeler.addCustomElements(customElements);
+   const elementFactory = currentFile.bpmnModeler.get("elementFactory");
+   console.log('openFile-elementFactory',this,elementFactory)
+   const create = currentFile.bpmnModeler.get("create");
+   console.log('openFile-create',this,create)
+
+   const bpmnFactory = elementFactory._bpmnFactory;
+   console.log('openFile-bpmnFactory',bpmnFactory)
+
+   const businessObject = bpmnFactory.create(customElements.type);
+   businessObject.imagedata = customElements.imagedata;
+   const shape = elementFactory.createShape(
+     assign({ type: customElements.type, businessObject: businessObject })
+   );
+
+   //const shape = elementFactory.createShape(customElements);
+   console.log('openFile-shape',this,shape)
+ 
+   create.start(dropObject.event, shape);
+
   }else{
     openDiagram(dropObject.file.filename,dropObject.file.filetype,dropObject.file.filedata)
   }

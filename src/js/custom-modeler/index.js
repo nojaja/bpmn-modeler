@@ -11,8 +11,6 @@ import inherits from 'inherits';
 import CustomModule from './custom';
 import ResizeAllModule from './resize-all-rules'
 import ColorPickerModule from './color-picker'
-//import NyanDrawModule from './nyan/draw'
-//import NyanPaletteModule from './nyan/palette'
 
 export default function CustomModeler(options) {
   Modeler.call(this, options);
@@ -27,9 +25,7 @@ CustomModeler.prototype._modules = [].concat(
   [
     CustomModule,
     ResizeAllModule,
-    ColorPickerModule,
-//    NyanDrawModule,
-//    NyanPaletteModule
+    ColorPickerModule
   ]
 );
 
@@ -40,6 +36,49 @@ CustomModeler.prototype._modules = [].concat(
  */
 CustomModeler.prototype._addCustomShape = function(customElement) {
 
+  //injector bpmnFactory
+  //elementFactory.create
+  const type = customElement.type
+  console.log('_addCustomShape-customElement',customElement)
+  const elementFactory = this.get('elementFactory');
+  console.log('_addCustomShape-elementFactory',this,elementFactory)
+  const bpmnFactory = elementFactory._bpmnFactory;
+  console.log('_addCustomShape-bpmnFactory',bpmnFactory)
+  const businessObject = bpmnFactory.create(type);
+  console.log('_addCustomShape-businessObject',businessObject)
+  if (customElement && customElement.imagedata) {
+    businessObject.imagedata = customElement.imagedata;
+  }
+  const shape = elementFactory.createShape(
+    assign({ type: type, businessObject: businessObject }, customElement)
+  );
+  const create = this.get('create')
+  console.log('_addCustomShape-create',create)
+  const modeling = this.get('modeling')
+  console.log('_addCustomShape-modeling',modeling)
+  
+  const definitions = this.getDefinitions()
+  const rootElements = definitions.get('rootElements')
+  
+  console.log('_addCustomShape-definitions',definitions)
+  console.log('_addCustomShape-rootElements',rootElements)
+
+  //create.start(event, shape);
+  //const canvas = this.get('canvas')
+  //return canvas.addShape(shape);
+  let position = {
+    x: customElement.x,
+    y: customElement.y
+  };
+
+
+  create.start(event, shape);
+
+  //const elements = modeling.createElements(shape, position, rootElements);
+
+  console.log('_addCustomShape-elements',elements)
+
+/*
   this._customElements.push(customElement);
 
   var canvas = this.get('canvas'),
@@ -50,7 +89,7 @@ CustomModeler.prototype._addCustomShape = function(customElement) {
   var customShape = elementFactory.create('shape', customAttrs);
 
   return canvas.addShape(customShape);
-
+*/
 };
 
 CustomModeler.prototype._addCustomConnection = function(customElement) {

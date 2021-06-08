@@ -5,6 +5,12 @@ import {
   assign
 } from 'min-dash';
 
+import Image from '../../../assets/shpes/image.svg';
+import Star from '../../../assets/shpes/star.svg';
+import Iphone from '../../../assets/shpes/iphone.svg';
+import TvDisplay from '../../../assets/shpes/tv-display.svg';
+import Team from '../../../assets/shpes/team.svg';
+import Warning from '../../../assets/shpes/warning.svg';
 
 /**
  * A palette that allows you to create BPMN _and_ custom elements.
@@ -28,7 +34,7 @@ export default class CustomPaletteProvider {
     palette.registerProvider(this);
   }
 
-  getPaletteEntries (element) {
+  getPaletteEntries(element) {
     console.log('getPaletteEntries')
     const {
       bpmnFactory,
@@ -43,15 +49,11 @@ export default class CustomPaletteProvider {
 
     let actions = {}
 
-    function createTask(type,options) {
-      return function(event) {
-        console.log('createTask',event,elementFactory)
+    function createTask(type, options) {
+      return function (event) {
         const businessObject = bpmnFactory.create(type);
-        if (options && options.isExpanded) {
-          businessObject.di.isExpanded = options.isExpanded;
-        }
-        if (options && options.suitabilityScore) {
-          businessObject.suitable = options.suitabilityScore;
+        if (options && options.imagedata) {
+          businessObject.imagedata = options.imagedata;
         }
         const shape = elementFactory.createShape(
           assign({ type: type, businessObject: businessObject }, options)
@@ -61,23 +63,22 @@ export default class CustomPaletteProvider {
     }
 
     function createAction(type, group, className, title, options) {
-      console.log('createAction',type)
       const shortType = type.replace(/^bpmn:/, '');
       return {
         group: group,
         className: className,
         title: title || 'Create ' + shortType,
         action: {
-          dragstart: createTask(type,options),
-          click: createTask(type,options)
+          dragstart: createTask(type, options),
+          click: createTask(type, options)
         }
       };
     }
-      
+
     function createParticipant(event, collapsed) {
       create.start(event, elementFactory.createParticipantShape(collapsed));
     }
-      
+
     function createSubprocess(event) {
       var subProcess = elementFactory.createShape({
         type: 'bpmn:SubProcess',
@@ -93,21 +94,21 @@ export default class CustomPaletteProvider {
         parent: subProcess
       });
 
-      create.start(event, [ subProcess, startEvent ], {
+      create.start(event, [subProcess, startEvent], {
         hints: {
-          autoSelect: [ startEvent ]
+          autoSelect: [startEvent]
         }
       });
     }
 
-        
+
     return {
       'hand-tool': {
         group: 'tools',
         className: 'bpmn-icon-hand-tool',
         title: translate('Activate the hand tool'),
         action: {
-          click: function(event) {
+          click: function (event) {
             handTool.activateHand(event);
           }
         }
@@ -117,7 +118,7 @@ export default class CustomPaletteProvider {
         className: 'bpmn-icon-lasso-tool',
         title: translate('Activate the lasso tool'),
         action: {
-          click: function(event) {
+          click: function (event) {
             lassoTool.activateSelection(event);
           }
         }
@@ -127,7 +128,7 @@ export default class CustomPaletteProvider {
         className: 'bpmn-icon-space-tool',
         title: translate('Activate the create/remove space tool'),
         action: {
-          click: function(event) {
+          click: function (event) {
             spaceTool.activateSelection(event);
           }
         }
@@ -137,7 +138,7 @@ export default class CustomPaletteProvider {
         className: 'bpmn-icon-connection-multi',
         title: translate('Activate the global connect tool'),
         action: {
-          click: function(event) {
+          click: function (event) {
             globalConnect.toggle(event);
           }
         }
@@ -200,46 +201,49 @@ export default class CustomPaletteProvider {
         group: 'custom',
         separator: true
       },
-      'custom-triangle': createAction(
-        'custom:triangle', 'custom', 'icon-custom-triangle',
-        translate('Create DataStoreReference')
-      ),
-      'custom-star': createAction(
-        'custom:star', 'custom', 'icon-custom-star',
-        translate('Create shpe')
-      ),
-      'custom-iphone': createAction(
-        'custom:iphone', 'custom', 'icon-custom-iphone',
-        translate('Create shpe')
-      ),
-      'custom-team': createAction(
-        'custom:team', 'custom', 'icon-custom-team',
-        translate('Create shpe')
-      ),
-      'custom-tv-display': createAction(
-        'custom:tv-display', 'custom', 'icon-custom-tv-display',
-        translate('Create shpe')
-      ),
-      'custom-warning': createAction(
-        'custom:warning', 'custom', 'icon-custom-warning',
-        translate('Create shpe')
-      ),
-      'create.low-task': {
-        group: 'activity',
-        className: 'bpmn-icon-task red',
-        title: translate('Create Task with low suitability score'),
-        action: {
-          dragstart: createTask('bpmn:Task',{suitabilityScore:25}),
-          click: createTask('bpmn:Task',{suitabilityScore:25})
-        }
-      },
-      'create.average-task': {
-        group: 'activity',
-        className: 'bpmn-icon-task yellow',
+      'custom-star': {
+        group: 'custom',
+        className: 'icon-custom-star',
         title: translate('Create Task with average suitability score'),
         action: {
-          dragstart: createTask('bpmn:DataObjectReference',{suitabilityScore:50}),
-          click: createTask('bpmn:DataObjectReference',{suitabilityScore:50}),
+          dragstart: createTask('bpmn:DataObjectReference', { imagedata: Star }),
+          click: createTask('bpmn:DataObjectReference', { imagedata: Star }),
+        }
+      },
+      'custom-iphone': {
+        group: 'custom',
+        className: 'icon-custom-iphone',
+        title: translate('Create Task with average suitability score'),
+        action: {
+          dragstart: createTask('bpmn:DataObjectReference', { imagedata: Iphone }),
+          click: createTask('bpmn:DataObjectReference', { imagedata: Iphone }),
+        }
+      },
+      'custom-team': {
+        group: 'custom',
+        className: 'icon-custom-team',
+        title: translate('Create Task with average suitability score'),
+        action: {
+          dragstart: createTask('bpmn:DataObjectReference', { imagedata: Team }),
+          click: createTask('bpmn:DataObjectReference', { imagedata: Team }),
+        }
+      },
+      'custom-tv-display': {
+        group: 'custom',
+        className: 'icon-custom-tv-display',
+        title: translate('Create Task with average suitability score'),
+        action: {
+          dragstart: createTask('bpmn:DataObjectReference', { imagedata: TvDisplay }),
+          click: createTask('bpmn:DataObjectReference', { imagedata: TvDisplay }),
+        }
+      },
+      'custom-warning': {
+        group: 'custom',
+        className: 'icon-custom-warning',
+        title: translate('Create Task with average suitability score'),
+        action: {
+          dragstart: createTask('bpmn:DataObjectReference', { imagedata: Warning }),
+          click: createTask('bpmn:DataObjectReference', { imagedata: Warning }),
         }
       }
     };
