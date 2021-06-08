@@ -1,21 +1,21 @@
 {
-  "name": "QualityAssurance",
-  "uri": "http://some-company/schema/bpmn/qa",
+  "name": "CustomImage",
+  "uri": "http://some-company/schema/bpmn/custom",
   "prefix": "custom",
   "xml": {
     "tagAlias": "lowerCase"
   },
   "types": [
     {
-      "name": "AnalyzedNode2",
+      "name": "image",
       "extends": [
         "bpmn:DataObject","bpmn:DataObjectReference"
       ],
       "properties": [
         {
-          "name": "suitable",
+          "name": "imagedata",
           "isAttr": true,
-          "type": "Integer"
+          "type": "String"
         }
       ]
     },

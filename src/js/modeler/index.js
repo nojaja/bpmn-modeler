@@ -412,7 +412,7 @@ function registerFileDrop(container, callback) {
       callback(dropObject);
     };
     
-    if(['jpg','png','gif'].indexOf(dropObject.file.filetype) !== -1 )
+    if(['jpg','png','gif'].lastIndexOf(dropObject.file.filetype) !== -1 )
       reader.readAsDataURL(file)
     else 
       reader.readAsText(file);
@@ -438,7 +438,6 @@ if (!window.FileList || !window.FileReader) {
   registerFileDrop(container, openFile);
 }
 
-
 function openFile(dropObject) {
   if(dropObject.file.filetype=='svg'){
     let customElements =  [{
@@ -448,35 +447,16 @@ function openFile(dropObject) {
       "x":dropObject.pos.x,
       "y":dropObject.pos.y
    }]
-   currentFile.bpmnModeler.addCustomElements(customElements);
+   currentFile.bpmnModeler.addCustomElements(dropObject.event, customElements);
   }else
-  if(['jpg','png','gif'].indexOf(dropObject.file.filetype) !== -1 ){
-    let customElements =  {
+  if(['jpg','png','gif'].lastIndexOf(dropObject.file.filetype) !== -1 ){
+    let customElements =  [{
       "type":"bpmn:DataObjectReference",
       "imagedata":dropObject.file.filedata,
       "x":dropObject.pos.x,
       "y":dropObject.pos.y
-   }
-   //currentFile.bpmnModeler.addCustomElements(customElements);
-   const elementFactory = currentFile.bpmnModeler.get("elementFactory");
-   console.log('openFile-elementFactory',this,elementFactory)
-   const create = currentFile.bpmnModeler.get("create");
-   console.log('openFile-create',this,create)
-
-   const bpmnFactory = elementFactory._bpmnFactory;
-   console.log('openFile-bpmnFactory',bpmnFactory)
-
-   const businessObject = bpmnFactory.create(customElements.type);
-   businessObject.imagedata = customElements.imagedata;
-   const shape = elementFactory.createShape(
-     assign({ type: customElements.type, businessObject: businessObject })
-   );
-
-   //const shape = elementFactory.createShape(customElements);
-   console.log('openFile-shape',this,shape)
- 
-   create.start(dropObject.event, shape);
-
+   }]
+   currentFile.bpmnModeler.addCustomElements(dropObject.event, customElements);
   }else{
     openDiagram(dropObject.file.filename,dropObject.file.filetype,dropObject.file.filedata)
   }

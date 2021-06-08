@@ -20,7 +20,7 @@ export default class CustomPaletteProvider {
   constructor(
     bpmnFactory, palette, create, elementFactory,
     spaceTool, lassoTool, handTool,
-    globalConnect, translate) {
+    globalConnect, translate,moddle,modeling) {
     this.bpmnFactory = bpmnFactory;
     this.palette = palette;
     this.create = create;
@@ -30,6 +30,8 @@ export default class CustomPaletteProvider {
     this.handTool = handTool;
     this.globalConnect = globalConnect;
     this.translate = translate;
+    this.moddle = moddle;
+    this.modeling = modeling;
 
     palette.registerProvider(this);
   }
@@ -44,7 +46,9 @@ export default class CustomPaletteProvider {
       lassoTool,
       handTool,
       globalConnect,
-      translate
+      translate,
+      moddle,
+      modeling
     } = this;
 
     let actions = {}
@@ -55,9 +59,17 @@ export default class CustomPaletteProvider {
         if (options && options.imagedata) {
           businessObject.imagedata = options.imagedata;
         }
-        const shape = elementFactory.createShape(
-          assign({ type: type, businessObject: businessObject }, options)
-        );
+        const shape = elementFactory.createShape({ 
+          type: type, 
+          businessObject: businessObject
+        });
+        /*
+        if (options && options.imagedata) {
+          modeling.updateProperties(shape, {
+            imagedata: options.imagedata
+          });
+        }
+        */
         create.start(event, shape);
       };
     }
@@ -259,5 +271,7 @@ CustomPaletteProvider.$inject = [
   'lassoTool',
   'handTool',
   'globalConnect',
-  'translate'
+  'translate',
+  'moddle',
+  'modeling'
 ];

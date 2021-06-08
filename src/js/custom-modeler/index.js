@@ -34,82 +34,41 @@ CustomModeler.prototype._modules = [].concat(
  *
  * @param {Object} customElement
  */
-CustomModeler.prototype._addCustomShape = function(customElement) {
-
-  //injector bpmnFactory
-  //elementFactory.create
+CustomModeler.prototype._addCustomShape = function(event) {
+  return (customElement) => {
   const type = customElement.type
-  console.log('_addCustomShape-customElement',customElement)
   const elementFactory = this.get('elementFactory');
-  console.log('_addCustomShape-elementFactory',this,elementFactory)
   const bpmnFactory = elementFactory._bpmnFactory;
-  console.log('_addCustomShape-bpmnFactory',bpmnFactory)
-  const businessObject = bpmnFactory.create(type);
-  console.log('_addCustomShape-businessObject',businessObject)
-  if (customElement && customElement.imagedata) {
-    businessObject.imagedata = customElement.imagedata;
-  }
-  const shape = elementFactory.createShape(
-    assign({ type: type, businessObject: businessObject }, customElement)
-  );
   const create = this.get('create')
-  console.log('_addCustomShape-create',create)
-  const modeling = this.get('modeling')
-  console.log('_addCustomShape-modeling',modeling)
   
-  const definitions = this.getDefinitions()
-  const rootElements = definitions.get('rootElements')
-  
-  console.log('_addCustomShape-definitions',definitions)
-  console.log('_addCustomShape-rootElements',rootElements)
-
-  //create.start(event, shape);
-  //const canvas = this.get('canvas')
-  //return canvas.addShape(shape);
-  let position = {
-    x: customElement.x,
-    y: customElement.y
-  };
-
-
+  const businessObject = bpmnFactory.create(type);
+  businessObject.imagedata = customElement.imagedata;
+  const shape = elementFactory.createShape(
+    assign({ type: type, businessObject: businessObject })
+  );
   create.start(event, shape);
-
-  //const elements = modeling.createElements(shape, position, rootElements);
-
-  console.log('_addCustomShape-elements',elements)
-
-/*
-  this._customElements.push(customElement);
-
-  var canvas = this.get('canvas'),
-      elementFactory = this.get('elementFactory');
-
-  var customAttrs = assign({ businessObject: customElement }, customElement);
-
-  var customShape = elementFactory.create('shape', customAttrs);
-
-  return canvas.addShape(customShape);
-*/
+  //modeling#createShape
+  }
 };
 
-CustomModeler.prototype._addCustomConnection = function(customElement) {
+CustomModeler.prototype._addCustomConnection = function(event) {
+  return (customElement) => {
+    this._customElements.push(customElement);
 
-  this._customElements.push(customElement);
+    var canvas = this.get('canvas'),
+        elementFactory = this.get('elementFactory'),
+        elementRegistry = this.get('elementRegistry');
 
-  var canvas = this.get('canvas'),
-      elementFactory = this.get('elementFactory'),
-      elementRegistry = this.get('elementRegistry');
+    var customAttrs = assign({ businessObject: customElement }, customElement);
 
-  var customAttrs = assign({ businessObject: customElement }, customElement);
+    var connection = elementFactory.create('connection', assign(customAttrs, {
+      source: elementRegistry.get(customElement.source),
+      target: elementRegistry.get(customElement.target)
+    }),
+    elementRegistry.get(customElement.source).parent);
 
-  var connection = elementFactory.create('connection', assign(customAttrs, {
-    source: elementRegistry.get(customElement.source),
-    target: elementRegistry.get(customElement.target)
-  }),
-  elementRegistry.get(customElement.source).parent);
-
-  return canvas.addConnection(connection);
-
+    return canvas.addConnection(connection);
+  }
 };
 
 /**
@@ -117,7 +76,7 @@ CustomModeler.prototype._addCustomConnection = function(customElement) {
  *
  * @param {Array<Object>} customElements
  */
-CustomModeler.prototype.addCustomElements = function(customElements) {
+CustomModeler.prototype.addCustomElements = function(event, customElements) {
 
   if (!isArray(customElements)) {
     throw new Error('argument must be an array');
@@ -136,9 +95,9 @@ CustomModeler.prototype.addCustomElements = function(customElements) {
 
   // add shapes before connections so that connections
   // can already rely on the shapes being part of the diagram
-  shapes.forEach(this._addCustomShape, this);
+  shapes.forEach(this._addCustomShape(event), this);
 
-  connections.forEach(this._addCustomConnection, this);
+  connections.forEach(this._addCustomConnection(event), this);
 };
 
 /**
