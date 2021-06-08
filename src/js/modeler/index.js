@@ -274,7 +274,7 @@ currentFile.bpmnModeler = new BpmnModeler({
  */
 async function exportDiagram() {
   try {
-    const result = await saveXML();
+    const result = await saveXML({ format: true });
     currentFile.fileext = 'bpmn';
     console.log('DIAGRAM', result);
     gDrivestorage.saveDraft(currentFile, () => {
@@ -410,10 +410,35 @@ if (!window.FileList || !window.FileReader) {
   registerFileDrop(container, openDiagram);
 }
 
+//GETパラメータの取得
+const arg = new Object();
+const pair = location.search.substring(1).split("&");
+for (let i = 0; pair[i]; i++) {
+  let kv = pair[i].split("=");
+  arg[kv[0]] = kv[1];
+}
 
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
   newfile()
+  const file_url = arg["q"]
+  if(file_url){
+    const filefullname = file_url.substring(file_url.lastIndexOf('/')+1)
+    const filename = filefullname.substring(0,filefullname.indexOf('.'))
+    const fileext = filefullname.substring(filefullname.indexOf('.')+1)
+    console.log('fetch',filefullname,filename,fileext)
+    fetch(file_url, {
+      mode: 'cors'
+    })
+      .then(async response => {
+        if(response.ok) {
+          openDiagram(filename, fileext, await response.text())
+        }
+      })
+      .catch(error => {
+        console.error('There has been a problem with your fetch operation:', error);
+      });
+  }
   
   // wire save button
   $('#save').on("click", exportDiagram);
