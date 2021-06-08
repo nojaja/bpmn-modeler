@@ -7,7 +7,7 @@
   },
   "types": [
     {
-      "name": "image",
+      "name": "Image",
       "extends": [
         "bpmn:DataObject","bpmn:DataObjectReference"
       ],
@@ -55,21 +55,6 @@
     },
     {
       "name": "Comment",
-      "properties": [
-        {
-          "name": "author",
-          "isAttr": true,
-          "type": "String"
-        },
-        {
-          "name": "text",
-          "isBody": true,
-          "type": "String"
-        }
-      ]
-    },
-    {
-      "name": "image",
       "properties": [
         {
           "name": "author",

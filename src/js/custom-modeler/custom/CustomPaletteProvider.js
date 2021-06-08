@@ -5,7 +5,6 @@ import {
   assign
 } from 'min-dash';
 
-import Image from '../../../assets/shpes/image.svg';
 import Star from '../../../assets/shpes/star.svg';
 import Iphone from '../../../assets/shpes/iphone.svg';
 import TvDisplay from '../../../assets/shpes/tv-display.svg';
@@ -113,6 +112,10 @@ export default class CustomPaletteProvider {
       });
     }
 
+    console.log('Star',Star)
+    console.log('Star',"data:image/svg+xml;base64,"
+    + btoa(unescape(encodeURIComponent(Star))))
+    
 
     return {
       'hand-tool': {

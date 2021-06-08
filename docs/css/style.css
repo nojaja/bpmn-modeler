@@ -282,3 +282,15 @@ h2 {
   background: #f8f8f8;
   border-left: solid 1px #ccc;
 }
+
+.bpmn-icon-task.red {
+  color: #cc0000 !important;
+}
+
+.bpmn-icon-task.yellow {
+  color: #ffc800 !important;
+}
+
+.bpmn-icon-task.green {
+  color: #52B415 !important;
+}

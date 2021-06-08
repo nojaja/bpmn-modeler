@@ -11,11 +11,6 @@ import {
 } from 'tiny-svg';
 
 import {
-  componentsToPath,
-  createLine
-} from 'diagram-js/lib/util/RenderUtil';
-
-import {
   is,
   getBusinessObject
 } from 'bpmn-js/lib/util/ModelUtil';
@@ -79,7 +74,6 @@ export default class CustomRenderer extends BaseRenderer {
 
   getImageData(element) {
     const businessObject = getBusinessObject(element);
-    console.log(businessObject)
     const { imagedata } = businessObject;
     return imagedata ? imagedata : Image;
   }

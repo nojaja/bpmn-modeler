@@ -131,6 +131,12 @@ async function saveSVG() {
   return $.xml();
 }
 async function saveXML() {
+  //console.log('saveXML-getModules',currentFile.bpmnModeler.getModules())
+  //console.log('saveXML-getDefinitions',JSON.stringify(currentFile.bpmnModeler.getDefinitions()))
+  //console.log('saveXML-getDefinitions',currentFile.bpmnModeler.getDefinitions().diagrams[0].plane.planeElement)
+
+  //console.log('saveXML-bpmnModeler',currentFile.bpmnModeler)  
+
   const {xml} = await currentFile.bpmnModeler.saveXML({ format: true });
   return xml;
 }
