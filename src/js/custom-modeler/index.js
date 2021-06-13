@@ -11,6 +11,7 @@ import inherits from 'inherits';
 import CustomModule from './custom';
 import ResizeAllModule from './resize-all-rules'
 import ColorPickerModule from './color-picker'
+import ColorPicker2Module from './colors'
 
 export default function CustomModeler(options) {
   Modeler.call(this, options);
@@ -25,7 +26,8 @@ CustomModeler.prototype._modules = [].concat(
   [
     CustomModule,
     ResizeAllModule,
-    ColorPickerModule
+    ColorPickerModule,
+    ColorPicker2Module
   ]
 );
 
