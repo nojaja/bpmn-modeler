@@ -2,11 +2,11 @@ import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
 
 const CALL_PRIORITY = 2000
 
-export default class ColorPopupProvider {
+export default class FillColorPopupProvider {
   constructor(popupMenu, modeling) {
     this._popupMenu = popupMenu;
     this._modeling = modeling;
-    this._popupMenu.registerProvider('color-picker', this);
+    this._popupMenu.registerProvider('fill-color-picker', this);
   }
 
   getEntries(element) {
@@ -17,23 +17,65 @@ export default class ColorPopupProvider {
         label: 'Red',
         hex: 'ff0000'
       }, {
+        label: 'Dark-Red',
+        hex: 'cc0000'
+      }, {
+        label: 'Light-Red',
+        hex: 'e06666'
+      }, {
         label: 'Orange',
         hex: 'ff7f00'
+      }, {
+        label: 'Dark-Orange',
+        hex: 'e69138'
+      }, {
+        label: 'Light-Orange',
+        hex: 'f6b26b'
       }, {
         label: 'Yellow',
         hex: 'ffff00'
       }, {
+        label: 'Dark-Yellow',
+        hex: 'f1c232'
+      }, {
+        label: 'Light-Yellow',
+        hex: 'ffd966'
+      }, {
         label: 'Green',
         hex: '00ff00'
+      }, {
+        label: 'Dark-Green',
+        hex: '6aa84f'
+      }, {
+        label: 'Light-Green',
+        hex: '93c47d'
       }, {
         label: 'Blue',
         hex: '0000ff'
       }, {
+        label: 'Dark-Blue',
+        hex: '3c78d8'
+      }, {
+        label: 'Light-Blue',
+        hex: '6d9eeb'
+      }, {
         label: 'Indigo',
         hex: '4b0082'
       }, {
+        label: 'Dark-Indigo',
+        hex: '674ea7'
+      }, {
+        label: 'Light-Indigo',
+        hex: '8e7cc3'
+      }, {
         label: 'Violet',
         hex: '9400d3'
+      }, {
+        label: 'Dark-Violet',
+        hex: 'a64d79'
+      }, {
+        label: 'Light-Violet',
+        hex: 'c27ba0'
       }
     ];
 
@@ -64,7 +106,7 @@ export default class ColorPopupProvider {
 }
 
 
-ColorPopupProvider.$inject = [
+FillColorPopupProvider.$inject = [
   'popupMenu',
   'modeling'
 ];

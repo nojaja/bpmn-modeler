@@ -6,8 +6,11 @@
   box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.6);
 }
 
-.bpmn-icon-color:before {
+.bpmn-icon-strokecolor:before {
     content: '🖌';
+}
+.bpmn-icon-fillcolor:before {
+  content: '🎨';
 }
 
 /* color popup menu */
@@ -37,29 +40,71 @@
 .color-icon-ff0000:before {
   background-color: #ff0000;
 }
+.color-icon-cc0000:before {
+  background-color: #cc0000;
+}
+.color-icon-e06666:before {
+  background-color: #e06666;
+}
 
 .color-icon-ff7f00:before {
   background-color: #ff7f00;
+}
+.color-icon-e69138:before {
+  background-color: #e69138;
+}
+.color-icon-f6b26b:before {
+  background-color: #f6b26b;
 }
 
 .color-icon-ffff00:before {
   background-color: #ffff00;
 }
+.color-icon-f1c232:before {
+  background-color: #f1c232;
+}
+.color-icon-ffd966:before {
+  background-color: #ffd966;
+}
 
 .color-icon-00ff00:before {
   background-color: #00ff00;
+}
+.color-icon-6aa84f:before {
+  background-color: #6aa84f;
+}
+.color-icon-93c47d:before {
+  background-color: #93c47d;
 }
 
 .color-icon-0000ff:before {
   background-color: #0000ff;
 }
+.color-icon-3c78d8:before {
+  background-color: #3c78d8;
+}
+.color-icon-6d9eeb:before {
+  background-color: #6d9eeb;
+}
 
 .color-icon-4b0082:before {
   background-color: #4b0082;
 }
+.color-icon-674ea7:before {
+  background-color: #674ea7;
+}
+.color-icon-8e7cc3:before {
+  background-color: #8e7cc3;
+}
 
 .color-icon-9400d3:before {
   background-color: #9400d3;
+}
+.color-icon-a64d79:before {
+  background-color: #a64d79;
+}
+.color-icon-c27ba0:before {
+  background-color: #c27ba0;
 }
 
 /* transparancy for shapes with colors */

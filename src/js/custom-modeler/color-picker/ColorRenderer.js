@@ -42,6 +42,9 @@ export default class ColorRenderer extends BpmnRenderer {
     svgAttr(bpmnShape, {
       fill: getBackgroundColor(shape) || '#ffffff'
     });
+    svgAttr(bpmnShape, {
+      stroke: getBorderColor(shape) || '#000000'
+    });
     // make sure default renderer is not called anymore
     return bpmnShape;
   };
@@ -60,4 +63,8 @@ ColorRenderer.$inject = [
 function getBackgroundColor(element) {
   const bo = getBusinessObject(element);
   return bo.di.get('color:background-color');
+}
+function getBorderColor(element) {
+  const bo = getBusinessObject(element);
+  return bo.di.get('color:border-color');
 }

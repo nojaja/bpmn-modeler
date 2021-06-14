@@ -2,11 +2,13 @@
 import './color-picker.css'
 import ColorRenderer from './ColorRenderer';
 import ColorContextPadProvider from './ColorContextPadProvider';
-import ColorPopupProvider from './ColorPopupProvider';
+import FillColorPopupProvider from './FillColorPopupProvider';
+import StrokeColorPopupProvider from './StrokeColorPopupProvider';
 
 export default {
-  __init__: ['colorRenderer','colorContextPadProvider','colorPopupProvider'],
+  __init__: ['colorRenderer','colorContextPadProvider','fillColorPopupProvider','strokeColorPopupProvider'],
   colorRenderer: [ 'type', ColorRenderer ],
   colorContextPadProvider: [ 'type', ColorContextPadProvider ],
-  colorPopupProvider: [ 'type', ColorPopupProvider ]
+  fillColorPopupProvider: [ 'type', FillColorPopupProvider ],
+  strokeColorPopupProvider: [ 'type', StrokeColorPopupProvider ]
 };

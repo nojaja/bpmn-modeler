@@ -14,10 +14,10 @@ export default class ColorContextPadProvider {
   getContextPadEntries(element) {
     const self = this.self;
     const actions = {
-      'set-color': {
+      'set-fill-color': {
         group: 'edit',
-        className: 'bpmn-icon-color',
-        title: 'Set Color',
+        className: 'bpmn-icon-fillcolor',
+        title: 'Set Fill Color',
         action: {
           click: function (event, element) {
             // close any existing popup
@@ -37,12 +37,38 @@ export default class ColorContextPadProvider {
 
             // open color picker submenu popup
             //element, id, position
-            self._popupMenu.open(element, 'color-picker', opts);
+            self._popupMenu.open(element, 'fill-color-picker', opts);
+          }
+        }
+      },
+      'set-stroke-color': {
+        group: 'edit',
+        className: 'bpmn-icon-strokecolor',
+        title: 'Set Stroke Color',
+        action: {
+          click: function (event, element) {
+            // close any existing popup
+            self._popupMenu.close();
+
+            // create new color-picker popup
+            //var colorPicker = create(self._popupMenu,'color-picker', element);
+
+            // get start popup draw start position
+            const opts = getStartPosition(self._canvas, self._contextPad, element);
+
+            // or fallback to current cursor position
+            opts.cursor = {
+              x: event.x,
+              y: event.y
+            };
+
+            // open color picker submenu popup
+            //element, id, position
+            self._popupMenu.open(element, 'stroke-color-picker', opts);
           }
         }
       }
-    };
-
+    }
     return actions;
   };
 }
