@@ -15,7 +15,6 @@ import Warning from '../../../assets/shpes/warning.svg';
  * A palette that allows you to create BPMN _and_ custom elements.
  */
 export default class CustomPaletteProvider {
-
   constructor(
     bpmnFactory, palette, create, elementFactory,
     spaceTool, lassoTool, handTool,
