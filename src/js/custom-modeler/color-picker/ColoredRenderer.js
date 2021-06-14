@@ -14,7 +14,6 @@ import {
 
 const HIGH_PRIORITY = 1400
 export default class ColoredRenderer extends BpmnRenderer {
-
   constructor (config, eventBus, styles, pathMap, canvas, textRenderer) {
     super(config, eventBus, styles, pathMap, canvas, textRenderer, HIGH_PRIORITY)
     console.log(this)

@@ -13,7 +13,6 @@ export default class ColorContextPadProvider {
 
   getContextPadEntries(element) {
     const self = this.self;
-    console.log('ColorContextPadProvider-getContextPadEntries',this,self)
     var actions = {
       'set-color': {
         group: 'edit',
@@ -21,7 +20,6 @@ export default class ColorContextPadProvider {
         title: 'Set Color',
         action: {
           click: function (event, element) {
-            console.log('ColorContextPadProvider-set-color',this,self)
             // close any existing popup
             self._popupMenu.close();
 
@@ -39,8 +37,6 @@ export default class ColorContextPadProvider {
 
             // open color picker submenu popup
             //element, id, position
-            //colorPicker.open(opts, element);
-            //colorPicker.open(element,'color-picker',opts);
             self._popupMenu.open(element,'color-picker',opts);
           }
         }
