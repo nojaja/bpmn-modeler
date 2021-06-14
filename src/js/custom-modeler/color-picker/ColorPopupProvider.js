@@ -1,4 +1,4 @@
-import {getBusinessObject} from 'bpmn-js/lib/util/ModelUtil';
+import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
 
 const CALL_PRIORITY = 2000
 
@@ -10,9 +10,9 @@ export default class ColorPopupProvider {
   }
 
   getEntries(element) {
-    var self = this;
-  
-    var colors = [
+    const self = this;
+
+    const colors = [
       {
         label: 'Red',
         hex: 'ff0000'
@@ -36,8 +36,8 @@ export default class ColorPopupProvider {
         hex: '9400d3'
       }
     ];
-  
-    var entries = colors.map(function(color) {
+
+    const entries = colors.map(function (color) {
       return {
         label: color.label,
         id: color.label.toLowerCase() + '-color',
@@ -45,12 +45,12 @@ export default class ColorPopupProvider {
         action: createAction(self._modeling, element, '#' + color.hex)
       };
     });
-  
+
     return entries;
   }
-  
 
-  getHeaderEntries (element) {
+
+  getHeaderEntries(element) {
     return [
       {
         label: 'Clear',
@@ -72,10 +72,8 @@ ColorPopupProvider.$inject = [
 
 
 function createAction(modeling, element, newColor) {
-  console.log('PopupMenuProvider-createAction-1',modeling, element, newColor)
   // set hex value to an element
-  return function() {
-    console.log('PopupMenuProvider-createAction-2',modeling, element, newColor)
+  return function () {
     var bo = getBusinessObject(element);
     var di = bo.di;
 

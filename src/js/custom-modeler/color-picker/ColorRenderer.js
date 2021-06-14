@@ -3,7 +3,7 @@ import {
 } from 'tiny-svg';
 
 
-import {getBusinessObject} from 'bpmn-js/lib/util/ModelUtil';
+import { getBusinessObject } from 'bpmn-js/lib/util/ModelUtil';
 
 import {
   isAny
@@ -12,32 +12,32 @@ import BpmnRenderer from 'bpmn-js/lib/draw/BpmnRenderer';
 
 const CALL_PRIORITY = 2000
 export default class ColorRenderer extends BpmnRenderer {
-  constructor (config, eventBus, styles, pathMap, canvas, textRenderer) {
+  constructor(config, eventBus, styles, pathMap, canvas, textRenderer) {
     super(config, eventBus, styles, pathMap, canvas, textRenderer, CALL_PRIORITY)
     this.drawBpmnShape = super.drawShape;
     this.drawBpmnConnection = super.drawConnection;
   }
   canRender(element) {
     var businessObject = element.businessObject;
-    return (isAny(businessObject, [ 'bpmn:BaseElement']));
+    return (isAny(businessObject, ['bpmn:BaseElement']));
     //return is(element, 'bpmn:BaseElement') && element.color;
   };
-  
-  drawConnection (parentGfx, shape) {
+
+  drawConnection(parentGfx, shape) {
     // call default implementation
-    var bpmnConnection = this.drawBpmnConnection(parentGfx, shape);
-      // line shape with default black color
-      svgAttr(bpmnConnection, {
-        stroke: getBackgroundColor(shape) || '#000000'
-      });
-      // make sure default renderer is not called anymore
-      return bpmnConnection;
+    const bpmnConnection = this.drawBpmnConnection(parentGfx, shape);
+    // line shape with default black color
+    svgAttr(bpmnConnection, {
+      stroke: getBackgroundColor(shape) || '#000000'
+    });
+    // make sure default renderer is not called anymore
+    return bpmnConnection;
   };
 
-  drawShape (parentGfx, shape) {
+  drawShape(parentGfx, shape) {
     console.log('render.shape')
     // call default implementation
-    var bpmnShape = this.drawBpmnShape(parentGfx, shape);
+    const bpmnShape = this.drawBpmnShape(parentGfx, shape);
     // 2D shape with default white color
     svgAttr(bpmnShape, {
       fill: getBackgroundColor(shape) || '#ffffff'
@@ -58,6 +58,6 @@ ColorRenderer.$inject = [
 
 
 function getBackgroundColor(element) {
-  var bo = getBusinessObject(element);
+  const bo = getBusinessObject(element);
   return bo.di.get('color:background-color');
 }

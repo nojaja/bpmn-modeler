@@ -24,10 +24,8 @@ const HIGH_PRIORITY = 2000;
  * A renderer that knows how to render custom elements.
  */
 export default class CustomRenderer extends BaseRenderer {
-
   constructor(eventBus, styles, bpmnRenderer) {
     super(eventBus, HIGH_PRIORITY);
-
     const computeStyle = styles.computeStyle;
     this.bpmnRenderer = bpmnRenderer;
   }
@@ -41,9 +39,7 @@ export default class CustomRenderer extends BaseRenderer {
   //シェイプの描画
   drawShape(parentNode, element) {
     const type = element.type;
-
     const imagedata = this.getImageData(element);
-
     if (type === 'bpmn:DataObjectReference' && !isNil(imagedata)) {
       element.businessObject.href = imagedata
       return this.drawImage(parentNode, element);

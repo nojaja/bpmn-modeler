@@ -18,12 +18,10 @@ import {
 export default class CustomElementFactory extends BpmnElementFactory {
   constructor(bpmnFactory, moddle, translate) {
     super(bpmnFactory, moddle)
-    console.log('CustomElementFactory constructor')
     this.self = this;
     this._bpmnFactory = bpmnFactory;
     this._moddle = moddle;
     this._translate = translate;
-  	console.log('CustomElementFactory',self, bpmnFactory, moddle)
  }
 
   /**
@@ -35,10 +33,7 @@ export default class CustomElementFactory extends BpmnElementFactory {
    * @return {djs.model.Base}
    */
   create (elementType, attrs) {
-    console.log('CustomElementFactory.create',this, elementType, attrs)
-    
-    var type = attrs.type;
-
+    const type = attrs.type;
     if (elementType === 'label') {
       return this.self.baseCreate(elementType, assign({ type: 'label' }, DEFAULT_LABEL_SIZE, attrs));
     }
@@ -142,8 +137,7 @@ export default class CustomElementFactory extends BpmnElementFactory {
 	 * @return {Dimensions} a {width, height} object representing the size of the element
 	 */
 	_getCustomElementSize (type) {
-	
-	  var shapes = {
+	  const shapes = {
 	    __default: { width: 100, height: 80 },
 	    'custom:triangle': { width: 40, height: 40 },
 	    'custom:circle': { width: 140, height: 140 }

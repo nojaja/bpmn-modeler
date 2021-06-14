@@ -36,7 +36,6 @@ export default class CustomPaletteProvider {
   }
 
   getPaletteEntries(element) {
-    console.log('getPaletteEntries')
     const {
       bpmnFactory,
       create,
@@ -91,14 +90,14 @@ export default class CustomPaletteProvider {
     }
 
     function createSubprocess(event) {
-      var subProcess = elementFactory.createShape({
+      const subProcess = elementFactory.createShape({
         type: 'bpmn:SubProcess',
         x: 0,
         y: 0,
         isExpanded: true
       });
 
-      var startEvent = elementFactory.createShape({
+      const startEvent = elementFactory.createShape({
         type: 'bpmn:StartEvent',
         x: 40,
         y: 82,

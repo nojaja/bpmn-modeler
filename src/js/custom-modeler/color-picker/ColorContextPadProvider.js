@@ -13,7 +13,7 @@ export default class ColorContextPadProvider {
 
   getContextPadEntries(element) {
     const self = this.self;
-    var actions = {
+    const actions = {
       'set-color': {
         group: 'edit',
         className: 'bpmn-icon-color',
@@ -27,7 +27,7 @@ export default class ColorContextPadProvider {
             //var colorPicker = create(self._popupMenu,'color-picker', element);
 
             // get start popup draw start position
-            var opts = getStartPosition(self._canvas, self._contextPad, element);
+            const opts = getStartPosition(self._canvas, self._contextPad, element);
 
             // or fallback to current cursor position
             opts.cursor = {
@@ -37,7 +37,7 @@ export default class ColorContextPadProvider {
 
             // open color picker submenu popup
             //element, id, position
-            self._popupMenu.open(element,'color-picker',opts);
+            self._popupMenu.open(element, 'color-picker', opts);
           }
         }
       }
@@ -58,18 +58,18 @@ ColorContextPadProvider.$inject = [
 
 function getStartPosition(canvas, contextPad, element) {
 
-  var Y_OFFSET = 5;
+  const Y_OFFSET = 5;
 
-  var diagramContainer = canvas.getContainer(),
+  const diagramContainer = canvas.getContainer(),
     pad = contextPad.getPad(element).html;
 
-  var diagramRect = diagramContainer.getBoundingClientRect(),
+  const diagramRect = diagramContainer.getBoundingClientRect(),
     padRect = pad.getBoundingClientRect();
 
-  var top = padRect.top - diagramRect.top;
-  var left = padRect.left - diagramRect.left;
+  const top = padRect.top - diagramRect.top;
+  const left = padRect.left - diagramRect.left;
 
-  var pos = {
+  const pos = {
     x: left,
     y: top + padRect.height + Y_OFFSET
   };
