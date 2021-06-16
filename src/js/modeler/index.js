@@ -355,6 +355,7 @@ function loadProject(url, type, cb) {
       return (cb) ? cb() : true;
     })
   } else if (type == "nfs") {
+    window.history.replaceState({}, document.title, "/")
     nfs.loadDraft(currentFile, url, openDiagram)
   }
 }
@@ -385,6 +386,7 @@ function registerFileDrop(container, callback) {
     reader.onload = function(e) {
       const xml = e.target.result;
       console.log('onload',filename,fileext,xml);
+      window.history.replaceState({}, document.title, "/")
       callback(filename,fileext,xml);
     };
     reader.readAsText(file);
