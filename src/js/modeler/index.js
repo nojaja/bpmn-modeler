@@ -9,6 +9,8 @@ import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 //import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
+import ResizeAllModule from '../custom-modeler/resize-all-rules'
+import ColorPickerModule from '../custom-modeler/color-picker'
 //import BpmnJS from 'bpmn-js'
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
@@ -266,7 +268,11 @@ currentFile.bpmnModeler = new BpmnModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
-  }
+  },
+  additionalModules: [
+    ResizeAllModule,
+    ColorPickerModule
+  ]
 });
 
 /**
@@ -355,6 +361,7 @@ function loadProject(url, type, cb) {
       return (cb) ? cb() : true;
     })
   } else if (type == "nfs") {
+    window.history.replaceState({}, document.title, "/")
     nfs.loadDraft(currentFile, url, openDiagram)
   }
 }
@@ -374,6 +381,17 @@ function newfile() {
 function registerFileDrop(container, callback) {
 
   function handleFileSelect(e) {
+    console.log('handleFileSelect',e.x,e.y)
+    let dropObject = {
+      event:e,
+      pos:{x:e.x, y:e.y},
+      file:{
+        filetype:null,
+        filename:null,
+        filedata:null
+      }
+    }
+
     e.stopPropagation();
     e.preventDefault();
     const files = e.dataTransfer.files;
@@ -381,11 +399,16 @@ function registerFileDrop(container, callback) {
     const filefullname = file.name;
     const filename = filefullname.substring(0,filefullname.indexOf('.'))
     const fileext = filefullname.substring(filefullname.indexOf('.')+1);
+
+    dropObject.file.filename = filename;
+    dropObject.file.filetype = fileext;
+    dropObject.file.filename = filename;
     const reader = new FileReader();
     reader.onload = function(e) {
-      const xml = e.target.result;
-      console.log('onload',filename,fileext,xml);
-      callback(filename,fileext,xml);
+      dropObject.file.filedata = e.target.result;
+      console.log('onload',dropObject);
+      window.history.replaceState({}, document.title, "/")
+      callback(dropObject);
     };
     reader.readAsText(file);
   }
@@ -407,7 +430,11 @@ if (!window.FileList || !window.FileReader) {
     'Looks like you use an older browser that does not support drag and drop. ' +
     'Try using Chrome, Firefox or the Internet Explorer > 10.');
 } else {
-  registerFileDrop(container, openDiagram);
+  registerFileDrop(container, openFile);
+}
+
+function openFile(dropObject) {
+  openDiagram(dropObject.file.filename,dropObject.file.filetype,dropObject.file.filedata)
 }
 
 //GETパラメータの取得
@@ -417,7 +444,7 @@ for (let i = 0; pair[i]; i++) {
   let kv = pair[i].split("=");
   arg[kv[0]] = kv[1];
 }
-
+  
 //View///////////////////////////////////////////////////
 $(document).ready(() => {
   newfile()
