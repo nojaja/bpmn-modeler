@@ -270,7 +270,7 @@ currentFile.bpmnModeler = new BpmnModeler({
     bindTo: window
   },
   additionalModules: [
-    ResizeAllModule
+    ResizeAllModule,
     ColorPickerModule
   ]
 });
