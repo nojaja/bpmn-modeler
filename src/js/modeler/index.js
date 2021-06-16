@@ -9,6 +9,7 @@ import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 //import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
+import ResizeAllModule from '../custom-modeler/resize-all-rules'
 //import BpmnJS from 'bpmn-js'
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
@@ -266,7 +267,10 @@ currentFile.bpmnModeler = new BpmnModeler({
   container: '#canvas',
   keyboard: {
     bindTo: window
-  }
+  },
+  additionalModules: [
+    ResizeAllModule
+  ]
 });
 
 /**
