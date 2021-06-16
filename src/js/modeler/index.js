@@ -9,6 +9,7 @@ import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 //import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
+import ResizeAllModule from '../custom-modeler/resize-all-rules'
 import ColorPickerModule from '../custom-modeler/color-picker'
 //import BpmnJS from 'bpmn-js'
 import GDrivestorage from '../fs/gDrivestorage.js'
@@ -269,6 +270,7 @@ currentFile.bpmnModeler = new BpmnModeler({
     bindTo: window
   },
   additionalModules: [
+    ResizeAllModule
     ColorPickerModule
   ]
 });
