@@ -11,6 +11,7 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 import ResizeAllModule from '../custom-modeler/resize-all-rules'
 import ColorPickerModule from '../custom-modeler/color-picker'
+import customTranslate from '../custom-modeler/customTranslate'
 //import BpmnJS from 'bpmn-js'
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
@@ -32,6 +33,13 @@ const nfs = new Nfsstorage()
 const t = document.getElementById("menuFile");
 const myMenu = new Menus(t);
 const isMac = navigator.userAgent.includes('Mac OS X')
+
+// Our custom translation module
+// We need to use the array syntax that is used by bpmn-js internally
+// 'value' tells bmpn-js to use the function instead of trying to instanciate it
+let customTranslateModule = {
+  translate: [ 'value', customTranslate ]
+}
 
 let currentFile = {
   filename: 'new bpmn',
@@ -272,7 +280,8 @@ currentFile.bpmnModeler = new BpmnModeler({
   },
   additionalModules: [
     ResizeAllModule,
-    ColorPickerModule
+    ColorPickerModule,
+    customTranslateModule
   ]
 });
 
