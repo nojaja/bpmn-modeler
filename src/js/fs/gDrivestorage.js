@@ -1,16 +1,16 @@
 import { EventEmitter } from 'events'
 
 // Client ID and API key from the Developer Console
-const CLIENT_ID = '941050951476-akmt430s16rgv8vn69uegvpl2top89kt.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyDit9VW9b_8-T_7QRAasT7j4IPTQV740RI';
+//const CLIENT_ID = '---MyID--.apps.googleusercontent.com';
+//const API_KEY = '---My KEY---';
 
 // Array of API discovery doc URLs for APIs used by the quickstart
-const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
+//const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
 
 // Authorization scopes required by the API; multiple scopes can be
 // included, separated by spaces.
 //const SCOPES = ['https://www.googleapis.com/auth/drive.metadata.readonly','https://www.googleapis.com/auth/drive'];
-const SCOPES = 'https://www.googleapis.com/auth/drive';
+//const SCOPES = 'https://www.googleapis.com/auth/drive';
 //const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly';
 
 export class GDrivestorage {
@@ -77,19 +77,21 @@ export class GDrivestorage {
      *  On load, called to load the auth2 library and API client library.
      *  Initializes the API client library and sets up sign-in state
      *  listeners.
-     */
-    loadAuth2(callback) {
-        if(!this.auth2ApiLoaded){
-            let ev = this.ev
-            this.init ( () =>{
-                gapi.load('client:auth2', () =>{
-                    gapi.client.init({
+     * 
+     *  @param conf {
                         apiKey: API_KEY,
                         clientId: CLIENT_ID,
                         discoveryDocs: DISCOVERY_DOCS,
                         scope: SCOPES
-                    }).then(() => {
-                        console.log('loadAuth2_4')
+                    }
+        @param callback()
+     */
+    loadAuth2(conf,callback) {
+        if(!this.auth2ApiLoaded){
+            let ev = this.ev
+            this.init ( () =>{
+                gapi.load('client:auth2', () =>{
+                    gapi.client.init(conf).then(() => {
                         // Listen for sign-in state changes.
                         gapi.auth2.getAuthInstance().isSignedIn.listen((isSignedIn) => {
                             ev.emit('updateSigninStatus', isSignedIn)

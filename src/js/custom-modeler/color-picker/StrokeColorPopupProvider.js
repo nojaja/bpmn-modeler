@@ -15,6 +15,18 @@ export default class StrokeColorPopupProvider {
 
     const colors = [
       {
+        label: 'Black',
+        hex: '000000'
+      }, {
+        label: 'Gray',
+        hex: 'b7b7b7'
+      }, {
+        label: 'Dark-Gray',
+        hex: '434343'
+      }, {
+        label: 'Light-Gray',
+        hex: 'efefef'
+      }, {
         label: 'Red',
         hex: 'ff0000'
       }, {

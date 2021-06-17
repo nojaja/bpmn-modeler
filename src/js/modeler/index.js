@@ -11,6 +11,7 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 import ResizeAllModule from '../custom-modeler/resize-all-rules'
 import ColorPickerModule from '../custom-modeler/color-picker'
+import customTranslate from '../custom-modeler/customTranslate'
 //import BpmnJS from 'bpmn-js'
 import GDrivestorage from '../fs/gDrivestorage.js'
 import Nfsstorage from '../fs/Nfsstorage'
@@ -32,6 +33,13 @@ const nfs = new Nfsstorage()
 const t = document.getElementById("menuFile");
 const myMenu = new Menus(t);
 const isMac = navigator.userAgent.includes('Mac OS X')
+
+// Our custom translation module
+// We need to use the array syntax that is used by bpmn-js internally
+// 'value' tells bmpn-js to use the function instead of trying to instanciate it
+let customTranslateModule = {
+  translate: [ 'value', customTranslate ]
+}
 
 let currentFile = {
   filename: 'new bpmn',
@@ -58,7 +66,8 @@ fetch("./assets/setting.json", {
   if (response.status === 200) {
     console.log(response); // => "OK"
     setting = await response.json()
-    if('google_oauth' in setting){
+    console.log(setting)
+    if('google_oauth' in setting && setting.google_oauth.clientId){
       const noAuthorize = document.querySelectorAll('.no_authorize');
       const reqAuthorize = document.querySelectorAll('.req_authorize');
       gDrivestorage.onUpdateSigninStatus((isSignedIn) => {
@@ -70,7 +79,7 @@ fetch("./assets/setting.json", {
           reqAuthorize.forEach(el => el.style.display = 'none');
         }
       })
-      gDrivestorage.loadAuth2()
+      gDrivestorage.loadAuth2(setting.google_oauth)
     }
   } else {
     console.log(response.statusText); // => Error Message
@@ -271,7 +280,8 @@ currentFile.bpmnModeler = new BpmnModeler({
   },
   additionalModules: [
     ResizeAllModule,
-    ColorPickerModule
+    ColorPickerModule,
+    customTranslateModule
   ]
 });
 
@@ -361,7 +371,7 @@ function loadProject(url, type, cb) {
       return (cb) ? cb() : true;
     })
   } else if (type == "nfs") {
-    window.history.replaceState({}, document.title, "/")
+    window.history.replaceState({}, document.title, window.location.pathname)
     nfs.loadDraft(currentFile, url, openDiagram)
   }
 }
@@ -407,7 +417,7 @@ function registerFileDrop(container, callback) {
     reader.onload = function(e) {
       dropObject.file.filedata = e.target.result;
       console.log('onload',dropObject);
-      window.history.replaceState({}, document.title, "/")
+      window.history.replaceState({}, document.title, window.location.pathname)
       callback(dropObject);
     };
     reader.readAsText(file);

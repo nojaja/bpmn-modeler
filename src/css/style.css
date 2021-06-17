@@ -58,7 +58,9 @@ header h1 {
   height: 20px;
   line-height: 22px;
   margin: 0;
+  width: 900px;
   min-width: 1px;
+  max-width: 50%;
   padding: 2px 7px;
   /*visibility: hidden;*/
 }
@@ -182,6 +184,8 @@ h2 {
 }
 .navbar-flip {
   float: right;
+  position: absolute;
+  right: 10px;
 }
 .navbar-nav > li {
   float: left;
