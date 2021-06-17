@@ -37,6 +37,19 @@
   background-color: #ffffff;
 }
 
+.color-icon-000000:before {
+  background-color: #000000;
+}
+.color-icon-b7b7b7:before {
+  background-color: #b7b7b7;
+}
+.color-icon-434343:before {
+  background-color: #434343;
+}
+.color-icon-efefef:before {
+  background-color: #efefef;
+}
+
 .color-icon-ff0000:before {
   background-color: #ff0000;
 }
