@@ -56,7 +56,8 @@ fetch("./assets/setting.json", {
   if (response.status === 200) {
     console.log(response); // => "OK"
     setting = await response.json()
-    if('google_oauth' in setting){
+    console.log(setting)
+    if('google_oauth' in setting && setting.google_oauth.clientId){
       const noAuthorize = document.querySelectorAll('.no_authorize');
       const reqAuthorize = document.querySelectorAll('.req_authorize');
       gDrivestorage.onUpdateSigninStatus((isSignedIn) => {
@@ -68,7 +69,7 @@ fetch("./assets/setting.json", {
           reqAuthorize.forEach(el => el.style.display = 'none');
         }
       })
-      gDrivestorage.loadAuth2()
+      gDrivestorage.loadAuth2(setting.google_oauth)
     }
   } else {
     console.log(response.statusText); // => Error Message
