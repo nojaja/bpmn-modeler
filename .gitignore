@@ -3,3 +3,4 @@
 .settings/*
 old/*
 /node_modules
+/docs
