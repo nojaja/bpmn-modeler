@@ -460,7 +460,7 @@ $(document).ready(() => {
   newfile()
   const file_url = arg["q"]
   if(file_url){
-    const filefullname = file_url.substring(file_url.lastIndexOf('/')+1)
+    const filefullname = decodeURIComponent(file_url.substring(file_url.lastIndexOf('/')+1))
     const filename = filefullname.substring(0,filefullname.indexOf('.'))
     const fileext = filefullname.substring(filefullname.indexOf('.')+1)
     console.log('fetch',filefullname,filename,fileext)
