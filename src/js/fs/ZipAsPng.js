@@ -3,7 +3,7 @@
 // This software is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 import CRC32 from 'crc-32'
-import { Buffer } from 'buffer'
+import { Buffer } from 'buffer/'
 
 // PNGヘッダとIHDRの前半部分
 const HEAD_PNG = Buffer.from('89504e470d0a1a0a0000000d49484452', 'hex');

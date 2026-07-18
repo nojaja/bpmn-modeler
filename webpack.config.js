@@ -9,7 +9,9 @@ const WriteFilePlugin = require('write-file-webpack-plugin')
 module.exports = (env, argv = {}) => ({
   mode: argv.mode === 'production' ? 'production' : 'development',
   devtool: argv.mode === 'production' ? 'source-map' : 'eval-cheap-module-source-map',
-  devServer: {    allowedHosts: 'all',
+  devServer: {
+    port: Number(process.env.PORT || 8080),
+    allowedHosts: 'all',
     static: {
       directory: dist
     }
@@ -20,7 +22,8 @@ module.exports = (env, argv = {}) => ({
   },
   output: {
 		globalObject: 'self',
-    filename: './[name].bundle.js',    chunkFilename: './chunk/[id].[contenthash].chunk.js',
+    filename: './[name].bundle.js',
+    chunkFilename: './chunk/[id].[contenthash].chunk.js',
     hotUpdateChunkFilename: './hot/[id].[fullhash].hot-update.js',
     hotUpdateMainFilename: './hot/[runtime].[fullhash].hot-update.json',
     path: dist,
@@ -29,7 +32,7 @@ module.exports = (env, argv = {}) => ({
   resolve: {
     alias: {
       '@': path.resolve(src, '/js/')
-        },
+    },
     fallback: {
       buffer: require.resolve('buffer/')
     }
