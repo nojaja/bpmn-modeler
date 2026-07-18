@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test webpack && jest",
-    "build": "cross-env NODE_OPTIONS=--max_old_space_size=2048 NODE_ENV=production webpack",
-    "dev": "cross-env NODE_OPTIONS=--max_old_space_size=2048 webpack --mode development --watch",
-    "start": "cross-env NODE_OPTIONS=--max_old_space_size=2048 webpack-dev-server -d"
+    "test": "cross-env NODE_OPTIONS=\"--openssl-legacy-provider\" NODE_ENV=test webpack && jest",
+    "build": "cross-env NODE_OPTIONS=\"--max_old_space_size=2048 --openssl-legacy-provider\" NODE_ENV=production webpack",
+    "dev": "cross-env NODE_OPTIONS=\"--max_old_space_size=2048 --openssl-legacy-provider\" webpack --mode development --watch",
+    "start": "cross-env NODE_OPTIONS=\"--max_old_space_size=2048 --openssl-legacy-provider\" webpack-dev-server -d"
   },
   "author": "nojaja <free.riccia@gmail.com> (https://github.com/nojaja)",
   "license": "MIT",
