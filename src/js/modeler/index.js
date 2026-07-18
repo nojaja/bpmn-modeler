@@ -6,7 +6,7 @@ import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import 'bpmn-js/dist/assets/diagram-js.css'
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 //import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
 import ResizeAllModule from '../custom-modeler/resize-all-rules'
