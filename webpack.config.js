@@ -6,13 +6,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyFilePlugin = require('copy-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
 
-module.exports = {
-  mode: process.env.NODE_ENV === 'production' ? 'development' : 'production',
-  devtool: 'source-map',
-  devServer: {
-    disableHostCheck: true,
-    contentBase: dist,
-    public: process.env.URL || ''
+module.exports = (env, argv = {}) => ({
+  mode: argv.mode === 'production' ? 'production' : 'development',
+  devtool: argv.mode === 'production' ? 'source-map' : 'eval-cheap-module-source-map',
+  devServer: {    allowedHosts: 'all',
+    static: {
+      directory: dist
+    }
   },
   context: src,
   entry: {
@@ -20,15 +20,18 @@ module.exports = {
   },
   output: {
 		globalObject: 'self',
-    filename: './[name].bundle.js',
-    sourceMapFilename: './map/[id].[chunkhash].js.map',
-    chunkFilename: './chunk/[id].[chunkhash].js',
+    filename: './[name].bundle.js',    chunkFilename: './chunk/[id].[contenthash].chunk.js',
+    hotUpdateChunkFilename: './hot/[id].[fullhash].hot-update.js',
+    hotUpdateMainFilename: './hot/[runtime].[fullhash].hot-update.json',
     path: dist,
     publicPath:""
   },
   resolve: {
     alias: {
       '@': path.resolve(src, '/js/')
+        },
+    fallback: {
+      buffer: require.resolve('buffer/')
     }
   },
   module: {
@@ -45,7 +48,8 @@ module.exports = {
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+      'window.jQuery': 'jquery',
+      Buffer: ['buffer', 'Buffer']
     }),
     new HtmlWebpackPlugin({
       inject: true,
@@ -86,4 +90,4 @@ module.exports = {
     }),
     new WriteFilePlugin()
   ]
-}
+})
