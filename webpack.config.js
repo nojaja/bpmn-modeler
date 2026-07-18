@@ -5,7 +5,6 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyFilePlugin = require('copy-webpack-plugin')
 const WriteFilePlugin = require('write-file-webpack-plugin')
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
 
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'development' : 'production',
@@ -43,7 +42,6 @@ module.exports = {
   ]
   },
   plugins: [
-    new HardSourceWebpackPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -55,38 +53,37 @@ module.exports = {
       template: './html/index.html',
       filename: './index.html'
     }),
-    new CopyFilePlugin(
-        [
-            {
-              context: 'assets/',
-              from: '*.json',
-              to: dist
-            },
-            {
-              context: 'assets/',
-              from: '_locales/**/*.*',
-              to: dist
-            },
-            {
-              context: 'assets/',
-              from: 'icons/*.*',
-              to: dist
-            },
-            {
-                from: 'css/*.css',
-                to: dist
-            },
-            {
-                from: 'assets/*/*.*',
-                to: dist
-            },
-            {
-                from: 'assets/*.*',
-                to: dist
-            }
-        ],
-        { copyUnmodified: true }
-    ),
+    new CopyFilePlugin({
+      patterns: [
+        {
+          context: 'assets/',
+          from: '*.json',
+          to: dist
+        },
+        {
+          context: 'assets/',
+          from: '_locales/**/*.*',
+          to: dist
+        },
+        {
+          context: 'assets/',
+          from: 'icons/*.*',
+          to: dist
+        },
+        {
+          from: 'css/*.css',
+          to: dist
+        },
+        {
+          from: 'assets/*/*.*',
+          to: dist
+        },
+        {
+          from: 'assets/*.*',
+          to: dist
+        }
+      ]
+    }),
     new WriteFilePlugin()
   ]
 }
