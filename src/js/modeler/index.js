@@ -7,8 +7,11 @@ import '@fortawesome/fontawesome-free/js/regular';
 import '@fortawesome/fontawesome-free/js/brands';
 import 'bpmn-js/dist/assets/diagram-js.css'
 import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
+import 'bpmn-js-properties-panel/dist/assets/bpmn-js-properties-panel.css'
 //import BpmnJS from 'bpmn-js/dist/bpmn-modeler.development'
 import BpmnModeler from 'bpmn-js/lib/Modeler';
+import propertiesPanelModule from 'bpmn-js-properties-panel';
+import propertiesProviderModule from 'bpmn-js-properties-panel/lib/provider/bpmn';
 import ResizeAllModule from '../custom-modeler/resize-all-rules'
 import ColorPickerModule from '../custom-modeler/color-picker'
 import customTranslate from '../custom-modeler/customTranslate'
@@ -275,10 +278,15 @@ const initialDiagram =
 // modeler instance
 currentFile.bpmnModeler = new BpmnModeler({
   container: '#canvas',
+  propertiesPanel: {
+    parent: '#js-properties-panel'
+  },
   keyboard: {
     bindTo: window
   },
   additionalModules: [
+    propertiesPanelModule,
+    propertiesProviderModule,
     ResizeAllModule,
     ColorPickerModule,
     customTranslateModule
