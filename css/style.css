@@ -207,9 +207,9 @@ h2 {
   font-weight: normal;
 }
 .panel-parent {
-  height: 90%;
-  overflow: auto;
-  /*margin-left: -35px;*/
+  height: calc(100vh - 72px);
+  overflow: hidden;
+  display: flex;
 }
 .left-panel {
   height: 100%;
@@ -222,9 +222,23 @@ h2 {
 .main-panel {
   height: 100%;
   overflow: hidden;
-  width: 100%;
+  width: calc(100% - 320px);
+  min-width: 0;
   box-sizing: border-box;
-  float: left;
+  flex: 1 1 auto;
+}
+
+.properties-panel-parent {
+  height: 100%;
+  width: 320px;
+  border-left: 1px solid #ccc;
+  overflow: auto;
+  background: #fff;
+  flex: 0 0 320px;
+}
+
+.properties-panel-parent:empty {
+  display: none;
 }
 
 .diagram-note {
