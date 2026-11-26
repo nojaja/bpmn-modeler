@@ -24,7 +24,7 @@ https://nojaja.github.io/bpmn-modeler/
 ## Development
 1. init
 ```sh
-$ npm install
+$ npm install --ignore-scripts
 ```
 
 2. start
